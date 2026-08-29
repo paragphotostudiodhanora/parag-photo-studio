@@ -8,201 +8,211 @@
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+  scroll-behavior:smooth;
 }
 
 body{
-    background:#f7f7f7;
-    color:#222;
+  background:#f7f7f7;
+  color:#222;
 }
 
 header{
-    background:linear-gradient(135deg,#111,#333);
-    color:white;
-    padding:22px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
-    z-index:1000;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#111;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo{
-    font-size:26px;
-    font-weight:bold;
+  color:white;
+  font-size:25px;
+  font-weight:bold;
 }
 
 .logo span{
-    color:#ffd700;
+  color:#ffd000;
 }
 
 nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:22px;
-    font-size:15px;
+  color:white;
+  text-decoration:none;
+  margin-left:25px;
+  font-weight:bold;
+}
+
+nav a:hover{
+  color:#ffd000;
 }
 
 .hero{
-    min-height:75vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:50px 20px;
-    background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-    linear-gradient(135deg,#5b3a29,#111);
-    color:white;
+  min-height:650px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  padding:60px 20px;
+  background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.85)),
+    url("1.jpg") center/cover;
 }
 
 .hero h1{
-    font-size:55px;
-    margin-bottom:15px;
+  font-size:55px;
+  margin-bottom:15px;
 }
 
 .hero h1 span{
-    color:#ffd700;
+  color:#ffd000;
 }
 
 .hero p{
-    font-size:21px;
-    margin-bottom:28px;
+  font-size:21px;
+  line-height:1.6;
+}
+
+.buttons{
+  margin-top:30px;
 }
 
 .btn{
-    display:inline-block;
-    padding:14px 25px;
-    margin:7px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
+  display:inline-block;
+  padding:15px 25px;
+  margin:8px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  color:#111;
+  background:#ffd000;
 }
 
 .whatsapp{
-    background:#25D366;
-    color:white;
-}
-
-.call{
-    background:#ffd700;
-    color:#111;
+  background:#25d366;
+  color:white;
 }
 
 section{
-    padding:60px 8%;
+  padding:70px 7%;
 }
 
 .title{
-    text-align:center;
-    margin-bottom:40px;
+  text-align:center;
+  font-size:38px;
+  margin-bottom:12px;
 }
 
-.title h2{
-    font-size:35px;
-}
-
-.title p{
-    color:#777;
-    margin-top:8px;
+.subtitle{
+  text-align:center;
+  color:#777;
+  margin-bottom:40px;
 }
 
 .services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:22px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
 }
 
 .card{
-    background:white;
-    padding:30px 20px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    transition:.3s;
+  background:white;
+  padding:30px 20px;
+  text-align:center;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  transition:.3s;
 }
 
 .card:hover{
-    transform:translateY(-7px);
+  transform:translateY(-7px);
 }
 
-.card .icon{
-    font-size:45px;
-    margin-bottom:15px;
+.icon{
+  font-size:45px;
+  margin-bottom:15px;
 }
 
 .card h3{
-    margin-bottom:10px;
+  margin-bottom:10px;
 }
 
-.card p{
-    color:#666;
-    line-height:1.6;
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.gallery img{
+  width:100%;
+  height:330px;
+  object-fit:cover;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,.15);
 }
 
 .about{
-    background:#111;
-    color:white;
-    text-align:center;
+  background:#111;
+  color:white;
+  text-align:center;
 }
 
 .about p{
-    max-width:800px;
-    margin:auto;
-    line-height:1.8;
-    color:#ddd;
+  max-width:800px;
+  margin:auto;
+  font-size:18px;
+  line-height:1.8;
 }
 
 .contact{
-    text-align:center;
+  text-align:center;
 }
 
 .contact-box{
-    max-width:700px;
-    margin:auto;
-    background:white;
-    padding:35px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+  max-width:700px;
+  margin:auto;
+  background:white;
+  padding:35px;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
 .contact-box p{
-    margin:14px;
-    font-size:18px;
+  font-size:19px;
+  margin:12px;
 }
 
 footer{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:25px;
-}
-
-footer span{
-    color:#ffd700;
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:25px;
 }
 
 @media(max-width:700px){
-    header{
-        flex-direction:column;
-        gap:15px;
-    }
+  header{
+    flex-direction:column;
+    gap:15px;
+  }
 
-    nav a{
-        margin:0 7px;
-    }
+  nav a{
+    margin:8px;
+    font-size:14px;
+  }
 
-    .hero h1{
-        font-size:38px;
-    }
+  .hero h1{
+    font-size:38px;
+  }
 
-    .hero p{
-        font-size:17px;
-    }
+  .hero p{
+    font-size:17px;
+  }
 }
 </style>
 </head>
@@ -210,185 +220,161 @@ footer span{
 <body>
 
 <header>
-    <div class="logo">
-        Parag <span>Photo Studio</span>
-    </div>
+  <div class="logo">Parag <span>Photo Studio</span></div>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-
 <section class="hero" id="home">
-    <div>
-        <h1>Parag <span>Photo Studio</span></h1>
+  <div>
+    <h1>Parag <span>Photo Studio</span></h1>
 
-        <p>
-            Professional Photography & Digital Services
-            <br>
-            Dhanora, Gadchiroli
-        </p>
+    <p>
+      Professional Photography & Digital Services<br>
+      Dhanora, Gadchiroli
+    </p>
 
-        <a class="btn whatsapp"
-           href="https://wa.me/919359877572"
-           target="_blank">
-           WhatsApp Us
-        </a>
+    <div class="buttons">
+      <a class="btn whatsapp"
+         href="https://wa.me/919359877572"
+         target="_blank">
+         WhatsApp Us
+      </a>
 
-        <a class="btn call"
-           href="tel:9405507553">
-           Call Now
-        </a>
+      <a class="btn"
+         href="tel:+919359877572">
+         Call Now
+      </a>
     </div>
+  </div>
 </section>
-
 
 <section id="services">
 
-    <div class="title">
-        <h2>Our Services</h2>
-        <p>Professional services under one roof</p>
+  <h2 class="title">Our Services</h2>
+  <p class="subtitle">Professional services under one roof</p>
+
+  <div class="services">
+
+    <div class="card">
+      <div class="icon">📸</div>
+      <h3>Photography</h3>
+      <p>Wedding, Portrait & Professional Photography</p>
     </div>
 
-    <div class="services">
-
-        <div class="card">
-            <div class="icon">📸</div>
-            <h3>Photography</h3>
-            <p>
-                Wedding, Portrait, Couple and
-                Professional Photography.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">💍</div>
-            <h3>Wedding Photography</h3>
-            <p>
-                Premium Wedding Photography,
-                Cinematic Video & Album.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">📖</div>
-            <h3>Wedding Album</h3>
-            <p>
-                Premium Album Designing with
-                modern and traditional layouts.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🪪</div>
-            <h3>Passport & ID Photos</h3>
-            <p>
-                Passport Photo, School ID Card
-                and Office ID Card.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🪪</div>
-            <h3>PAN Card Services</h3>
-            <p>
-                PAN Card related online services
-                available.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🚘</div>
-            <h3>Driving Licence</h3>
-            <p>
-                Driving Licence related online
-                services.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🖼️</div>
-            <h3>Photo Frame</h3>
-            <p>
-                Photo Enlargement, Framing and
-                Lamination services.
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="icon">💻</div>
-            <h3>All Online Services</h3>
-            <p>
-                Various digital and online
-                services available.
-            </p>
-        </div>
-
+    <div class="card">
+      <div class="icon">💍</div>
+      <h3>Wedding Album</h3>
+      <p>Premium Wedding Album Design & Printing</p>
     </div>
+
+    <div class="card">
+      <div class="icon">🪪</div>
+      <h3>PAN Card</h3>
+      <p>PAN Card related digital services</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚗</div>
+      <h3>Driving Licence</h3>
+      <p>Driving Licence online services</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛂</div>
+      <h3>Passport Photo</h3>
+      <p>Professional Passport Size Photos</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🖼️</div>
+      <h3>Photo Frame</h3>
+      <p>Photo Enlargement, Frame & Lamination</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h3>School ID Card</h3>
+      <p>School & Student ID Card Design</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">💼</div>
+      <h3>Office ID Card</h3>
+      <p>Professional Office ID Card Design</p>
+    </div>
+
+  </div>
 </section>
 
+<section id="gallery">
+
+  <h2 class="title">Our Gallery</h2>
+  <p class="subtitle">Some of our photography work</p>
+
+  <div class="gallery">
+
+    <img src="1.jpg" alt="Parag Photo Studio Wedding Photography">
+
+  </div>
+
+</section>
 
 <section class="about" id="about">
 
-    <div class="title">
-        <h2>About Parag Photo Studio</h2>
-    </div>
+  <h2 class="title">About Parag Photo Studio</h2>
 
-    <p>
-        Welcome to Parag Photo Studio, Dhanora.
-        We provide professional photography,
-        wedding photography, album designing,
-        passport photos, ID cards, photo framing,
-        lamination and various online services.
-    </p>
+  <p>
+    Parag Photo Studio, Dhanora provides professional
+    photography and digital services under one roof.
+    We provide wedding photography, photo album design,
+    passport photos, PAN Card services, Driving Licence
+    services, photo frames, enlargement, lamination,
+    school ID cards and office ID cards.
+  </p>
 
 </section>
-
 
 <section class="contact" id="contact">
 
-    <div class="title">
-        <h2>Contact Us</h2>
-        <p>Visit us or contact us today</p>
-    </div>
+  <h2 class="title">Contact Us</h2>
+  <p class="subtitle">We are happy to serve you</p>
 
-    <div class="contact-box">
+  <div class="contact-box">
 
-        <p>📍 <b>Parag Photo Studio</b></p>
+    <p>📍 <b>Parag Photo Studio, Dhanora</b></p>
 
-        <p>
-            Near SBI Bank, Dhanora,
-            Gadchiroli, Maharashtra
-        </p>
+    <p>📞 <b>9359877572</b></p>
 
-        <p>
-            📞 <b>9359877572</b>
-        </p>
+    <p>📞 <b>9405507553</b></p>
 
-        <p>
-            📞 <b>9405507553</b>
-        </p>
+    <div class="buttons">
 
-        <a class="btn whatsapp"
-           href="https://wa.me/919359877572"
-           target="_blank">
-           Chat on WhatsApp
-        </a>
+      <a class="btn whatsapp"
+         href="https://wa.me/919359877572"
+         target="_blank">
+         WhatsApp
+      </a>
+
+      <a class="btn"
+         href="tel:+919359877572">
+         Call Now
+      </a>
 
     </div>
+
+  </div>
 
 </section>
 
-
 <footer>
-
-    © 2026 <span>Parag Photo Studio</span>, Dhanora.
-    All Rights Reserved.
-
+  © 2026 Parag Photo Studio, Dhanora
 </footer>
 
 </body>
