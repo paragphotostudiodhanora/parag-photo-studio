@@ -1,837 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0061)https://paragphotostudiodhanora.github.io/parag-photo-studio/ -->
+<html lang="en" data-qb-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Parag Photo Studio | Dhanora</title>
-
+<title>Parag- Photo Studio - Photo Slideshow</title>
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  width:100%;min-height:100%;background:#070707;color:#fff;
+  font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;overflow-y:auto
 }
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:#050505;
-  color:#fff;
-  font-family:Arial,sans-serif;
-  overflow-x:hidden;
-}
-
-/* ================= HEADER ================= */
-
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:1000;
-  padding:18px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(0,0,0,.75);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,215,0,.18);
-}
-
-.logo{
-  color:#ffd700;
-  font-size:22px;
-  font-weight:bold;
-  letter-spacing:2px;
-}
-
-.logo span{
-  display:block;
-  color:#fff;
-  font-size:11px;
-  letter-spacing:3px;
-  margin-top:4px;
-}
-
-nav a{
-  color:#fff;
-  text-decoration:none;
-  margin-left:25px;
-  font-size:14px;
-  transition:.3s;
-}
-
-nav a:hover{
-  color:#ffd700;
-}
-
-/* ================= HERO ================= */
-
 #slideshow{
-  position:relative;
-  width:100%;
-  height:100vh;
-  min-height:600px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  background:#000;
+  position:relative;width:100%;height:100vh;min-height:600px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;background:#050505
 }
-
-.slide{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  transition:opacity 1.2s ease;
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 1.2s ease}
+.slide.active{opacity:1}
+.slide::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 35%,rgba(0,0,0,.7));
+  pointer-events:none
 }
-
-.slide.active{
-  opacity:1;
+.slide img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;border-radius:0;box-shadow:none}
+.top{
+  position:absolute;z-index:5;top:0;left:0;right:0;padding:35px 20px 80px;
+  text-align:center;background:linear-gradient(rgba(0,0,0,.85),transparent);color:#fff
 }
-
-.slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.62);
-}
-
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to bottom,rgba(0,0,0,.75),transparent 35%,rgba(0,0,0,.85)),
-    radial-gradient(circle,transparent 20%,rgba(0,0,0,.65));
-}
-
-.hero-content{
-  position:relative;
-  z-index:10;
-  text-align:center;
-  padding:20px;
-  max-width:900px;
-}
-
-.hero-content .small{
-  color:#ffd700;
-  letter-spacing:5px;
-  font-size:14px;
-  margin-bottom:18px;
-}
-
-.hero-content h1{
-  font-size:clamp(38px,7vw,78px);
-  letter-spacing:5px;
-  line-height:1.1;
-  text-shadow:0 5px 30px #000;
-}
-
-.hero-content h1 span{
-  color:#ffd700;
-}
-
-.hero-content p{
-  margin:20px auto 28px;
-  color:#eee;
-  font-size:18px;
-  line-height:1.7;
-}
-
-.hero-btn{
-  display:inline-block;
-  padding:14px 28px;
-  border-radius:30px;
-  background:#ffd700;
-  color:#000;
-  text-decoration:none;
-  font-weight:bold;
-  transition:.3s;
-}
-
-.hero-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 30px rgba(255,215,0,.3);
-}
-
-/* ================= NAVIGATION ================= */
-
+.top h1{margin:0;font-size:38px;font-weight:700;letter-spacing:6px;text-shadow:0 3px 20px rgba(0,0,0,.8)}
+.top p{margin:10px 0 0;font-size:14px;letter-spacing:3px;color:#ffd700;font-weight:bold}
 .nav{
-  position:absolute;
-  z-index:20;
-  top:50%;
-  transform:translateY(-50%);
-  width:48px;
-  height:48px;
-  border:1px solid rgba(255,255,255,.4);
-  border-radius:50%;
-  background:rgba(0,0,0,.35);
-  color:#fff;
-  font-size:30px;
-  cursor:pointer;
+  position:absolute;z-index:6;top:50%;transform:translateY(-50%);
+  width:52px;height:52px;border:1px solid rgba(255,215,0,.5);border-radius:50%;
+  background:rgba(0,0,0,.45);backdrop-filter:blur(8px);color:#ffd700;font-size:32px;cursor:pointer;transition:.3s ease
 }
+.nav:hover{background:#ffd700;color:#000;transform:translateY(-50%) scale(1.08)}
+.prev{left:25px}.next{right:25px}
+.dots{position:absolute;z-index:6;bottom:30px;left:0;right:0;text-align:center}
+.dot{display:inline-block;width:8px;height:8px;margin:0 4px;border-radius:50%;background:#777;cursor:pointer;transition:.3s ease}
+.dot.active{width:25px;border-radius:10px;background:#ffd700}
+.loading{color:#fff;font-size:18px}
 
-.nav:hover{
-  background:#ffd700;
-  color:#000;
-}
-
-.prev{
-  left:25px;
-}
-
-.next{
-  right:25px;
-}
-
-.dots{
-  position:absolute;
-  z-index:20;
-  bottom:25px;
-  left:0;
-  right:0;
-  text-align:center;
-}
-
-.dot{
-  display:inline-block;
-  width:8px;
-  height:8px;
-  margin:0 4px;
-  border-radius:50%;
-  background:#777;
-  cursor:pointer;
-}
-
-.dot.active{
-  background:#ffd700;
-  transform:scale(1.3);
-}
-
-/* ================= COMMON ================= */
-
-section{
-  padding:80px 6%;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:45px;
-}
-
-.section-title .gold{
-  color:#ffd700;
-  letter-spacing:4px;
-  font-size:13px;
-  font-weight:bold;
-}
-
-.section-title h2{
-  font-size:38px;
-  margin-top:10px;
-}
-
-.section-title p{
-  color:#aaa;
-  margin-top:12px;
-}
-
-/* ================= SERVICES ================= */
-
+/* Premium services */
 .services{
-  background:
-    radial-gradient(circle at top right,rgba(255,215,0,.08),transparent 30%),
-    #0b0b0b;
+  position:relative;padding:80px 7%;
+  background:radial-gradient(circle at top,#202020 0%,#101010 40%,#070707 100%);
+  color:#fff!important
 }
-
+.services::before{
+  content:"";display:block;width:70px;height:3px;margin:0 auto 18px;
+  background:#ffd700;box-shadow:0 0 15px rgba(255,215,0,.6)
+}
+.services h2{
+  text-align:center;color:#fff!important;font-size:34px;letter-spacing:4px;
+  margin-bottom:45px;text-transform:uppercase
+}
 .services-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+  max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px
 }
-
 .service-box{
-  position:relative;
-  padding:30px;
-  min-height:190px;
-  border:1px solid #292929;
-  border-radius:18px;
-  background:linear-gradient(145deg,#191919,#0b0b0b);
-  box-shadow:0 12px 35px rgba(0,0,0,.35);
-  transition:.35s;
-  overflow:hidden;
+  position:relative;padding:28px 24px;min-height:150px;
+  background:linear-gradient(145deg,rgba(35,35,35,.98),rgba(12,12,12,.98));
+  border:1px solid rgba(255,255,255,.12);border-radius:18px;
+  box-shadow:0 10px 35px rgba(0,0,0,.5),inset 0 1px rgba(255,255,255,.05);
+  overflow:hidden;transition:.35s ease
 }
-
 .service-box::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:2px;
-  background:linear-gradient(90deg,transparent,#ffd700,transparent);
-  opacity:.7;
+  content:"";position:absolute;top:0;left:0;width:4px;height:100%;
+  background:#ffd700;box-shadow:0 0 18px rgba(255,215,0,.5)
 }
-
 .service-box:hover{
-  transform:translateY(-8px);
-  border-color:#ffd700;
-  box-shadow:0 18px 45px rgba(255,215,0,.12);
+  transform:translateY(-7px);border-color:#ffd700;
+  box-shadow:0 18px 45px rgba(0,0,0,.65),0 0 25px rgba(255,215,0,.12)
 }
-
-.service-icon{
-  font-size:32px;
-  margin-bottom:18px;
+.service-box h3{color:#ffd700!important;font-size:20px;margin:0 0 12px;letter-spacing:.5px}
+.service-box p{color:#ddd!important;font-size:15px;line-height:1.7;margin:0}
+.contact{
+  max-width:1200px;margin:35px auto 0;text-align:center;color:#ddd!important;
+  font-size:16px;padding-top:25px;border-top:1px solid rgba(255,215,0,.2)
 }
-
-.service-box h3{
-  color:#ffd700;
-  font-size:20px;
-  margin-bottom:12px;
-}
-
-.service-box p{
-  color:#bbb;
-  font-size:14px;
-  line-height:1.7;
-}
-
-/* ================= WEDDING FEATURE ================= */
-
-.wedding{
-  background:#050505;
-}
-
-.wedding-box{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:35px;
-  align-items:center;
-}
-
-.wedding-text h2{
-  font-size:42px;
-  margin-bottom:20px;
-}
-
-.wedding-text h2 span{
-  color:#ffd700;
-}
-
-.wedding-text p{
-  color:#aaa;
-  line-height:1.8;
-  margin-bottom:25px;
-}
-
-.wedding-list{
-  list-style:none;
-}
-
-.wedding-list li{
-  margin:12px 0;
-  color:#ddd;
-}
-
-.wedding-list li::first-letter{
-  color:#ffd700;
-}
-
-.wedding-card{
-  padding:45px;
-  border-radius:22px;
-  border:1px solid #333;
-  background:
-    linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.8)),
-    radial-gradient(circle at top right,#332900,#0b0b0b);
-  text-align:center;
-}
-
-.wedding-card h3{
-  color:#ffd700;
-  font-size:28px;
-  margin-bottom:15px;
-}
-
-.wedding-card p{
-  color:#ccc;
-  line-height:1.8;
-}
-
-/* ================= CONTACT ================= */
-
-.contact-section{
-  text-align:center;
-  background:
-    radial-gradient(circle,#181300,#050505 65%);
-}
-
-.contact-section h2{
-  font-size:38px;
-  margin-bottom:15px;
-}
-
-.contact-section p{
-  color:#aaa;
-  margin-bottom:30px;
-}
-
 .contact-buttons{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:wrap;
+  position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+  z-index:9999;display:flex;gap:14px
 }
-
 .contact-buttons a{
-  text-decoration:none;
-  padding:14px 26px;
-  border-radius:30px;
-  color:#fff;
-  font-weight:bold;
-  transition:.3s;
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  text-decoration:none;color:#fff;padding:13px 24px;border-radius:35px;
+  font-size:16px;font-weight:bold;box-shadow:0 7px 25px rgba(0,0,0,.45);
+  transition:.3s ease;backdrop-filter:blur(8px)
 }
+.contact-buttons a:first-child{background:#e53935}
+.contact-buttons a:last-child{background:#25D366}
+.contact-buttons a:hover{transform:translateY(-3px) scale(1.05)}
 
-.call-btn{
-  background:#e53935;
+@media(max-width:900px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
 }
-
-.whatsapp-btn{
-  background:#25D366;
-}
-
-.contact-buttons a:hover{
-  transform:translateY(-3px) scale(1.03);
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  padding:30px 20px;
-  text-align:center;
-  background:#000;
-  border-top:1px solid #222;
-  color:#777;
-  font-size:13px;
-}
-
-footer strong{
-  color:#ffd700;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:850px){
-
-  header{
-    padding:14px 5%;
-  }
-
-  nav{
-    display:none;
-  }
-
-  .hero-content h1{
-    letter-spacing:2px;
-  }
-
-  .hero-content p{
-    font-size:15px;
-  }
-
-  .services-grid{
-    grid-template-columns:1fr;
-  }
-
-  .wedding-box{
-    grid-template-columns:1fr;
-  }
-
-  section{
-    padding:60px 5%;
-  }
-
-  .section-title h2{
-    font-size:30px;
-  }
-
-  .wedding-text h2{
-    font-size:32px;
-  }
-
-  .nav{
-    width:40px;
-    height:40px;
-    font-size:24px;
-  }
-
-  .prev{
-    left:12px;
-  }
-
-  .next{
-    right:12px;
-  }
+@media(max-width:600px){
+  #slideshow{height:75vh;min-height:500px}
+  .top{padding:25px 15px 60px}
+  .top h1{font-size:23px;letter-spacing:3px}
+  .top p{font-size:10px;letter-spacing:1.5px}
+  .nav{width:42px;height:42px;font-size:25px}
+  .prev{left:12px}.next{right:12px}
+  .services{padding:55px 16px 100px}
+  .services h2{font-size:25px;letter-spacing:2px;margin-bottom:30px}
+  .services-grid{grid-template-columns:1fr;gap:15px}
+  .service-box{min-height:auto;padding:24px 20px}
+  .service-box h3{font-size:18px}
+  .service-box p{font-size:14px}
+  .contact{margin-top:25px;padding:20px 5px}
+  .contact-buttons{bottom:14px;gap:8px;width:auto}
+  .contact-buttons a{padding:11px 16px;font-size:14px;white-space:nowrap}
 }
 </style>
 </head>
-
 <body>
-
-<!-- ================= HEADER ================= -->
-
-<header>
-  <div class="logo">
-    PARAG PHOTO STUDIO
-    <span>DHANORA • GADCHIROLI</span>
-  </div>
-
-  <nav>
-    <a href="#slideshow">Home</a>
-    <a href="#services">Services</a>
-    <a href="#wedding">Wedding</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-
-<!-- ================= HERO SLIDESHOW ================= -->
-
+  <div class="contact-buttons">
+  <a href="tel:+919359877572">📞 Call Now</a>
+  <a href="https://wa.me/919359877572">💬 WhatsApp</a>
+</div>
 <div id="slideshow">
-
-  <div class="slide active">
-    <img src="https://github.com/paragphotostudiodhanora/parag-photo-studio/blob/main/1.jpg?raw=true" alt="Parag Photo Studio">
+  <div class="top">
+    <h1>PARAG PHOTO STUDIO</h1>
+    <p>DHANORA • WEDDING PHOTO GALLERY</p>
   </div>
-
-  <div class="slide">
-    <img src="https://github.com/paragphotostudiodhanora/parag-photo-studio/blob/main/2.jpg?raw=true" alt="Wedding Photography">
-  </div>
-
-  <div class="slide">
-    <img src="https://github.com/paragphotostudiodhanora/parag-photo-studio/blob/main/3.jpg?raw=true" alt="Wedding Photography">
-  </div>
-
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <div class="small">ROYAL WEDDING • PORTRAIT • VIDEO</div>
-
-    <h1>
-      PARAG <span>PHOTO STUDIO</span>
-    </h1>
-
-    <p>
-      Capturing your beautiful moments with
-      premium photography, cinematic wedding films
-      and creative pre-wedding photography.
-    </p>
-
-    <a href="#contact" class="hero-btn">
-      Book Your Shoot
-    </a>
-  </div>
-
-  <button class="nav prev" id="prev">‹</button>
+  
+  <div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/1.jpg" alt="1.jpg" loading="eager"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/3.jpg" alt="3.jpg" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/4.JPG" alt="4.JPG" loading="lazy"></div><div class="slide active"><img src="./Parag- Photo Studio - Photo Slideshow_files/5.jpg" alt="5.jpg" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/6.JPG" alt="6.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/7.JPG" alt="7.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/8.JPG" alt="8.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/9.JPG" alt="9.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/10.JPG" alt="10.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/11.JPG" alt="11.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/12.JPG" alt="12.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/13.JPG" alt="13.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/14.JPG" alt="14.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/15.JPG" alt="15.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/16.JPG" alt="16.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/17.JPG" alt="17.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/18.JPG" alt="18.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/19.JPG" alt="19.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/20.JPG" alt="20.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/21.JPG" alt="21.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/22.JPG" alt="22.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/23.JPG" alt="23.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/24.JPG" alt="24.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/25.JPG" alt="25.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/26.JPG" alt="26.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/27.JPG" alt="27.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/28.JPG" alt="28.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/29.JPG" alt="29.JPG" loading="lazy"></div><div class="slide"><img src="./Parag- Photo Studio - Photo Slideshow_files/30.jpg" alt="30.jpg" loading="lazy"></div><button class="nav prev" id="prev">‹</button>
   <button class="nav next" id="next">›</button>
+  <div class="dots" id="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+</div>
+<section class="services">
+  <h2>OUR SERVICES</h2>
 
-  <div class="dots" id="dots"></div>
+  <div class="service-box">
+    <h3>🪪 PAN CARD</h3>
+    <p>New PAN Card • Correction • Minor PAN Card</p>
+  </div>
 
+  <div class="service-box">
+    <h3>🚗 DRIVING LICENCE</h3>
+    <p>New Licence • Renewal • Learner Licence • Online Services</p>
+  </div>
+
+  <div class="service-box">
+    <h3>🛂 PASSPORT</h3>
+    <p>Passport Photo • Passport Application Assistance</p>
+  </div> <div class="service-box">
+  <h3>💍 PRE-WEDDING</h3>
+  <p>Pre-Wedding Photography • Creative Poses • Cinematic Photos</p>
 </div>
 
+<div class="service-box">
+  <h3>📸 WEDDING PHOTOGRAPHY</h3>
+  <p>Traditional Wedding • Candid Photography • Premium Album</p>
+</div>
 
-<!-- ================= SERVICES ================= -->
+<div class="service-box">
+  <h3>🎥 WEDDING 4K VIDEOGRAPHY</h3>
+  <p>4K Wedding Video • Cinematic Highlights • Full Wedding Coverage</p>
+</div>
 
-<section class="services" id="services">
-
-  <div class="section-title">
-    <div class="gold">WHAT WE OFFER</div>
-    <h2>Our Premium Services</h2>
-    <p>Professional photography & digital services at Parag Photo Studio</p>
+  <div class="service-box">
+    <h3>🎓 ID CARD</h3>
+    <p>School ID Card • College ID Card • Office ID Card</p>
   </div>
 
-  <div class="services-grid">
-
-    <div class="service-box">
-      <div class="service-icon">🪪</div>
-      <h3>PAN CARD</h3>
-      <p>
-        New PAN Card • Correction • Minor PAN Card
-      </p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">🚗</div>
-      <h3>DRIVING LICENCE</h3>
-      <p>
-        New Licence • Renewal • Learner Licence • Online Services
-      </p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">🛂</div>
-      <h3>PASSPORT</h3>
-      <p>
-        Passport Photo • Passport Application Assistance
-      </p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">💍</div>
-      <h3>PRE-WEDDING</h3>
-      <p>
-        Creative Poses • Cinematic Photos • Couple Photography
-      </p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">📸</div>
-      <h3>WEDDING PHOTOGRAPHY</h3>
-      <p>
-        Traditional Wedding • Candid Photography • Premium Album
-      </p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">🎥</div>
-      <h3>WEDDING 4K VIDEOGRAPHY</h3>
-      <p>
-        4K Wedding Video • Cinematic Highlights • Full Wedding Coverage
-      </p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">🎓</div>
-      <h3>ID CARD</h3>
-      <p>
-        School ID Card • College ID Card • Office ID Card
-      </p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">🖼️</div>
-      <h3>PHOTO & PRINTING</h3>
-      <p>
-        Photo Frame • Enlargement • Lamination • Xerox
-      </p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">💻</div>
-      <h3>ONLINE SERVICES</h3>
-      <p>
-        All Online Form Filling & Digital Services
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ================= WEDDING ================= -->
-
-<section class="wedding" id="wedding">
-
-  <div class="wedding-box">
-
-    <div class="wedding-text">
-
-      <div class="section-title" style="text-align:left;margin-bottom:20px">
-        <div class="gold">YOUR BIG DAY</div>
-        <h2>Royal <span>Wedding</span> Photography</h2>
-      </div>
-
-      <p>
-        Your wedding is a once-in-a-lifetime celebration.
-        We capture every emotion, smile, ritual and beautiful
-        moment in a premium cinematic style.
-      </p>
-
-      <ul class="wedding-list">
-        <li>📸 Premium Wedding Photography</li>
-        <li>💍 Creative Pre-Wedding Shoot</li>
-        <li>🎥 4K Cinematic Wedding Videography</li>
-        <li>📖 Premium Wedding Album Design</li>
-      </ul>
-
-    </div>
-
-    <div class="wedding-card">
-
-      <h3>MAKE YOUR MEMORIES TIMELESS</h3>
-
-      <p>
-        Pre-Wedding • Wedding Photography •
-        4K Videography • Premium Albums
-      </p>
-
-    </div>
-
+  <div class="service-box">
+    <h3>🖼️ PHOTO &amp; PRINTING</h3>
+    <p>Photo Frame • Enlargement • Lamination • Xerox</p>
   </div>
 
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section class="contact-section" id="contact">
-
-  <div class="gold">LET'S CREATE MEMORIES</div>
-
-  <h2>Book Your Photography</h2>
-
-  <p>
-    Contact Parag Photo Studio, Dhanora
-  </p>
-
-  <div class="contact-buttons">
-
-    <a class="call-btn"
-       href="tel:+919359877572">
-       📞 Call Now
-    </a>
-
-    <a class="whatsapp-btn"
-       href="https://wa.me/919359877572">
-       💬 WhatsApp
-    </a>
-
+  <div class="service-box">
+    <h3>💻 ONLINE SERVICES</h3>
+    <p>All Online Form Filling &amp; Digital Services</p>
   </div>
 
-</section>
+  <p class="contact">📞 Contact: Parag Photo Studio, Dhanora</p>
+</section><script>
+const owner="paragphotostudiodhanora";
 
 
-<!-- ================= FOOTER ================= -->
+const repo="parag-photo-studio";
+const branch="main";
+const root=`https://api.github.com/repos/${owner}/${repo}/contents/`;
 
-<footer>
+let photos=[], current=0, timer;
 
-  © 2026 <strong>Parag Photo Studio</strong> |
-  Dhanora, Gadchiroli
+async function loadPhotos(){
+  try{
+    const res=await fetch(root+"?ref="+branch);
+    const files=await res.json();
+    photos=files
+      .filter(f=>f.type==="file" && /\.(jpe?g|png|webp)$/i.test(f.name))
+      .sort((a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true,sensitivity:"base"}));
 
-</footer>
+    const box=document.getElementById("slideshow");
+    document.getElementById("loading").remove();
 
+    if(!photos.length){
+      const msg=document.createElement("div");
+      msg.className="loading"; msg.textContent="No photos found.";
+      box.appendChild(msg); return;
+    }
 
-<script>
-
-/* ================= SLIDESHOW ================= */
-
-const slides = document.querySelectorAll(".slide");
-const dotsBox = document.getElementById("dots");
-
-let current = 0;
-let timer;
-
-
-/* Create dots */
-
-slides.forEach((slide,index)=>{
-
-  const dot = document.createElement("span");
-
-  dot.className = "dot";
-
-  if(index === 0){
-    dot.classList.add("active");
+    photos.forEach((p,i)=>{
+      const s=document.createElement("div");
+      s.className="slide"+(i===0?" active":"");
+      const img=document.createElement("img");
+      img.src=p.download_url;
+      img.alt=p.name;
+      img.loading=i===0?"eager":"lazy";
+      s.appendChild(img);
+      box.insertBefore(s,document.getElementById("prev"));
+      const d=document.createElement("span");
+      d.className="dot"+(i===0?" active":"");
+      d.onclick=()=>show(i);
+      document.getElementById("dots").appendChild(d);
+    });
+    start();
+  }catch(e){
+    document.getElementById("loading").textContent="Photos load nahi ho pa rahe. GitHub repository public hai kya?";
   }
-
-  dot.addEventListener("click",()=>{
-    showSlide(index);
-    startSlideshow();
-  });
-
-  dotsBox.appendChild(dot);
-
-});
-
-
-const dots = document.querySelectorAll(".dot");
-
-
-function showSlide(index){
-
-  current = (index + slides.length) % slides.length;
-
-  slides.forEach((slide,i)=>{
-    slide.classList.toggle("active",i === current);
-  });
-
-  dots.forEach((dot,i)=>{
-    dot.classList.toggle("active",i === current);
-  });
-
 }
 
-
-function nextSlide(){
-  showSlide(current + 1);
+function show(n){
+  const slides=document.querySelectorAll(".slide");
+  const dots=document.querySelectorAll(".dot");
+  if(!slides.length)return;
+  current=(n+slides.length)%slides.length;
+  slides.forEach((s,i)=>s.classList.toggle("active",i===current));
+  dots.forEach((d,i)=>d.classList.toggle("active",i===current));
 }
+function next(){show(current+1)}
+function prev(){show(current-1)}
+function start(){clearInterval(timer);timer=setInterval(next,4000)}
 
-
-function previousSlide(){
-  showSlide(current - 1);
-}
-
-
-function startSlideshow(){
-
-  clearInterval(timer);
-
-  timer = setInterval(nextSlide,5000);
-
-}
-
-
-document.getElementById("next").addEventListener("click",()=>{
-  nextSlide();
-  startSlideshow();
+document.getElementById("next").onclick=()=>{next();start()};
+document.getElementById("prev").onclick=()=>{prev();start()};
+document.addEventListener("keydown",e=>{
+  if(e.key==="ArrowRight"){next();start()}
+  if(e.key==="ArrowLeft"){prev();start()}
 });
-
-
-document.getElementById("prev").addEventListener("click",()=>{
-  previousSlide();
-  startSlideshow();
-});
-
-
-document.getElementById("slideshow").addEventListener(
-  "mouseenter",
-  ()=>clearInterval(timer)
-);
-
-
-document.getElementById("slideshow").addEventListener(
-  "mouseleave",
-  startSlideshow
-);
-
-
-document.addEventListener("keydown",(e)=>{
-
-  if(e.key === "ArrowRight"){
-    nextSlide();
-    startSlideshow();
-  }
-
-  if(e.key === "ArrowLeft"){
-    previousSlide();
-    startSlideshow();
-  }
-
-});
-
-
-startSlideshow();
-
+document.getElementById("slideshow").addEventListener("mouseenter",()=>clearInterval(timer));
+document.getElementById("slideshow").addEventListener("mouseleave",start);
+loadPhotos();
 </script>
 
-</body>
-</html>
+
+</body></html>
