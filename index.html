@@ -279,63 +279,149 @@ const root=`https://api.github.com/repos/${owner}/${repo}/contents/`;
 let photos=[], current=0, timer;
 
 async function loadPhotos(){
+
   try{
-    const res=await fetch(root+"?ref="+branch);
-    const files=await res.json();
-    photos=files
-      .filter(f=>f.type==="file" && /\.(jpe?g|png|webp)$/i.test(f.name))
-      .sort((a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true,sensitivity:"base"}));
 
-    const box=document.getElementById("slideshow");
-    document.getElementById("loading").remove();
+    const res = await fetch(root + "?ref=" + branch);
 
-    if(!photos.length){
-      const msg=document.createElement("div");
-      msg.className="loading"; msg.textContent="No photos found.";
-      box.appendChild(msg); return;
+    if(!res.ok){
+      throw new Error("GitHub files load failed");
     }
 
+    const files = await res.json();
+
+    photos = files
+      .filter(f =>
+        f.type === "file" &&
+        /\.(jpe?g|png|webp)$/i.test(f.name)
+      )
+      .sort((a,b) =>
+        a.name.localeCompare(
+          b.name,
+          undefined,
+          {
+            numeric:true,
+            sensitivity:"base"
+          }
+        )
+      );
+
+    const box = document.getElementById("slideshow");
+
+    const loading = document.getElementById("loading");
+
+    if(loading){
+      loading.remove();
+    }
+
+    if(!photos.length){
+
+      const msg = document.createElement("div");
+
+      msg.className = "loading";
+
+      msg.textContent = "No photos found.";
+
+      box.appendChild(msg);
+
+      return;
+    }
+
+    /* पुराने slides और dots हटाएँ */
+
+    box.querySelectorAll(".slide").forEach(el => el.remove());
+
+    const dotsBox = document.getElementById("dots");
+
+    if(dotsBox){
+      dotsBox.innerHTML = "";
+    }
+
+    /* Photos बनाना */
+
     photos.forEach((p,i)=>{
-      const s=document.createElement("div");
-      s.className="slide"+(i===0?" active":"");
-      const img=document.createElement("img");
-      img.src=p.download_url;
-      img.alt=p.name;
-      img.loading=i===0?"eager":"lazy";
+
+      const s = document.createElement("div");
+
+      s.className =
+        "slide" + (i === 0 ? " active" : "");
+
+      const img = document.createElement("img");
+
+     
+
+      img.src =
+        `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURIComponent(p.name)}`;
+
+      img.alt =
+        "Parag Photo Studio - " + p.name;
+
+      img.loading =
+        i === 0 ? "eager" : "lazy";
+
+      img.onerror = function(){
+
+        console.log(
+          "Photo could not load:",
+          p.name
+        );
+
+      };
+
       s.appendChild(img);
-      box.insertBefore(s,document.getElementById("prev"));
-      const d=document.createElement("span");
-      d.className="dot"+(i===0?" active":"");
-      d.onclick=()=>show(i);
-      document.getElementById("dots").appendChild(d);
+
+      box.insertBefore(
+        s,
+        document.getElementById("prev")
+      );
+
+      /* Dot */
+
+      const d =
+        document.createElement("span");
+
+      d.className =
+        "dot" + (i === 0 ? " active" : "");
+
+      d.onclick = function(){
+
+        showSlide(i);
+
+      };
+
+      if(dotsBox){
+        dotsBox.appendChild(d);
+      }
+
     });
-    start();
-  }catch(e){
-    document.getElementById("loading").textContent="Photos load nahi ho pa rahe. GitHub repository public hai kya?";
+
+    current = 0;
+
+    showSlide(0);
+
+  }catch(error){
+
+    console.error(
+      "Photo loading error:",
+      error
+    );
+
+    const box =
+      document.getElementById("slideshow");
+
+    const msg =
+      document.createElement("div");
+
+    msg.className = "loading";
+
+    msg.textContent =
+      "Photos loading problem. Please refresh.";
+
+    box.appendChild(msg);
+
   }
-}
 
-function show(n){
-  const slides=document.querySelectorAll(".slide");
-  const dots=document.querySelectorAll(".dot");
-  if(!slides.length)return;
-  current=(n+slides.length)%slides.length;
-  slides.forEach((s,i)=>s.classList.toggle("active",i===current));
-  dots.forEach((d,i)=>d.classList.toggle("active",i===current));
 }
-function next(){show(current+1)}
-function prev(){show(current-1)}
-function start(){clearInterval(timer);timer=setInterval(next,4000)}
-
-document.getElementById("next").onclick=()=>{next();start()};
-document.getElementById("prev").onclick=()=>{prev();start()};
-document.addEventListener("keydown",e=>{
-  if(e.key==="ArrowRight"){next();start()}
-  if(e.key==="ArrowLeft"){prev();start()}
-});
-document.getElementById("slideshow").addEventListener("mouseenter",()=>clearInterval(timer));
-document.getElementById("slideshow").addEventListener("mouseleave",start);
-loadPhotos();
 </script>
 
 
