@@ -6,7 +6,15 @@
 <title>Parag- Photo Studio - Photo Slideshow</title>
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:#050505;font-family:Arial,sans-serif;overflow:auto}
+html,body{
+  margin:0;
+  width:100%;
+  min-height:100%;
+  background:#050505;
+  font-family:Arial,sans-serif;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
 #slideshow{position:relative;width:100%;height:100vh;display:flex;align-items:center;justify-content:center}
 .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 1s ease}
 .slide.active{opacity:1}
@@ -22,7 +30,24 @@ width:48px;height:48px;background:rgba(255,255,255,.18);color:#fff;font-size:28p
 .dots{position:absolute;z-index:6;bottom:25px;left:0;right:0;text-align:center}
 .dot{display:inline-block;width:8px;height:8px;margin:0 4px;border-radius:50%;background:#777;cursor:pointer}
 .dot.active{background:#fff}
-.loading{color:#fff;font-size:18px}
+.loading{color:#fff;font-size:18px} .services{
+  color:#fff;
+  padding:40px 20px;
+  background:#111;
+}
+
+.service-box{
+  color:#fff;
+  margin:15px 0;
+}
+
+.service-box h3{
+  color:#ffd700;
+}
+
+.service-box p{
+  color:#ddd;
+}
 @media(max-width:600px){.top h1{font-size:18px}.top p{font-size:11px}.nav{width:40px;height:40px;font-size:22px}}
   contact-buttons{.
   position:fixed;
