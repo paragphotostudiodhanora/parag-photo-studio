@@ -4,16 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="theme-color" content="#050505">
-
 <title>Parag Photo Studio | Dhanora</title>
 
 <style>
-
-/* =========================
-   RESET
-========================= */
-
 *{
     margin:0;
     padding:0;
@@ -27,457 +20,337 @@ html{
 body{
     font-family:Arial, Helvetica, sans-serif;
     background:#050505;
-    color:#fff;
+    color:white;
     overflow-x:hidden;
 }
 
 a{
     text-decoration:none;
-    color:inherit;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 
 header{
+    height:78px;
     width:100%;
-    height:76px;
     background:#050505;
-    border-bottom:1px solid #ffd400;
+    border-bottom:1px solid #d6ad22;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
     padding:0 5%;
-
-    position:sticky;
-    top:0;
+    position:relative;
     z-index:1000;
 }
 
 .logo h1{
-    color:#ffd400;
-    font-size:27px;
-    letter-spacing:2px;
+    color:#f5c400;
+    font-size:26px;
     font-weight:900;
+    letter-spacing:2px;
 }
 
 .logo p{
-    color:#fff;
-    font-size:12px;
-    font-weight:bold;
+    color:#aaa;
+    font-size:11px;
     letter-spacing:3px;
     margin-top:4px;
 }
 
-/* Desktop Menu */
-
 nav{
     display:flex;
-    align-items:center;
-    gap:32px;
+    gap:30px;
 }
 
 nav a{
     color:#fff;
     font-size:14px;
     font-weight:bold;
-    transition:.3s;
 }
 
 nav a:hover{
-    color:#ffd400;
+    color:#f5c400;
 }
-
-/* Mobile Menu Button */
 
 .menu-btn{
     display:none;
-
-    width:54px;
-    height:48px;
-
-    border:2px solid #ffd400;
-    border-radius:10px;
-
-    background:#050505;
-    color:#ffd400;
-
-    font-size:30px;
-    line-height:1;
-
-    cursor:pointer;
+    background:none;
+    border:1px solid #f5c400;
+    color:#f5c400;
+    border-radius:8px;
+    font-size:27px;
+    width:48px;
+    height:44px;
 }
 
-/* =========================
-   HERO / SLIDER
-========================= */
+/* ================= HERO ================= */
 
 .hero{
     position:relative;
     width:100%;
-    height:calc(100vh - 76px);
-    min-height:620px;
-
+    height:calc(100vh - 78px);
+    min-height:600px;
     background:#000;
     overflow:hidden;
-}
-
-.slider{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
 }
 
 .slide{
     position:absolute;
     inset:0;
-
     width:100%;
     height:100%;
 
-    display:flex;
+    display:none;
     align-items:center;
     justify-content:center;
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:opacity .8s ease;
 
     background:#000;
 }
 
 .slide.active{
-    opacity:1;
-    visibility:visible;
+    display:flex;
 }
-
-/*
-   DESKTOP PHOTO
-   Full width + cinematic
-*/
 
 .slide img{
-    display:block;
-
     width:100%;
     height:100%;
-
     object-fit:cover;
-    object-position:center center;
-
-    background:#000;
+    object-position:center;
+    display:block;
 }
 
-/* Dark overlay */
+/* dark overlay */
 
 .slide::after{
     content:"";
-
     position:absolute;
     inset:0;
 
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,.18),
-            rgba(0,0,0,.30) 50%,
-            rgba(0,0,0,.68)
-        );
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.10),
+        rgba(0,0,0,.30),
+        rgba(0,0,0,.72)
+    );
 
-    z-index:2;
-
-    pointer-events:none;
+    z-index:1;
 }
 
-/* =========================
-   HERO CONTENT
-========================= */
+/* ================= HERO TEXT ================= */
 
 .hero-content{
     position:absolute;
     inset:0;
-
     z-index:5;
 
     display:flex;
     flex-direction:column;
-
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
     text-align:center;
-
-    padding:40px 6%;
+    padding:30px;
 }
 
-.small-title{
-    color:#ffd400;
-
-    font-size:14px;
+.hero-small{
+    color:#f5c400;
+    font-size:13px;
     font-weight:bold;
-
     letter-spacing:5px;
-
-    margin-bottom:20px;
-
-    text-transform:uppercase;
+    margin-bottom:18px;
 }
 
 .hero-content h2{
     font-size:64px;
-    line-height:1.02;
-
+    line-height:1;
     font-weight:900;
 
-    text-shadow:
-        0 4px 20px #000,
-        0 0 10px #000;
-
-    max-width:900px;
+    text-shadow:0 4px 18px #000;
 }
 
 .hero-content h2 span{
-    color:#ffd400;
+    color:#f5c400;
 }
 
 .hero-content p{
-    max-width:850px;
+    max-width:750px;
+    margin:22px auto;
 
-    margin:24px auto;
-
-    font-size:18px;
+    font-size:17px;
     line-height:1.6;
 
-    text-shadow:0 2px 10px #000;
+    text-shadow:0 2px 8px #000;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* ================= BUTTONS ================= */
 
-.hero-buttons{
+.buttons{
     display:flex;
+    gap:12px;
     justify-content:center;
-    align-items:center;
-
-    gap:14px;
-
     flex-wrap:wrap;
 }
 
 .btn{
-    min-width:165px;
-
-    padding:14px 24px;
-
-    border:none;
+    padding:13px 24px;
     border-radius:30px;
 
     font-size:15px;
     font-weight:bold;
 
-    cursor:pointer;
-
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-
-    transition:.25s;
+    display:inline-block;
+    transition:.3s;
 }
 
 .btn:hover{
     transform:translateY(-3px);
 }
 
-.btn-call{
-    background:#ff2929;
+.call{
+    background:#e32626;
     color:#fff;
 }
 
-.btn-whatsapp{
-    background:#16d65a;
+.whatsapp{
+    background:#16c957;
     color:#fff;
 }
 
-.btn-gold{
-    background:#ffd000;
+.services-btn{
+    background:#f5c400;
     color:#000;
 }
 
-/* =========================
-   SLIDER ARROWS
-========================= */
+/* ================= ARROWS ================= */
 
-.slider-btn{
+.arrow{
     position:absolute;
-
     top:50%;
     transform:translateY(-50%);
 
-    z-index:10;
-
-    width:50px;
-    height:50px;
+    width:48px;
+    height:48px;
 
     border-radius:50%;
-
-    border:1px solid #ffd400;
+    border:1px solid #f5c400;
 
     background:rgba(0,0,0,.45);
-
-    color:#ffd400;
+    color:#f5c400;
 
     font-size:30px;
-
     cursor:pointer;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    transition:.25s;
+    z-index:10;
 }
 
-.slider-btn:hover{
-    background:#ffd400;
+.arrow:hover{
+    background:#f5c400;
     color:#000;
 }
 
-#prev{
+.prev{
     left:18px;
 }
 
-#next{
+.next{
     right:18px;
 }
 
-/* =========================
-   SLIDER DOTS
-========================= */
+/* ================= DOTS ================= */
 
 .dots{
     position:absolute;
-
-    z-index:10;
-
-    bottom:20px;
-
+    bottom:18px;
     left:50%;
-
     transform:translateX(-50%);
 
     display:flex;
-    align-items:center;
-
-    justify-content:center;
-
     gap:7px;
 
-    max-width:90%;
-
-    overflow:hidden;
+    z-index:10;
 }
 
 .dot{
     width:8px;
     height:8px;
-
     border-radius:50%;
-
     background:#888;
-
     cursor:pointer;
-
-    flex-shrink:0;
 }
 
 .dot.active{
     width:22px;
-    border-radius:8px;
-    background:#ffd400;
+    border-radius:10px;
+    background:#f5c400;
 }
 
-/* =========================
-   SERVICES
-========================= */
+/* ================= SERVICES ================= */
 
 .services{
-    padding:80px 5%;
     background:#090909;
+    padding:80px 5%;
 }
 
-.section-title{
+.heading{
     text-align:center;
     margin-bottom:45px;
 }
 
-.section-title small{
-    color:#ffd400;
-    font-size:13px;
+.heading small{
+    color:#f5c400;
+    letter-spacing:4px;
+    font-size:12px;
     font-weight:bold;
-    letter-spacing:5px;
 }
 
-.section-title h2{
+.heading h2{
     font-size:40px;
     margin:12px 0;
 }
 
-.section-title p{
-    color:#bbb;
+.heading p{
+    color:#aaa;
 }
 
-/* Service Grid */
-
 .service-grid{
-    max-width:1200px;
+    max-width:1150px;
     margin:auto;
 
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:22px;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.service-card{
+.card{
     background:#111;
+    border:1px solid #292929;
+    border-left:4px solid #f5c400;
 
-    border:1px solid #333;
-    border-left:4px solid #ffd400;
-
-    border-radius:18px;
-
-    padding:28px;
+    border-radius:15px;
+    padding:25px;
 
     transition:.3s;
 }
 
-.service-card:hover{
-    transform:translateY(-6px);
-    border-color:#ffd400;
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#f5c400;
 }
 
-.service-card h3{
-    color:#ffd400;
-    font-size:21px;
-    margin-bottom:12px;
+.card h3{
+    color:#f5c400;
+    font-size:20px;
+    margin-bottom:10px;
 }
 
-.service-card p{
-    color:#ccc;
+.card p{
+    color:#bbb;
     line-height:1.6;
 }
 
-/* =========================
-   CONTACT
-========================= */
+/* ================= CONTACT ================= */
 
 .contact{
     padding:70px 5%;
@@ -486,82 +359,66 @@ nav a:hover{
 }
 
 .contact h2{
-    font-size:38px;
+    font-size:36px;
     margin-bottom:15px;
 }
 
 .contact p{
-    color:#bbb;
+    color:#aaa;
     margin-bottom:25px;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 
 footer{
-    padding:25px 5%;
-    text-align:center;
-
     background:#000;
-
     border-top:1px solid #222;
 
-    color:#999;
+    padding:25px;
 
-    font-size:14px;
+    text-align:center;
+    color:#777;
+    font-size:13px;
 }
 
 footer span{
-    color:#ffd400;
+    color:#f5c400;
 }
 
-/* ==================================================
+/* =================================================
    MOBILE
-================================================== */
+================================================= */
 
 @media(max-width:768px){
 
-    /* Header */
-
     header{
-        height:100px;
-        padding:0 6%;
-
-        position:relative;
+        height:85px;
+        padding:0 5%;
     }
 
     .logo h1{
-        font-size:28px;
-        line-height:1.05;
-        max-width:360px;
+        font-size:22px;
+        letter-spacing:1px;
     }
 
     .logo p{
-        font-size:11px;
-        margin-top:7px;
+        font-size:9px;
+        letter-spacing:2px;
     }
 
     nav{
         display:none;
 
         position:absolute;
-
-        top:100px;
+        top:85px;
         left:0;
         right:0;
 
-        background:#080808;
-
-        border-bottom:1px solid #ffd400;
+        background:#070707;
+        border-bottom:1px solid #f5c400;
 
         flex-direction:column;
-
         gap:0;
-
-        padding:10px 0;
-
-        z-index:1001;
     }
 
     nav.show{
@@ -569,38 +426,26 @@ footer span{
     }
 
     nav a{
-        width:100%;
         text-align:center;
-
         padding:16px;
-
         border-bottom:1px solid #222;
-
-        font-size:16px;
     }
 
     .menu-btn{
         display:block;
-        flex-shrink:0;
     }
 
-    /* =========================
-       MOBILE HERO
-    ========================= */
+    /* MOBILE HERO */
 
     .hero{
         height:600px;
         min-height:600px;
     }
 
-    .slide{
-        background:#000;
-    }
-
     /*
-       IMPORTANT:
-       MOBILE PHOTO WILL NOT CROP.
-       Entire photo remains visible.
+       MOBILE:
+       PHOTO FULL VISIBLE
+       NO CROPPING
     */
 
     .slide img{
@@ -608,115 +453,71 @@ footer span{
         height:100%;
 
         object-fit:contain;
-        object-position:center center;
+        object-position:center;
 
         background:#000;
     }
 
-    .slide::after{
-        background:
-            linear-gradient(
-                to bottom,
-                rgba(0,0,0,.10),
-                rgba(0,0,0,.25) 50%,
-                rgba(0,0,0,.60)
-            );
-    }
-
-    /* Mobile Hero Content */
-
     .hero-content{
-        padding:35px 20px 30px;
-
+        padding:20px 15px 45px;
         justify-content:center;
     }
 
-    .small-title{
-        font-size:11px;
-        letter-spacing:3px;
-
-        margin-bottom:18px;
+    .hero-small{
+        font-size:10px;
+        letter-spacing:2px;
+        margin-bottom:15px;
     }
 
     .hero-content h2{
-        font-size:43px;
-        line-height:1.02;
-
-        max-width:100%;
+        font-size:40px;
     }
 
     .hero-content p{
-        font-size:16px;
+        font-size:14px;
         line-height:1.5;
-
         max-width:95%;
-
-        margin:20px auto;
+        margin:18px auto;
     }
 
-    /* Mobile Buttons */
-
-    .hero-buttons{
-        width:100%;
-
+    .buttons{
         flex-direction:column;
-
-        gap:12px;
+        align-items:center;
+        gap:10px;
     }
 
     .btn{
-        width:250px;
-
-        min-width:0;
-
-        padding:13px 18px;
-
-        font-size:16px;
+        width:230px;
+        padding:12px 18px;
+        text-align:center;
     }
 
-    /* Mobile arrows */
-
-    .slider-btn{
-        width:48px;
-        height:48px;
-
-        font-size:27px;
-
-        top:60%;
+    .arrow{
+        width:43px;
+        height:43px;
+        font-size:26px;
+        top:62%;
     }
 
-    #prev{
-        left:18px;
+    .prev{
+        left:10px;
     }
 
-    #next{
-        right:18px;
+    .next{
+        right:10px;
     }
-
-    /* Dots */
 
     .dots{
-        bottom:14px;
-
-        gap:5px;
+        bottom:12px;
     }
 
-    .dot{
-        width:7px;
-        height:7px;
-    }
-
-    .dot.active{
-        width:18px;
-    }
-
-    /* Services */
+    /* SERVICES */
 
     .services{
         padding:60px 5%;
     }
 
-    .section-title h2{
+    .heading h2{
         font-size:32px;
     }
 
@@ -724,115 +525,53 @@ footer span{
         grid-template-columns:1fr;
     }
 
-    .service-card{
-        padding:22px;
-    }
-
-    /* Contact */
+    /* CONTACT */
 
     .contact{
         padding:55px 5%;
     }
 
     .contact h2{
-        font-size:30px;
+        font-size:28px;
     }
-
 }
 
-/* ==================================================
-   SMALL MOBILE
-================================================== */
+/* SMALL MOBILE */
 
 @media(max-width:420px){
 
-    header{
-        height:100px;
-        padding:0 5%;
-    }
-
     .logo h1{
-        font-size:25px;
+        font-size:19px;
     }
 
     .logo p{
-        font-size:10px;
-        letter-spacing:2px;
-    }
-
-    .menu-btn{
-        width:52px;
-        height:46px;
-        font-size:28px;
+        font-size:8px;
     }
 
     .hero{
-        height:600px;
-        min-height:600px;
-    }
-
-    .hero-content{
-        padding:30px 15px;
-    }
-
-    .small-title{
-        font-size:10px;
-        letter-spacing:2.5px;
+        height:580px;
+        min-height:580px;
     }
 
     .hero-content h2{
-        font-size:39px;
+        font-size:35px;
     }
 
     .hero-content p{
-        font-size:15px;
-        line-height:1.45;
-
-        margin:18px auto;
+        font-size:13px;
     }
 
     .btn{
-        width:235px;
-        padding:12px 16px;
+        width:215px;
     }
-
-    .slider-btn{
-        width:44px;
-        height:44px;
-        font-size:25px;
-    }
-
-    #prev{
-        left:10px;
-    }
-
-    #next{
-        right:10px;
-    }
-
-}
-
-/* ==================================================
-   PREVENT HORIZONTAL OVERFLOW
-================================================== */
-
-img{
-    max-width:100%;
-}
-
-section{
-    width:100%;
 }
 
 </style>
 </head>
 
-
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -841,161 +580,114 @@ section{
         <p>DHANORA • GADCHIROLI</p>
     </div>
 
-    <nav id="mainNav">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#wedding">Wedding</a>
-        <a href="#contact">Contact</a>
+    <nav id="menu">
+        <a href="#home">HOME</a>
+        <a href="#services">SERVICES</a>
+        <a href="#wedding">WEDDING</a>
+        <a href="#contact">CONTACT</a>
     </nav>
 
-    <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="Open Menu">
-        ☰
-    </button>
+    <button class="menu-btn" id="menuBtn">☰</button>
 
 </header>
 
 
-<!-- =========================
-     HERO SLIDER
-========================= -->
+<!-- ================= HERO ================= -->
 
 <section class="hero" id="home">
 
-    <div class="slider" id="slider">
+    <!-- PHOTO 1 -->
 
-        <!-- SLIDE 1 -->
+    <div class="slide active">
+        <img src="1.jpg" alt="Parag Photo Studio">
+    </div>
 
-        <div class="slide active">
+    <!-- PHOTO 2 -->
 
-            <img
-                src="images/slide1.jpg"
-                alt="Parag Photo Studio Wedding Photography">
+    <div class="slide">
+        <img src="2.jpg" alt="Parag Photo Studio">
+    </div>
 
+    <!-- PHOTO 3 -->
+
+    <div class="slide">
+        <img src="3.jpg" alt="Parag Photo Studio">
+    </div>
+
+    <!-- PHOTO 4 -->
+
+    <div class="slide">
+        <img src="4.jpg" alt="Parag Photo Studio">
+    </div>
+
+
+    <!-- HERO CONTENT -->
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            ROYAL WEDDING • PORTRAIT • VIDEOGRAPHY
         </div>
 
+        <h2>
+            PARAG <span>PHOTO</span><br>
+            STUDIO
+        </h2>
 
-        <!-- SLIDE 2 -->
+        <p>
+            Premium photography, cinematic wedding films,
+            pre-wedding shoots and professional photo services.
+        </p>
 
-        <div class="slide">
+        <div class="buttons">
 
-            <img
-                src="images/slide2.jpg"
-                alt="Parag Photo Studio Wedding">
+            <a
+                href="tel:+919405507553"
+                class="btn call">
+                📞 Call Now
+            </a>
 
-        </div>
+            <a
+                href="https://wa.me/919359877572"
+                target="_blank"
+                class="btn whatsapp">
+                💬 WhatsApp
+            </a>
 
-
-        <!-- SLIDE 3 -->
-
-        <div class="slide">
-
-            <img
-                src="images/slide3.jpg"
-                alt="Parag Photo Studio Photography">
-
-        </div>
-
-
-        <!-- SLIDE 4 -->
-
-        <div class="slide">
-
-            <img
-                src="images/slide4.jpg"
-                alt="Parag Photo Studio Pre Wedding">
-
-        </div>
-
-
-        <!-- HERO CONTENT -->
-
-        <div class="hero-content">
-
-            <div class="small-title">
-                ROYAL WEDDING • PORTRAIT • VIDEO
-            </div>
-
-            <h2>
-                PARAG <span>PHOTO</span><br>
-                STUDIO
-            </h2>
-
-            <p>
-                Capturing your beautiful moments with premium
-                photography, cinematic wedding films and creative
-                pre-wedding photography.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a
-                    class="btn btn-call"
-                    href="tel:+919405507553">
-                    📞 Call Now
-                </a>
-
-                <a
-                    class="btn btn-whatsapp"
-                    href="https://wa.me/919405507553"
-                    target="_blank">
-                    💬 WhatsApp
-                </a>
-
-                <a
-                    class="btn btn-gold"
-                    href="#services">
-                    View Services
-                </a>
-
-            </div>
+            <a
+                href="#services"
+                class="btn services-btn">
+                View Services
+            </a>
 
         </div>
-
-
-        <!-- ARROWS -->
-
-        <button
-            class="slider-btn"
-            id="prev"
-            aria-label="Previous Slide">
-            ‹
-        </button>
-
-        <button
-            class="slider-btn"
-            id="next"
-            aria-label="Next Slide">
-            ›
-        </button>
-
-
-        <!-- DOTS -->
-
-        <div class="dots" id="dots"></div>
 
     </div>
+
+
+    <!-- ARROWS -->
+
+    <button class="arrow prev" id="prev">‹</button>
+
+    <button class="arrow next" id="next">›</button>
+
+
+    <!-- DOTS -->
+
+    <div class="dots" id="dots"></div>
 
 </section>
 
 
-<!-- =========================
-     SERVICES
-========================= -->
+<!-- ================= SERVICES ================= -->
 
 <section class="services" id="services">
 
-    <div class="section-title">
+    <div class="heading">
 
-        <small>
-            WHAT WE OFFER
-        </small>
+        <small>WHAT WE OFFER</small>
 
-        <h2>
-            Our Services
-        </h2>
+        <h2>Our Services</h2>
 
         <p>
             Professional photography and online services
@@ -1007,79 +699,71 @@ section{
 
     <div class="service-grid">
 
-        <div class="service-card">
+        <div class="card">
             <h3>📸 Passport Photo</h3>
             <p>
-                Passport size photos and passport
-                application assistance.
+                Passport size photo and professional
+                photo services.
             </p>
         </div>
 
-
-        <div class="service-card">
+        <div class="card">
             <h3>💍 Pre-Wedding</h3>
             <p>
-                Creative poses, cinematic photography
-                and beautiful pre-wedding shoots.
+                Creative pre-wedding photography
+                with beautiful locations and poses.
             </p>
         </div>
 
-
-        <div class="service-card" id="wedding">
+        <div class="card" id="wedding">
             <h3>💒 Wedding Photography</h3>
             <p>
-                Traditional wedding, candid photography
-                and premium album design.
+                Candid, traditional and premium wedding
+                photography with album design.
             </p>
         </div>
 
-
-        <div class="service-card">
-            <h3>🎥 Wedding 4K Videography</h3>
+        <div class="card">
+            <h3>🎥 4K Videography</h3>
             <p>
-                4K wedding films, cinematic highlights
-                and complete wedding coverage.
+                Cinematic wedding films and
+                complete event coverage.
             </p>
         </div>
 
-
-        <div class="service-card">
-            <h3>🎓 ID Card</h3>
+        <div class="card">
+            <h3>🎓 School / Office ID Card</h3>
             <p>
-                School ID Card, College ID Card
-                and Office ID Card.
+                Professional school, college and
+                office ID card designing and printing.
             </p>
         </div>
 
-
-        <div class="service-card">
-            <h3>🖼️ Photo & Printing</h3>
+        <div class="card">
+            <h3>🖼️ Photo Frame & Lamination</h3>
             <p>
-                Photo enlargement, photo frame,
-                lamination and printing services.
+                Photo enlargement, framing,
+                printing and lamination.
             </p>
         </div>
 
-
-        <div class="service-card">
+        <div class="card">
             <h3>💳 PAN Card</h3>
             <p>
-                PAN card related online assistance
-                and application services.
+                PAN card application and
+                online assistance.
             </p>
         </div>
 
-
-        <div class="service-card">
+        <div class="card">
             <h3>🚗 Driving Licence</h3>
             <p>
-                New licence, renewal, learner licence
-                and online services.
+                Driving licence related
+                online services.
             </p>
         </div>
 
-
-        <div class="service-card">
+        <div class="card">
             <h3>💻 All Online Services</h3>
             <p>
                 Various online form filling,
@@ -1092,32 +776,28 @@ section{
 </section>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
+<!-- ================= CONTACT ================= -->
 
 <section class="contact" id="contact">
 
-    <h2>
-        Let's Create Beautiful Memories
-    </h2>
+    <h2>Let's Create Beautiful Memories</h2>
 
     <p>
-        Contact Parag Photo Studio, Dhanora.
+        Parag Photo Studio • Dhanora • Gadchiroli
     </p>
 
-    <div class="hero-buttons">
+    <div class="buttons">
 
         <a
-            class="btn btn-call"
-            href="tel:+919405507553">
+            href="tel:+919405507553"
+            class="btn call">
             📞 Call Now
         </a>
 
         <a
-            class="btn btn-whatsapp"
-            href="https://wa.me/919405507553"
-            target="_blank">
+            href="https://wa.me/919359877572"
+            target="_blank"
+            class="btn whatsapp">
             💬 WhatsApp
         </a>
 
@@ -1126,9 +806,7 @@ section{
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -1139,70 +817,44 @@ section{
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-const slides =
-    document.querySelectorAll(".slide");
+const slides = document.querySelectorAll(".slide");
+const dotsBox = document.getElementById("dots");
 
-const dotsContainer =
-    document.getElementById("dots");
-
-const prevBtn =
-    document.getElementById("prev");
-
-const nextBtn =
-    document.getElementById("next");
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const mainNav =
-    document.getElementById("mainNav");
-
-let currentSlide = 0;
-
-let autoSlide;
+let current = 0;
+let timer;
 
 
-/* =========================
-   CREATE DOTS
-========================= */
+/* CREATE DOTS */
 
 slides.forEach((slide,index)=>{
 
-    const dot =
-        document.createElement("span");
+    const dot = document.createElement("span");
 
-    dot.classList.add("dot");
+    dot.className = "dot";
 
     if(index === 0){
         dot.classList.add("active");
     }
 
-    dot.addEventListener("click",()=>{
+    dot.onclick = function(){
 
         showSlide(index);
+        restart();
 
-        restartAutoSlide();
+    };
 
-    });
-
-    dotsContainer.appendChild(dot);
+    dotsBox.appendChild(dot);
 
 });
 
-
-const dots =
-    document.querySelectorAll(".dot");
+const dots = document.querySelectorAll(".dot");
 
 
-/* =========================
-   SHOW SLIDE
-========================= */
+/* SHOW SLIDE */
 
 function showSlide(index){
 
@@ -1214,135 +866,91 @@ function showSlide(index){
         dot.classList.remove("active");
     });
 
-    currentSlide = index;
+    current = index;
 
-    if(currentSlide < 0){
-        currentSlide = slides.length - 1;
+    if(current >= slides.length){
+        current = 0;
     }
 
-    if(currentSlide >= slides.length){
-        currentSlide = 0;
+    if(current < 0){
+        current = slides.length - 1;
     }
 
-    slides[currentSlide]
-        .classList.add("active");
-
-    dots[currentSlide]
-        .classList.add("active");
-
+    slides[current].classList.add("active");
+    dots[current].classList.add("active");
 }
 
 
-/* =========================
-   NEXT
-========================= */
+/* NEXT */
 
-function nextSlide(){
+document.getElementById("next").onclick = function(){
 
-    showSlide(currentSlide + 1);
+    showSlide(current + 1);
+    restart();
+
+};
+
+
+/* PREVIOUS */
+
+document.getElementById("prev").onclick = function(){
+
+    showSlide(current - 1);
+    restart();
+
+};
+
+
+/* AUTO SLIDE */
+
+function start(){
+
+    timer = setInterval(function(){
+
+        showSlide(current + 1);
+
+    },5000);
 
 }
 
+function restart(){
 
-/* =========================
-   PREVIOUS
-========================= */
-
-function previousSlide(){
-
-    showSlide(currentSlide - 1);
+    clearInterval(timer);
+    start();
 
 }
 
+start();
 
-/* =========================
-   BUTTON EVENTS
-========================= */
 
-nextBtn.addEventListener(
-    "click",
-    ()=>{
-        nextSlide();
-        restartAutoSlide();
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+
+menuBtn.onclick = function(){
+
+    menu.classList.toggle("show");
+
+    if(menu.classList.contains("show")){
+        menuBtn.innerHTML = "✕";
+    }else{
+        menuBtn.innerHTML = "☰";
     }
-);
 
-prevBtn.addEventListener(
-    "click",
-    ()=>{
-        previousSlide();
-        restartAutoSlide();
-    }
-);
+};
 
 
-/* =========================
-   AUTO SLIDER
-========================= */
+/* CLOSE MENU AFTER CLICK */
 
-function startAutoSlide(){
+document.querySelectorAll("#menu a").forEach(link=>{
 
-    autoSlide =
-        setInterval(
-            nextSlide,
-            5000
-        );
+    link.onclick = function(){
 
-}
+        menu.classList.remove("show");
+        menuBtn.innerHTML = "☰";
 
-function restartAutoSlide(){
-
-    clearInterval(autoSlide);
-
-    startAutoSlide();
-
-}
-
-startAutoSlide();
-
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-menuBtn.addEventListener(
-    "click",
-    ()=>{
-
-        mainNav.classList.toggle("show");
-
-        if(mainNav.classList.contains("show")){
-
-            menuBtn.innerHTML = "✕";
-
-        }else{
-
-            menuBtn.innerHTML = "☰";
-
-        }
-
-    }
-);
-
-
-/* =========================
-   CLOSE MOBILE MENU
-========================= */
-
-document.querySelectorAll(
-    "#mainNav a"
-).forEach(link=>{
-
-    link.addEventListener(
-        "click",
-        ()=>{
-
-            mainNav.classList.remove("show");
-
-            menuBtn.innerHTML = "☰";
-
-        }
-    );
+    };
 
 });
 
