@@ -7,10 +7,11 @@
 <title>Parag Photo Studio | Dhanora</title>
 
 <style>
+
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
@@ -18,80 +19,100 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#050505;
-    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#000;
+    color:#fff;
     overflow-x:hidden;
 }
 
 a{
     text-decoration:none;
+    color:inherit;
 }
+
 
 /* ================= HEADER ================= */
 
 header{
-    height:78px;
-    width:100%;
+    height:76px;
     background:#050505;
-    border-bottom:1px solid #d6ad22;
+    border-bottom:1px solid #ffd400;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
     padding:0 5%;
-    position:relative;
-    z-index:1000;
+
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .logo h1{
-    color:#f5c400;
-    font-size:26px;
-    font-weight:900;
+    color:#ffd400;
+    font-size:28px;
     letter-spacing:2px;
+    font-weight:900;
 }
 
 .logo p{
-    color:#aaa;
-    font-size:11px;
+    color:#fff;
+    font-size:12px;
+    font-weight:bold;
     letter-spacing:3px;
     margin-top:4px;
 }
 
 nav{
     display:flex;
-    gap:30px;
+    gap:32px;
 }
 
 nav a{
-    color:#fff;
-    font-size:14px;
+    font-size:15px;
     font-weight:bold;
+    transition:.25s;
 }
 
 nav a:hover{
-    color:#f5c400;
+    color:#ffd400;
 }
 
 .menu-btn{
     display:none;
-    background:none;
-    border:1px solid #f5c400;
-    color:#f5c400;
-    border-radius:8px;
-    font-size:27px;
-    width:48px;
-    height:44px;
+    width:54px;
+    height:48px;
+
+    border:2px solid #ffd400;
+    border-radius:10px;
+
+    background:#050505;
+    color:#ffd400;
+
+    font-size:30px;
+    cursor:pointer;
 }
+
 
 /* ================= HERO ================= */
 
 .hero{
     position:relative;
-    width:100%;
-    height:calc(100vh - 78px);
-    min-height:600px;
+    height:calc(100vh - 76px);
+    min-height:620px;
+
+    background:#000;
+    overflow:hidden;
+}
+
+
+/* ================= SLIDESHOW ================= */
+
+#slideshow{
+    position:absolute;
+    inset:0;
+
     background:#000;
     overflow:hidden;
 }
@@ -99,599 +120,736 @@ nav a:hover{
 .slide{
     position:absolute;
     inset:0;
-    width:100%;
-    height:100%;
 
-    display:none;
+    display:flex;
     align-items:center;
     justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:opacity .8s ease;
 
     background:#000;
 }
 
 .slide.active{
-    display:flex;
+    opacity:1;
+    visibility:visible;
 }
 
 .slide img{
+    display:block;
+
     width:100%;
     height:100%;
+
     object-fit:cover;
-    object-position:center;
-    display:block;
+    object-position:center center;
+
+    background:#000;
 }
 
-/* dark overlay */
 
-.slide::after{
+/* DARK OVERLAY */
+
+#slideshow::after{
     content:"";
+
     position:absolute;
     inset:0;
 
-    background:linear-gradient(
-        to bottom,
-        rgba(0,0,0,.10),
-        rgba(0,0,0,.30),
-        rgba(0,0,0,.72)
-    );
+    z-index:2;
+    pointer-events:none;
 
-    z-index:1;
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.35) 50%,
+        rgba(0,0,0,.65)
+    );
 }
 
-/* ================= HERO TEXT ================= */
+
+/* ================= HERO CONTENT ================= */
 
 .hero-content{
     position:absolute;
+
     inset:0;
+
     z-index:5;
 
     display:flex;
     flex-direction:column;
-    justify-content:center;
+
     align-items:center;
+    justify-content:center;
 
     text-align:center;
-    padding:30px;
+
+    padding:40px 7%;
 }
 
-.hero-small{
-    color:#f5c400;
-    font-size:13px;
+.small-title{
+    color:#ffd400;
+
+    font-size:15px;
     font-weight:bold;
+
     letter-spacing:5px;
-    margin-bottom:18px;
+
+    margin-bottom:20px;
 }
 
-.hero-content h2{
+.hero h2{
     font-size:64px;
-    line-height:1;
+    line-height:1.02;
+
     font-weight:900;
 
-    text-shadow:0 4px 18px #000;
+    text-shadow:
+        0 5px 25px #000;
 }
 
-.hero-content h2 span{
-    color:#f5c400;
+.hero h2 span{
+    color:#ffd400;
 }
 
 .hero-content p{
-    max-width:750px;
-    margin:22px auto;
+    max-width:850px;
 
-    font-size:17px;
+    font-size:18px;
     line-height:1.6;
 
-    text-shadow:0 2px 8px #000;
+    margin:25px auto;
+
+    text-shadow:
+        0 3px 12px #000;
 }
+
 
 /* ================= BUTTONS ================= */
 
-.buttons{
+.hero-buttons{
     display:flex;
-    gap:12px;
     justify-content:center;
+
+    gap:14px;
+
     flex-wrap:wrap;
 }
 
 .btn{
-    padding:13px 24px;
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-width:155px;
+
+    padding:14px 24px;
+
     border-radius:30px;
 
     font-size:15px;
     font-weight:bold;
 
-    display:inline-block;
-    transition:.3s;
+    color:#fff;
+
+    cursor:pointer;
+
+    border:none;
+}
+
+.btn-call{
+    background:#f22f2f;
+}
+
+.btn-whatsapp{
+    background:#16d65a;
+}
+
+.btn-gold{
+    background:#ffd000;
+    color:#000;
 }
 
 .btn:hover{
-    transform:translateY(-3px);
+    transform:scale(1.04);
 }
 
-.call{
-    background:#e32626;
-    color:#fff;
-}
 
-.whatsapp{
-    background:#16c957;
-    color:#fff;
-}
+/* ================= SLIDER BUTTONS ================= */
 
-.services-btn{
-    background:#f5c400;
-    color:#000;
-}
-
-/* ================= ARROWS ================= */
-
-.arrow{
+.slider-btn{
     position:absolute;
+
+    z-index:7;
+
     top:50%;
     transform:translateY(-50%);
 
-    width:48px;
-    height:48px;
+    width:50px;
+    height:50px;
 
     border-radius:50%;
-    border:1px solid #f5c400;
 
-    background:rgba(0,0,0,.45);
-    color:#f5c400;
+    border:1px solid #ffd400;
 
-    font-size:30px;
+    background:rgba(0,0,0,.35);
+
+    color:#ffd400;
+
+    font-size:32px;
+
     cursor:pointer;
 
-    z-index:10;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.arrow:hover{
-    background:#f5c400;
-    color:#000;
-}
-
-.prev{
+#prev{
     left:18px;
 }
 
-.next{
+#next{
     right:18px;
 }
+
+.slider-btn:hover{
+    background:#ffd400;
+    color:#000;
+}
+
 
 /* ================= DOTS ================= */
 
 .dots{
     position:absolute;
-    bottom:18px;
+
+    z-index:7;
+
+    bottom:20px;
+
     left:50%;
     transform:translateX(-50%);
 
     display:flex;
+
+    justify-content:center;
+    align-items:center;
+
     gap:7px;
 
-    z-index:10;
+    max-width:90%;
+
+    flex-wrap:wrap;
 }
 
 .dot{
     width:8px;
     height:8px;
+
     border-radius:50%;
+
     background:#888;
+
     cursor:pointer;
 }
 
 .dot.active{
+    background:#ffd400;
+
     width:22px;
-    border-radius:10px;
-    background:#f5c400;
+
+    border-radius:8px;
 }
+
 
 /* ================= SERVICES ================= */
 
-.services{
-    background:#090909;
+#services{
     padding:80px 5%;
+    background:#0a0a0a;
 }
 
-.heading{
+.section-title{
     text-align:center;
-    margin-bottom:45px;
+    margin-bottom:42px;
 }
 
-.heading small{
-    color:#f5c400;
-    letter-spacing:4px;
-    font-size:12px;
+.section-title .small{
+    color:#ffd400;
+
     font-weight:bold;
+
+    letter-spacing:5px;
+
+    font-size:13px;
 }
 
-.heading h2{
+.section-title h2{
     font-size:40px;
     margin:12px 0;
 }
 
-.heading p{
-    color:#aaa;
+.section-title p{
+    color:#bbb;
 }
 
 .service-grid{
-    max-width:1150px;
+    max-width:1200px;
+
     margin:auto;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:20px;
 }
 
-.card{
+.service-box{
     background:#111;
-    border:1px solid #292929;
-    border-left:4px solid #f5c400;
 
-    border-radius:15px;
-    padding:25px;
+    border:1px solid #222;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    border-radius:12px;
 
     transition:.3s;
 }
 
-.card:hover{
+.service-box:hover{
+    border-color:#ffd400;
+
     transform:translateY(-5px);
-    border-color:#f5c400;
 }
 
-.card h3{
-    color:#f5c400;
-    font-size:20px;
-    margin-bottom:10px;
+.service-box h3{
+    color:#ffd400;
+
+    margin-bottom:12px;
+
+    font-size:21px;
 }
 
-.card p{
+.service-box p{
     color:#bbb;
+
     line-height:1.6;
 }
 
+
 /* ================= CONTACT ================= */
 
-.contact{
+#contact{
     padding:70px 5%;
-    text-align:center;
     background:#050505;
+
+    text-align:center;
 }
 
-.contact h2{
+#contact h2{
+    color:#ffd400;
+
     font-size:36px;
+
     margin-bottom:15px;
 }
 
-.contact p{
-    color:#aaa;
-    margin-bottom:25px;
+#contact p{
+    color:#ccc;
+
+    margin:8px 0;
 }
 
-/* ================= FOOTER ================= */
 
-footer{
-    background:#000;
-    border-top:1px solid #222;
-
-    padding:25px;
-
-    text-align:center;
-    color:#777;
-    font-size:13px;
-}
-
-footer span{
-    color:#f5c400;
-}
-
-/* =================================================
-   MOBILE
-================================================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
     header{
-        height:85px;
-        padding:0 5%;
+        height:160px;
+
+        padding:25px 36px;
+
+        align-items:center;
     }
 
     .logo h1{
-        font-size:22px;
-        letter-spacing:1px;
+        font-size:42px;
+        line-height:1.05;
     }
 
     .logo p{
-        font-size:9px;
-        letter-spacing:2px;
+        font-size:14px;
+        margin-top:10px;
     }
 
     nav{
         display:none;
-
-        position:absolute;
-        top:85px;
-        left:0;
-        right:0;
-
-        background:#070707;
-        border-bottom:1px solid #f5c400;
-
-        flex-direction:column;
-        gap:0;
-    }
-
-    nav.show{
-        display:flex;
-    }
-
-    nav a{
-        text-align:center;
-        padding:16px;
-        border-bottom:1px solid #222;
     }
 
     .menu-btn{
         display:block;
     }
 
+
     /* MOBILE HERO */
 
     .hero{
-        height:600px;
-        min-height:600px;
+        height:calc(100vh - 160px);
+
+        min-height:920px;
     }
 
-    /*
-       MOBILE:
-       PHOTO FULL VISIBLE
-       NO CROPPING
-    */
 
     .slide img{
         width:100%;
         height:100%;
 
-        object-fit:contain;
-        object-position:center;
+        object-fit:cover;
 
-        background:#000;
+        object-position:center center;
     }
+
 
     .hero-content{
-        padding:20px 15px 45px;
         justify-content:center;
+
+        padding:50px 30px 100px;
     }
 
-    .hero-small{
-        font-size:10px;
-        letter-spacing:2px;
-        margin-bottom:15px;
+    .small-title{
+        font-size:14px;
+
+        letter-spacing:4px;
+
+        margin-bottom:28px;
     }
 
-    .hero-content h2{
-        font-size:40px;
+    .hero h2{
+        font-size:50px;
+
+        line-height:1.05;
     }
 
     .hero-content p{
-        font-size:14px;
-        line-height:1.5;
-        max-width:95%;
-        margin:18px auto;
+        font-size:19px;
+
+        line-height:1.55;
+
+        margin:30px 0;
     }
 
-    .buttons{
+
+    .hero-buttons{
+        width:100%;
+
+        display:flex;
+
         flex-direction:column;
+
+        gap:18px;
+
         align-items:center;
-        gap:10px;
     }
 
     .btn{
-        width:230px;
-        padding:12px 18px;
-        text-align:center;
+        width:82%;
+
+        min-width:0;
+
+        padding:20px;
+
+        font-size:22px;
     }
 
-    .arrow{
-        width:43px;
-        height:43px;
-        font-size:26px;
-        top:62%;
+
+    .slider-btn{
+        width:88px;
+        height:88px;
+
+        font-size:45px;
     }
 
-    .prev{
-        left:10px;
+    #prev{
+        left:20px;
     }
 
-    .next{
-        right:10px;
+    #next{
+        right:20px;
     }
+
 
     .dots{
-        bottom:12px;
+        bottom:25px;
     }
 
-    /* SERVICES */
-
-    .services{
-        padding:60px 5%;
-    }
-
-    .heading h2{
-        font-size:32px;
-    }
 
     .service-grid{
         grid-template-columns:1fr;
     }
 
-    /* CONTACT */
-
-    .contact{
-        padding:55px 5%;
-    }
-
-    .contact h2{
-        font-size:28px;
-    }
 }
 
-/* SMALL MOBILE */
 
-@media(max-width:420px){
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:480px){
+
+    header{
+        height:230px;
+
+        padding:35px 36px;
+    }
 
     .logo h1{
-        font-size:19px;
+        font-size:46px;
     }
 
     .logo p{
-        font-size:8px;
+        font-size:15px;
     }
+
+    .menu-btn{
+        width:62px;
+        height:62px;
+
+        font-size:34px;
+    }
+
 
     .hero{
-        height:580px;
-        min-height:580px;
+        height:1100px;
+
+        min-height:1100px;
     }
 
-    .hero-content h2{
-        font-size:35px;
+
+    .hero-content{
+        padding:
+            80px 25px 130px;
+    }
+
+    .small-title{
+        font-size:13px;
+
+        margin-bottom:35px;
+    }
+
+    .hero h2{
+        font-size:52px;
     }
 
     .hero-content p{
-        font-size:13px;
+        font-size:20px;
     }
 
     .btn{
-        width:215px;
+        width:82%;
+
+        padding:21px;
+
+        font-size:22px;
     }
+
+}
+
+
+/* ================= HIDE BROKEN IMAGE ================= */
+
+.slide img.broken{
+    display:none;
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
 <header>
 
     <div class="logo">
-        <h1>PARAG PHOTO STUDIO</h1>
+
+        <h1>PARAG PHOTO<br class="mobile-break"> STUDIO</h1>
+
         <p>DHANORA • GADCHIROLI</p>
+
     </div>
 
-    <nav id="menu">
-        <a href="#home">HOME</a>
-        <a href="#services">SERVICES</a>
-        <a href="#wedding">WEDDING</a>
-        <a href="#contact">CONTACT</a>
+
+    <nav>
+
+        <a href="#home">Home</a>
+
+        <a href="#services">Services</a>
+
+        <a href="#wedding">Wedding</a>
+
+        <a href="#contact">Contact</a>
+
     </nav>
 
-    <button class="menu-btn" id="menuBtn">☰</button>
+
+    <button class="menu-btn"
+            onclick="toggleMenu()">
+
+        ☰
+
+    </button>
 
 </header>
+
 
 
 <!-- ================= HERO ================= -->
 
 <section class="hero" id="home">
 
-    <!-- PHOTO 1 -->
 
-    <div class="slide active">
-        <img src="1.jpg" alt="Parag Photo Studio">
-    </div>
+    <!-- SLIDES -->
 
-    <!-- PHOTO 2 -->
-
-    <div class="slide">
-        <img src="2.jpg" alt="Parag Photo Studio">
-    </div>
-
-    <!-- PHOTO 3 -->
-
-    <div class="slide">
-        <img src="3.jpg" alt="Parag Photo Studio">
-    </div>
-
-    <!-- PHOTO 4 -->
-
-    <div class="slide">
-        <img src="4.jpg" alt="Parag Photo Studio">
-    </div>
+    <div id="slideshow"></div>
 
 
-    <!-- HERO CONTENT -->
+    <!-- PREVIOUS -->
+
+    <button
+        class="slider-btn"
+        id="prev"
+        onclick="previousSlide()">
+
+        ‹
+
+    </button>
+
+
+    <!-- NEXT -->
+
+    <button
+        class="slider-btn"
+        id="next"
+        onclick="nextSlide()">
+
+        ›
+
+    </button>
+
+
+    <!-- CONTENT -->
 
     <div class="hero-content">
 
-        <div class="hero-small">
-            ROYAL WEDDING • PORTRAIT • VIDEOGRAPHY
+        <div class="small-title">
+
+            ROYAL WEDDING • PORTRAIT • VIDEO
+
         </div>
 
+
         <h2>
+
             PARAG <span>PHOTO</span><br>
+
             STUDIO
+
         </h2>
 
+
         <p>
-            Premium photography, cinematic wedding films,
-            pre-wedding shoots and professional photo services.
+
+            Capturing your beautiful moments with premium photography,
+            cinematic wedding films and creative pre-wedding photography.
+
         </p>
 
-        <div class="buttons">
+
+        <div class="hero-buttons">
+
 
             <a
-                href="tel:+919405507553"
-                class="btn call">
-                📞 Call Now
+                class="btn btn-call"
+                href="tel:9405507553">
+
+                📞 &nbsp;Call Now
+
             </a>
 
+
             <a
+                class="btn btn-whatsapp"
                 href="https://wa.me/919359877572"
-                target="_blank"
-                class="btn whatsapp">
-                💬 WhatsApp
+                target="_blank">
+
+                💬 &nbsp;WhatsApp
+
             </a>
 
+
             <a
-                href="#services"
-                class="btn services-btn">
+                class="btn btn-gold"
+                href="#services">
+
                 View Services
+
             </a>
+
 
         </div>
 
     </div>
-
-
-    <!-- ARROWS -->
-
-    <button class="arrow prev" id="prev">‹</button>
-
-    <button class="arrow next" id="next">›</button>
 
 
     <!-- DOTS -->
 
-    <div class="dots" id="dots"></div>
+    <div
+        class="dots"
+        id="dots">
+    </div>
+
 
 </section>
 
 
+
 <!-- ================= SERVICES ================= -->
 
-<section class="services" id="services">
+<section id="services">
 
-    <div class="heading">
 
-        <small>WHAT WE OFFER</small>
+    <div class="section-title">
 
-        <h2>Our Services</h2>
+        <div class="small">
+
+            WHAT WE OFFER
+
+        </div>
+
+
+        <h2>
+
+            Our Services
+
+        </h2>
+
 
         <p>
-            Professional photography and online services
-            under one roof.
+
+            Professional photography and digital services
+
         </p>
 
     </div>
@@ -699,262 +857,406 @@ footer span{
 
     <div class="service-grid">
 
-        <div class="card">
-            <h3>📸 Passport Photo</h3>
+
+        <div class="service-box">
+
+            <h3>💍 Wedding Photography</h3>
+
             <p>
-                Passport size photo and professional
-                photo services.
+
+                Royal wedding photography,
+                cinematic wedding films
+                and beautiful memories.
+
             </p>
+
         </div>
 
-        <div class="card">
-            <h3>💍 Pre-Wedding</h3>
+
+        <div class="service-box">
+
+            <h3>📸 Portrait Photography</h3>
+
             <p>
+
+                Professional portrait,
+                passport and studio photography.
+
+            </p>
+
+        </div>
+
+
+        <div class="service-box">
+
+            <h3>🎬 Pre-Wedding</h3>
+
+            <p>
+
                 Creative pre-wedding photography
-                with beautiful locations and poses.
+                and cinematic videos.
+
             </p>
+
         </div>
 
-        <div class="card" id="wedding">
-            <h3>💒 Wedding Photography</h3>
+
+        <div class="service-box">
+
+            <h3>🪪 PAN Card</h3>
+
             <p>
-                Candid, traditional and premium wedding
-                photography with album design.
+
+                PAN card photo and
+                online application services.
+
             </p>
+
         </div>
 
-        <div class="card">
-            <h3>🎥 4K Videography</h3>
-            <p>
-                Cinematic wedding films and
-                complete event coverage.
-            </p>
-        </div>
 
-        <div class="card">
-            <h3>🎓 School / Office ID Card</h3>
-            <p>
-                Professional school, college and
-                office ID card designing and printing.
-            </p>
-        </div>
+        <div class="service-box">
 
-        <div class="card">
-            <h3>🖼️ Photo Frame & Lamination</h3>
-            <p>
-                Photo enlargement, framing,
-                printing and lamination.
-            </p>
-        </div>
+            <h3>🚘 Driving Licence</h3>
 
-        <div class="card">
-            <h3>💳 PAN Card</h3>
             <p>
-                PAN card application and
-                online assistance.
-            </p>
-        </div>
 
-        <div class="card">
-            <h3>🚗 Driving Licence</h3>
-            <p>
                 Driving licence related
                 online services.
+
             </p>
+
         </div>
 
-        <div class="card">
-            <h3>💻 All Online Services</h3>
+
+        <div class="service-box">
+
+            <h3>🖼️ Photo Frame & Lamination</h3>
+
             <p>
-                Various online form filling,
-                printing and digital services.
+
+                Photo enlargement,
+                premium frames and lamination.
+
             </p>
+
         </div>
+
 
     </div>
 
 </section>
+
+
+
+<!-- ================= WEDDING ================= -->
+
+<section id="wedding" style="
+padding:80px 5%;
+background:#0a0a0a;
+text-align:center;
+">
+
+    <div class="section-title">
+
+        <div class="small">
+
+            PARAG PHOTO STUDIO
+
+        </div>
+
+        <h2>
+
+            Royal Wedding Photography
+
+        </h2>
+
+        <p>
+
+            Your special moments,
+            beautifully captured forever.
+
+        </p>
+
+    </div>
+
+</section>
+
 
 
 <!-- ================= CONTACT ================= -->
 
-<section class="contact" id="contact">
+<section id="contact">
 
-    <h2>Let's Create Beautiful Memories</h2>
+    <h2>Contact Us</h2>
 
-    <p>
-        Parag Photo Studio • Dhanora • Gadchiroli
-    </p>
+    <p>📍 Dhanora, Gadchiroli</p>
 
-    <div class="buttons">
+    <p>📞 9405507553</p>
 
-        <a
-            href="tel:+919405507553"
-            class="btn call">
-            📞 Call Now
-        </a>
-
-        <a
-            href="https://wa.me/919359877572"
-            target="_blank"
-            class="btn whatsapp">
-            💬 WhatsApp
-        </a>
-
-    </div>
+    <p>💬 WhatsApp: 9359877572</p>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    © 2026
-    <span>PARAG PHOTO STUDIO</span>
-    • DHANORA • GADCHIROLI
-
-</footer>
-
-
-<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-const slides = document.querySelectorAll(".slide");
-const dotsBox = document.getElementById("dots");
-
-let current = 0;
-let timer;
+/* ==================================================
+   SLIDESHOW
+   ================================================== */
 
 
-/* CREATE DOTS */
+/*
+   IMPORTANT:
 
-slides.forEach((slide,index)=>{
+   Photos are:
+   1.jpg
+   2.jpg
+   3.jpg
+   ...
+   30.jpg
 
-    const dot = document.createElement("span");
+   Code automatically tries BOTH:
 
-    dot.className = "dot";
+   1.jpg
+   1.JPG
 
-    if(index === 0){
-        dot.classList.add("active");
-    }
+   So uppercase/lowercase extension
+   will not create a problem.
+*/
 
-    dot.onclick = function(){
 
-        showSlide(index);
-        restart();
+const totalPhotos = 30;
+
+let currentSlide = 0;
+
+let slides = [];
+
+let dots = [];
+
+
+
+const slideshow =
+    document.getElementById("slideshow");
+
+const dotsContainer =
+    document.getElementById("dots");
+
+
+
+/* CREATE ALL 30 SLIDES */
+
+for(let i = 1; i <= totalPhotos; i++){
+
+    const slide =
+        document.createElement("div");
+
+    slide.className = "slide";
+
+
+    const img =
+        document.createElement("img");
+
+
+    img.alt =
+        "Parag Photo Studio Photography";
+
+
+    /*
+       First try .jpg
+    */
+
+    img.src = i + ".jpg";
+
+
+    /*
+       If .jpg doesn't exist,
+       try .JPG
+    */
+
+    img.onerror = function(){
+
+        if(!this.dataset.upper){
+
+            this.dataset.upper = "yes";
+
+            this.src = i + ".JPG";
+
+        }else{
+
+            this.classList.add("broken");
+
+        }
 
     };
 
-    dotsBox.appendChild(dot);
 
-});
+    slide.appendChild(img);
 
-const dots = document.querySelectorAll(".dot");
+    slideshow.appendChild(slide);
+
+    slides.push(slide);
 
 
-/* SHOW SLIDE */
+
+    /* CREATE DOT */
+
+    const dot =
+        document.createElement("span");
+
+    dot.className = "dot";
+
+
+    dot.onclick = function(){
+
+        showSlide(i - 1);
+
+    };
+
+
+    dotsContainer.appendChild(dot);
+
+    dots.push(dot);
+
+}
+
+
+/* SHOW FIRST SLIDE */
 
 function showSlide(index){
 
-    slides.forEach(slide=>{
+    if(index < 0){
+
+        index = slides.length - 1;
+
+    }
+
+    if(index >= slides.length){
+
+        index = 0;
+
+    }
+
+
+    slides.forEach(function(slide){
+
         slide.classList.remove("active");
+
     });
 
-    dots.forEach(dot=>{
+
+    dots.forEach(function(dot){
+
         dot.classList.remove("active");
+
     });
 
-    current = index;
 
-    if(current >= slides.length){
-        current = 0;
-    }
+    slides[index].classList.add("active");
 
-    if(current < 0){
-        current = slides.length - 1;
-    }
+    dots[index].classList.add("active");
 
-    slides[current].classList.add("active");
-    dots[current].classList.add("active");
+
+    currentSlide = index;
+
 }
+
 
 
 /* NEXT */
 
-document.getElementById("next").onclick = function(){
+function nextSlide(){
 
-    showSlide(current + 1);
-    restart();
+    showSlide(currentSlide + 1);
 
-};
+}
+
 
 
 /* PREVIOUS */
 
-document.getElementById("prev").onclick = function(){
+function previousSlide(){
 
-    showSlide(current - 1);
-    restart();
-
-};
-
-
-/* AUTO SLIDE */
-
-function start(){
-
-    timer = setInterval(function(){
-
-        showSlide(current + 1);
-
-    },5000);
+    showSlide(currentSlide - 1);
 
 }
 
-function restart(){
-
-    clearInterval(timer);
-    start();
-
-}
-
-start();
 
 
-/* MOBILE MENU */
+/* AUTO SLIDESHOW */
 
-const menuBtn = document.getElementById("menuBtn");
-const menu = document.getElementById("menu");
+setInterval(function(){
 
-menuBtn.onclick = function(){
+    nextSlide();
 
-    menu.classList.toggle("show");
+},5000);
 
-    if(menu.classList.contains("show")){
-        menuBtn.innerHTML = "✕";
+
+
+/* START */
+
+showSlide(0);
+
+
+
+/* ==================================================
+   MOBILE MENU
+   ================================================== */
+
+function toggleMenu(){
+
+    const nav =
+        document.querySelector("nav");
+
+
+    if(nav.style.display === "flex"){
+
+        nav.style.display = "none";
+
     }else{
-        menuBtn.innerHTML = "☰";
+
+        nav.style.display = "flex";
+
+        nav.style.position = "absolute";
+
+        nav.style.top = "160px";
+
+        nav.style.left = "0";
+
+        nav.style.right = "0";
+
+        nav.style.background = "#050505";
+
+        nav.style.padding = "25px";
+
+        nav.style.flexDirection = "column";
+
+        nav.style.alignItems = "center";
+
+        nav.style.gap = "20px";
+
     }
 
-};
+}
 
 
-/* CLOSE MENU AFTER CLICK */
+/* ==================================================
+   MOBILE MENU RESET
+   ================================================== */
 
-document.querySelectorAll("#menu a").forEach(link=>{
+window.addEventListener("resize",function(){
 
-    link.onclick = function(){
+    if(window.innerWidth > 768){
 
-        menu.classList.remove("show");
-        menuBtn.innerHTML = "☰";
+        document.querySelector("nav").removeAttribute("style");
 
-    };
+    }
 
 });
 
 </script>
+
 
 </body>
 </html>
