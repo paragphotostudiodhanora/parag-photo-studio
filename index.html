@@ -4,654 +4,1516 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050505">
+
 <title>Parag Photo Studio | Dhanora</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+
+/* =========================
+   BASIC RESET
+========================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#050505;
-  color:#fff;
-  overflow-x:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:#fff;
+    overflow-x:hidden;
 }
-a{text-decoration:none;color:inherit}
 
-/* ================= HEADER ================= */
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
+
 header{
-  height:76px;
-  background:#070707;
-  border-bottom:1px solid #c9a900;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 4%;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-.logo h2{
-  color:#ffd400;
-  font-size:28px;
-  letter-spacing:2px;
-}
-.logo p{
-  color:#fff;
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:3px;
-  margin-top:4px;
-}
-nav{display:flex;gap:32px}
-nav a{
-  font-size:15px;
-  font-weight:bold;
-  transition:.25s;
-}
-nav a:hover{color:#ffd400}
-.menu-btn{
-  display:none;
-  width:54px;
-  height:48px;
-  border:2px solid #ffd400;
-  border-radius:10px;
-  background:#050505;
-  color:#ffd400;
-  font-size:30px;
-  cursor:pointer;
+    height:76px;
+    background:#070707;
+    border-bottom:1px solid #c9a900;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 4%;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-/* ================= HERO ================= */
-.hero{
-  position:relative;
-  height:calc(100vh - 76px);
-  min-height:620px;
-  background:#000;
-  overflow:hidden;
-}
-#slideshow{
-  position:absolute;
-  inset:0;
-  background:#000;
-  overflow:hidden;
-}
-.slide{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  visibility:hidden;
-  transition:opacity .8s ease;
-  background:#000;
-}
-.slide.active{
-  opacity:1;
-  visibility:visible;
-}
-.slide img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  object-position:center center;
-  background:#000;
-}
-#slideshow:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:2;
-  pointer-events:none;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,.38),
-    rgba(0,0,0,.12) 45%,
-    rgba(0,0,0,.62)
-  );
-}
-.hero-content{
-  position:absolute;
-  z-index:5;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:40px 7%;
-}
-.small-title{
-  color:#ffd400;
-  font-size:15px;
-  font-weight:bold;
-  letter-spacing:5px;
-  margin-bottom:20px;
-}
-.hero h1{
-  font-size:64px;
-  line-height:1.02;
-  font-weight:900;
-  text-shadow:0 5px 25px #000;
-}
-.hero h1 span{color:#ffd400}
-.hero-content>p{
-  max-width:850px;
-  font-size:18px;
-  line-height:1.6;
-  margin:25px auto;
-  text-shadow:0 3px 12px #000;
-}
-.hero-buttons{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:165px;
-  padding:14px 24px;
-  border-radius:30px;
-  font-size:15px;
-  font-weight:bold;
-  color:#fff;
-}
-.btn-call{background:#f22f2f}
-.btn-whatsapp{background:#16d65a}
-.btn-gold{background:#ffd000;color:#000}
-
-/* ================= SLIDER CONTROLS ================= */
-.slider-btn{
-  position:absolute;
-  z-index:7;
-  top:50%;
-  transform:translateY(-50%);
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  border:1px solid #ffd400;
-  background:rgba(0,0,0,.35);
-  color:#ffd400;
-  font-size:32px;
-  cursor:pointer;
-}
-#prev{left:18px}
-#next{right:18px}
-.slider-btn:hover{background:#ffd400;color:#000}
-.dots{
-  position:absolute;
-  z-index:7;
-  bottom:22px;
-  left:0;
-  right:0;
-  text-align:center;
-}
-.dot{
-  display:inline-block;
-  width:8px;
-  height:8px;
-  margin:0 4px;
-  border-radius:50%;
-  background:#888;
-  cursor:pointer;
-}
-.dot.active{background:#ffd400;width:22px;border-radius:8px}
-.loading{
-  position:absolute;
-  z-index:6;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#ffd400;
-  font-size:18px;
-}
-
-/* ================= SERVICES ================= */
-.services{
-  padding:80px 5%;
-  background:#0a0a0a;
-}
-.section-title{text-align:center;margin-bottom:42px}
-.section-title .small{
-  color:#ffd400;
-  font-weight:bold;
-  letter-spacing:5px;
-  font-size:13px;
-}
-.section-title h2{
-  font-size:40px;
-  margin:12px 0;
-}
-.section-title p{color:#bbb}
-.service-grid{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-.service-box{
-  padding:28px 22px;
-  min-height:175px;
-  border:1px solid #333;
-  border-left:3px solid #ffd400;
-  border-radius:16px;
-  background:linear-gradient(145deg,#171717,#0c0c0c);
-}
-.service-icon{font-size:30px;margin-bottom:10px}
-.service-box h3{
-  color:#ffd400;
-  font-size:20px;
-  margin-bottom:12px;
-}
-.service-box p{
-  color:#ddd;
-  line-height:1.6;
-  font-size:14px;
-}
-
-/* ================= CONTACT ================= */
-.contact-section{
-  text-align:center;
-  padding:75px 20px;
-  background:#050505;
-  border-top:1px solid #222;
-}
-.contact-section h2{font-size:34px;margin-bottom:10px}
-.contact-section>p{color:#bbb;margin-bottom:25px}
-
-/* ================= MOBILE ================= */
-@media(max-width:700px){
-  header{
-    height:124px;
-    padding:0 18px;
-  }
-  .logo h2{
-    font-size:25px;
-    letter-spacing:1.5px;
-  }
-  .logo p{
-    font-size:11px;
-    letter-spacing:2.5px;
-  }
-  nav{
-    display:none;
-    position:absolute;
-    top:124px;
-    left:0;
-    right:0;
-    background:#080808;
-    border-bottom:1px solid #ffd400;
-    flex-direction:column;
-    gap:0;
-  }
-  nav.open{display:flex}
-  nav a{
-    padding:17px 22px;
-    border-bottom:1px solid #222;
-  }
-  .menu-btn{display:block}
-
-  .hero{
-    height:650px;
-    min-height:650px;
-  }
-  #slideshow{
-    height:650px;
-  }
-  .slide{
-    height:650px;
-  }
-  .slide img{
-    width:100% !important;
-    height:100% !important;
-    object-fit:contain !important;
-  }
-  .hero-content{
-    padding:80px 22px 95px;
-    justify-content:center;
-  }
-  .small-title{
-    font-size:11px;
-    letter-spacing:3px;
-    margin-bottom:18px;
-  }
-  .hero h1{
-    font-size:43px;
-    line-height:1.05;
-  }
-  .hero-content>p{
-    font-size:15px;
-    line-height:1.55;
-    margin:20px 0;
-    max-width:95%;
-  }
-  .hero-buttons{
-    width:100%;
-    gap:10px;
-  }
-  .btn{
-    min-width:0;
-    width:45%;
-    padding:13px 10px;
-    font-size:14px;
-  }
-  .btn-gold{width:48%}
-
-  .slider-btn{
-    width:48px;
-    height:48px;
+.logo h1{
+    color:#ffd400;
     font-size:28px;
-  }
-  #prev{left:14px}
-  #next{right:14px}
-  .dots{bottom:16px}
-
-  .services{padding:55px 16px}
-  .section-title h2{font-size:30px}
-  .service-grid{grid-template-columns:1fr}
-  .service-box{min-height:auto;padding:22px}
+    letter-spacing:2px;
+    line-height:1;
 }
 
-/* Small phones */
-@media(max-width:390px){
-  .logo h2{font-size:21px}
-  .hero{height:610px;min-height:610px}
-  #slideshow,.slide{height:610px}
-  .hero h1{font-size:37px}
-  .small-title{font-size:10px}
-  .hero-content>p{font-size:14px}
-  .btn{font-size:13px;padding:12px 8px}
+.logo p{
+    color:#fff;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:3px;
+    margin-top:6px;
 }
+
+nav{
+    display:flex;
+    gap:32px;
+    align-items:center;
+}
+
+nav a{
+    font-size:15px;
+    font-weight:bold;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:#ffd400;
+}
+
+/* Mobile menu button */
+
+.menu-btn{
+    display:none;
+    width:54px;
+    height:48px;
+
+    border:2px solid #ffd400;
+    border-radius:10px;
+
+    background:#050505;
+    color:#ffd400;
+
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    width:100%;
+    height:calc(100vh - 76px);
+    min-height:620px;
+    background:#000;
+    overflow:hidden;
+}
+
+#slideshow{
+    position:absolute;
+    inset:0;
+    background:#000;
+    overflow:hidden;
+}
+
+.slide{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:opacity .8s ease;
+
+    background:#000;
+}
+
+.slide.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/*
+   IMPORTANT:
+   FULL PHOTO VISIBLE
+   NO CROPPING
+*/
+
+.slide img{
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+    object-position:center center;
+
+    background:#000;
+}
+
+/* Dark overlay */
+
+.slide::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.18) 40%,
+        rgba(0,0,0,.68) 100%
+    );
+
+    pointer-events:none;
+    z-index:2;
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content{
+    position:absolute;
+    inset:0;
+
+    z-index:5;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px 7%;
+}
+
+.small-title{
+    color:#ffd400;
+    font-size:15px;
+    font-weight:bold;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:64px;
+    line-height:1.02;
+    font-weight:900;
+
+    text-shadow:0 5px 25px #000;
+
+    margin:10px 0 15px;
+}
+
+.hero h1 span{
+    color:#ffd400;
+}
+
+.hero-content > p{
+    max-width:850px;
+
+    font-size:18px;
+    line-height:1.6;
+
+    margin:0 auto 25px;
+
+    text-shadow:0 3px 12px #000;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:165px;
+
+    padding:14px 24px;
+
+    border-radius:30px;
+
+    font-size:15px;
+    font-weight:bold;
+
+    color:#fff;
+
+    transition:.25s;
+
+    border:none;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn-call{
+    background:#f22f2f;
+}
+
+.btn-whatsapp{
+    background:#16d65a;
+}
+
+.btn-gold{
+    background:#ffd000;
+    color:#000;
+}
+
+/* =========================
+   SLIDER BUTTONS
+========================= */
+
+.slider-btn{
+    position:absolute;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    z-index:10;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    border:1px solid #ffd400;
+
+    background:rgba(0,0,0,.35);
+
+    color:#ffd400;
+
+    font-size:32px;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.slider-btn:hover{
+    background:#ffd400;
+    color:#000;
+}
+
+#prev{
+    left:18px;
+}
+
+#next{
+    right:18px;
+}
+
+/* =========================
+   DOTS
+========================= */
+
+.dots{
+    position:absolute;
+
+    z-index:10;
+
+    bottom:20px;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+}
+
+.dot{
+    display:inline-block;
+
+    width:8px;
+    height:8px;
+
+    margin:0;
+
+    border-radius:50%;
+
+    background:#888;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.dot.active{
+    width:22px;
+    border-radius:8px;
+    background:#ffd400;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+    padding:80px 5%;
+    background:#0a0a0a;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:42px;
+}
+
+.section-title .small{
+    color:#ffd400;
+    font-weight:bold;
+    letter-spacing:5px;
+    font-size:13px;
+}
+
+.section-title h2{
+    font-size:40px;
+    margin:12px 0;
+}
+
+.section-title p{
+    color:#bbb;
+    max-width:700px;
+    margin:auto;
+    line-height:1.6;
+}
+
+.service-grid{
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+}
+
+.service-box{
+    padding:22px;
+
+    min-height:150px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #181818,
+        #0b0b0b
+    );
+
+    border:1px solid #292929;
+
+    border-left:3px solid #ffd400;
+
+    border-radius:18px;
+
+    transition:.25s;
+}
+
+.service-box:hover{
+    transform:translateY(-5px);
+    border-color:#ffd400;
+}
+
+.service-box h3{
+    color:#ffd400;
+    font-size:19px;
+    margin-bottom:12px;
+}
+
+.service-box p{
+    color:#ddd;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    padding:70px 5%;
+    text-align:center;
+    background:#050505;
+}
+
+.contact h2{
+    color:#ffd400;
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.contact p{
+    color:#bbb;
+    margin-bottom:25px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:25px 15px;
+
+    text-align:center;
+
+    background:#000;
+
+    border-top:1px solid #222;
+
+    color:#888;
+
+    font-size:13px;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+    position:absolute;
+
+    inset:0;
+
+    z-index:6;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:#ffd400;
+
+    font-size:18px;
+
+    background:#000;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:900px){
+
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    /* Header */
+
+    header{
+        height:120px;
+
+        padding:18px 35px;
+
+        align-items:center;
+    }
+
+    .logo h1{
+        font-size:28px;
+    }
+
+    .logo p{
+        font-size:12px;
+    }
+
+    nav{
+        display:none;
+
+        position:absolute;
+
+        top:120px;
+        left:0;
+        right:0;
+
+        background:#080808;
+
+        border-bottom:1px solid #ffd400;
+
+        flex-direction:column;
+
+        gap:0;
+
+        padding:10px 0;
+    }
+
+    nav.show{
+        display:flex;
+    }
+
+    nav a{
+        width:100%;
+        text-align:center;
+
+        padding:15px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    /* Hero */
+
+    .hero{
+        height:calc(100svh - 120px);
+
+        min-height:680px;
+
+        background:#000;
+    }
+
+    /*
+       Mobile image:
+       complete image visible
+       no crop
+    */
+
+    .slide img{
+        width:100%;
+        height:100%;
+
+        object-fit:contain;
+
+        object-position:center center;
+    }
+
+    .hero-content{
+        padding:30px 20px 90px;
+
+        justify-content:center;
+    }
+
+    .small-title{
+        font-size:12px;
+        letter-spacing:4px;
+
+        margin-bottom:16px;
+    }
+
+    .hero h1{
+        font-size:42px;
+        line-height:1.05;
+
+        margin:8px 0 18px;
+    }
+
+    .hero-content > p{
+        font-size:16px;
+
+        line-height:1.55;
+
+        max-width:95%;
+
+        margin-bottom:20px;
+    }
+
+    .hero-buttons{
+        gap:12px;
+    }
+
+    .btn{
+        min-width:0;
+
+        padding:13px 20px;
+
+        font-size:15px;
+    }
+
+    /* Slider arrows */
+
+    .slider-btn{
+        width:48px;
+        height:48px;
+
+        font-size:28px;
+    }
+
+    #prev{
+        left:18px;
+    }
+
+    #next{
+        right:18px;
+    }
+
+    /* Dots */
+
+    .dots{
+        bottom:18px;
+
+        gap:6px;
+    }
+
+    .dot{
+        width:7px;
+        height:7px;
+    }
+
+    .dot.active{
+        width:20px;
+    }
+
+    /* Services */
+
+    .services{
+        padding:60px 18px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+
+        gap:14px;
+    }
+
+    .service-box{
+        min-height:auto;
+        padding:20px;
+    }
+
+    /* Contact */
+
+    .contact{
+        padding:60px 20px;
+    }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:420px){
+
+    header{
+        height:110px;
+        padding:16px 22px;
+    }
+
+    .logo h1{
+        font-size:24px;
+    }
+
+    .logo p{
+        font-size:10px;
+        letter-spacing:2px;
+    }
+
+    .menu-btn{
+        width:50px;
+        height:46px;
+    }
+
+    nav{
+        top:110px;
+    }
+
+    .hero{
+        height:calc(100svh - 110px);
+        min-height:650px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .small-title{
+        font-size:10px;
+        letter-spacing:3px;
+    }
+
+    .hero-content > p{
+        font-size:14px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .btn{
+        width:240px;
+    }
+
+}
+
+/* =========================
+   VERY IMPORTANT
+   PREVENT RAW CSS TEXT
+========================= */
+
+style{
+    display:none !important;
+}
+
 </style>
 </head>
 
+
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
-  <a class="logo" href="#home">
-    <h2>PARAG PHOTO STUDIO</h2>
-    <p>DHANORA • GADCHIROLI</p>
-  </a>
 
-  <nav id="nav">
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#wedding">Wedding</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <div class="logo">
+        <h1>PARAG PHOTO STUDIO</h1>
+        <p>DHANORA • GADCHIROLI</p>
+    </div>
 
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+        ☰
+    </button>
+
+    <nav id="mainNav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#wedding">Wedding</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
 </header>
+
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero" id="home">
 
-  <div id="slideshow">
-    <div class="loading" id="loading">Loading Wedding Photos...</div>
-    <button class="slider-btn" id="prev" aria-label="Previous">‹</button>
-    <button class="slider-btn" id="next" aria-label="Next">›</button>
+    <div id="slideshow">
+
+        <div class="loading" id="loading">
+            Loading Photos...
+        </div>
+
+    </div>
+
+    <button class="slider-btn" id="prev" aria-label="Previous">
+        ‹
+    </button>
+
+    <button class="slider-btn" id="next" aria-label="Next">
+        ›
+    </button>
+
     <div class="dots" id="dots"></div>
-  </div>
 
-  <div class="hero-content">
-    <div class="small-title">ROYAL WEDDING • PORTRAIT • VIDEO</div>
 
-    <h1>PARAG <span>PHOTO</span><br>STUDIO</h1>
+    <div class="hero-content">
+
+        <div class="small-title">
+            ROYAL WEDDING • PORTRAIT • VIDEO
+        </div>
+
+        <h1>
+            PARAG <span>PHOTO</span><br>
+            STUDIO
+        </h1>
+
+        <p>
+            Capturing your beautiful moments with premium photography,
+            cinematic wedding films and creative pre-wedding photography.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                class="btn btn-call"
+                href="tel:+919359877572"
+            >
+                📞 Call Now
+            </a>
+
+            <a
+                class="btn btn-whatsapp"
+                href="https://wa.me/919359877572"
+                target="_blank"
+            >
+                💬 WhatsApp
+            </a>
+
+            <a
+                class="btn btn-gold"
+                href="#services"
+            >
+                View Services
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section class="services" id="services">
+
+    <div class="section-title">
+
+        <div class="small">
+            WHAT WE OFFER
+        </div>
+
+        <h2>OUR SERVICES</h2>
+
+        <p>
+            Professional photography, digital services and creative
+            solutions from Parag Photo Studio, Dhanora.
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+
+        <div class="service-box">
+            <h3>🪪 PAN CARD</h3>
+            <p>
+                New PAN Card • Correction • Minor PAN Card
+            </p>
+        </div>
+
+
+        <div class="service-box">
+            <h3>🚗 DRIVING LICENCE</h3>
+            <p>
+                New Licence • Renewal • Learner Licence • Online Services
+            </p>
+        </div>
+
+
+        <div class="service-box">
+            <h3>🛂 PASSPORT</h3>
+            <p>
+                Passport Photo • Passport Application Assistance
+            </p>
+        </div>
+
+
+        <div class="service-box">
+            <h3>💍 PRE-WEDDING</h3>
+            <p>
+                Pre-Wedding Photography • Creative Poses • Cinematic Photos
+            </p>
+        </div>
+
+
+        <div class="service-box">
+            <h3>📸 WEDDING PHOTOGRAPHY</h3>
+            <p>
+                Traditional Wedding • Candid Photography • Premium Album
+            </p>
+        </div>
+
+
+        <div class="service-box">
+            <h3>🎥 WEDDING 4K VIDEOGRAPHY</h3>
+            <p>
+                4K Wedding Video • Cinematic Highlights • Full Wedding Coverage
+            </p>
+        </div>
+
+
+        <div class="service-box">
+            <h3>🎓 ID CARD</h3>
+            <p>
+                School ID Card • College ID Card • Office ID Card
+            </p>
+        </div>
+
+
+        <div class="service-box">
+            <h3>🖼️ PHOTO & PRINTING</h3>
+            <p>
+                Photo Frame • Enlargement • Lamination • Xerox
+            </p>
+        </div>
+
+
+        <div class="service-box">
+            <h3>💻 ONLINE SERVICES</h3>
+            <p>
+                All Online Form Filling & Digital Services
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WEDDING
+========================= -->
+
+<section class="contact" id="wedding">
+
+    <h2>ROYAL WEDDING PHOTOGRAPHY</h2>
 
     <p>
-      Capturing your beautiful moments with premium photography,
-      cinematic wedding films and creative pre-wedding photography.
+        Beautiful memories • Premium Albums • Cinematic Wedding Films
+    </p>
+
+    <a
+        class="btn btn-gold"
+        href="tel:+919359877572"
+    >
+        📞 Book Your Date
+    </a>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact">
+
+    <h2>CONTACT PARAG PHOTO STUDIO</h2>
+
+    <p>
+        📍 Dhanora, Gadchiroli, Maharashtra
     </p>
 
     <div class="hero-buttons">
-      <a class="btn btn-call" href="tel:+919359877572">📞 Call Now</a>
-      <a class="btn btn-whatsapp" href="https://wa.me/919359877572" target="_blank">💬 WhatsApp</a>
-      <a class="btn btn-gold" href="#services">View Services</a>
+
+        <a
+            class="btn btn-call"
+            href="tel:+919359877572"
+        >
+            📞 Call Now
+        </a>
+
+        <a
+            class="btn btn-whatsapp"
+            href="https://wa.me/919359877572"
+            target="_blank"
+        >
+            💬 WhatsApp
+        </a>
+
     </div>
-  </div>
+
 </section>
 
-<section class="services" id="services">
-  <div class="section-title">
-    <div class="small">WHAT WE OFFER</div>
-    <h2>Our Premium Services</h2>
-    <p>Professional photography & digital services at Parag Photo Studio</p>
-  </div>
 
-  <div class="service-grid">
+<!-- =========================
+     FOOTER
+========================= -->
 
-    <div class="service-box">
-      <div class="service-icon">🪪</div>
-      <h3>PAN CARD</h3>
-      <p>New PAN Card • Correction • Minor PAN Card</p>
-    </div>
+<footer>
 
-    <div class="service-box">
-      <div class="service-icon">🚗</div>
-      <h3>DRIVING LICENCE</h3>
-      <p>New Licence • Renewal • Learner Licence • Online Services</p>
-    </div>
+    © 2026 Parag Photo Studio • Dhanora • Gadchiroli
 
-    <div class="service-box">
-      <div class="service-icon">🛂</div>
-      <h3>PASSPORT</h3>
-      <p>Passport Photo • Passport Application Assistance</p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">💍</div>
-      <h3>PRE-WEDDING</h3>
-      <p>Pre-Wedding Photography • Creative Poses • Cinematic Photos</p>
-    </div>
-
-    <div class="service-box" id="wedding">
-      <div class="service-icon">📸</div>
-      <h3>WEDDING PHOTOGRAPHY</h3>
-      <p>Traditional Wedding • Candid Photography • Premium Album</p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">🎥</div>
-      <h3>WEDDING 4K VIDEOGRAPHY</h3>
-      <p>4K Wedding Video • Cinematic Highlights • Full Wedding Coverage</p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">🎓</div>
-      <h3>ID CARD</h3>
-      <p>School ID Card • College ID Card • Office ID Card</p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">🖼️</div>
-      <h3>PHOTO & PRINTING</h3>
-      <p>Photo Frame • Enlargement • Lamination • Xerox</p>
-    </div>
-
-    <div class="service-box">
-      <div class="service-icon">💻</div>
-      <h3>ONLINE SERVICES</h3>
-      <p>All Online Form Filling & Digital Services</p>
-    </div>
-
-  </div>
-</section>
-
-<section class="contact-section" id="contact">
-  <h2>Visit Parag Photo Studio</h2>
-  <p>Near SBI Bank • Dhanora • Dist. Gadchiroli, Maharashtra</p>
-
-  <div class="hero-buttons">
-    <a class="btn btn-call" href="tel:+919359877572">📞 9359877572</a>
-    <a class="btn btn-whatsapp" href="https://wa.me/919359877572" target="_blank">💬 WhatsApp</a>
-  </div>
-</section>
-
-<footer style="text-align:center;padding:25px;background:#000;color:#888;font-size:13px">
-  © 2026 <strong style="color:#ffd400">Parag Photo Studio</strong> • Dhanora, Gadchiroli
 </footer>
 
+
 <script>
+
+/* =========================
+   GITHUB PHOTO SETTINGS
+========================= */
+
 const owner = "paragphotostudiodhanora";
+
 const repo = "parag-photo-studio";
+
 const branch = "main";
-const githubAPI =
-  `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${branch}`;
+
+const root =
+    `https://api.github.com/repos/${owner}/${repo}/contents/`;
+
+
+/* =========================
+   SLIDER VARIABLES
+========================= */
 
 let photos = [];
+
 let current = 0;
+
 let timer = null;
 
-const slideshow = document.getElementById("slideshow");
-const dotsBox = document.getElementById("dots");
-const loading = document.getElementById("loading");
+
+/* =========================
+   LOAD PHOTOS
+========================= */
 
 async function loadPhotos(){
-  try{
-    const response = await fetch(githubAPI, {cache:"no-store"});
 
-    if(!response.ok){
-      throw new Error("GitHub API error: " + response.status);
+    try{
+
+        const response =
+            await fetch(root + "?ref=" + branch);
+
+        if(!response.ok){
+
+            throw new Error(
+                "GitHub files load failed"
+            );
+
+        }
+
+        const files =
+            await response.json();
+
+
+        /*
+           Only JPG / JPEG / PNG / WEBP
+        */
+
+        photos = files.filter(file => {
+
+            if(file.type !== "file"){
+                return false;
+            }
+
+            return /\.(jpg|jpeg|png|webp)$/i
+                .test(file.name);
+
+        });
+
+
+        /*
+           Sort photos by filename
+        */
+
+        photos.sort((a,b) =>
+            a.name.localeCompare(
+                b.name,
+                undefined,
+                {numeric:true}
+            )
+        );
+
+
+        const slideshow =
+            document.getElementById("slideshow");
+
+        const loading =
+            document.getElementById("loading");
+
+
+        loading.remove();
+
+
+        if(photos.length === 0){
+
+            showMessage(
+                "No photos found in GitHub."
+            );
+
+            return;
+
+        }
+
+
+        /*
+           Create slides
+        */
+
+        photos.forEach((photo,index)=>{
+
+            const slide =
+                document.createElement("div");
+
+            slide.className =
+                "slide";
+
+
+            if(index === 0){
+
+                slide.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            const img =
+                document.createElement("img");
+
+            img.src = photo.download_url;
+
+            img.alt =
+                "Parag Photo Studio " +
+                (index + 1);
+
+            img.loading =
+                index === 0
+                ? "eager"
+                : "lazy";
+
+
+            slide.appendChild(img);
+
+            slideshow.appendChild(slide);
+
+        });
+
+
+        createDots();
+
+        showSlide(0);
+
+        startAutoSlide();
+
     }
 
-    const files = await response.json();
+    catch(error){
 
-    photos = files
-      .filter(file =>
-        file.type === "file" &&
-        /\.(jpe?g|png|webp)$/i.test(file.name)
-      )
-      .sort((a,b) =>
-        a.name.localeCompare(
-          b.name,
-          undefined,
-          {numeric:true,sensitivity:"base"}
-        )
-      );
+        console.error(
+            "Photo loading error:",
+            error
+        );
 
-    if(!photos.length){
-      loading.textContent = "No wedding photos found.";
-      return;
+
+        const slideshow =
+            document.getElementById(
+                "slideshow"
+            );
+
+        slideshow.innerHTML = "";
+
+        showMessage(
+            "Photos loading problem. Please refresh."
+        );
+
     }
 
-    loading.style.display = "none";
-
-    photos.forEach((photo,index)=>{
-      const slide = document.createElement("div");
-      slide.className = "slide" + (index === 0 ? " active" : "");
-
-      const img = document.createElement("img");
-
-      /* GitHub's own download URL - works with JPG/JPEG/PNG/WEBP */
-      img.src = photo.download_url;
-      img.alt = "Parag Photo Studio - " + photo.name;
-      img.loading = index === 0 ? "eager" : "lazy";
-      img.decoding = "async";
-
-      img.onerror = function(){
-        /* Fallback to raw GitHub URL */
-        img.src =
-          `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${encodeURIComponent(photo.name)}`;
-      };
-
-      slide.appendChild(img);
-      slideshow.insertBefore(slide, document.getElementById("prev"));
-
-      const dot = document.createElement("span");
-      dot.className = "dot" + (index === 0 ? " active" : "");
-      dot.addEventListener("click",()=>{
-        showSlide(index);
-        startSlideshow();
-      });
-      dotsBox.appendChild(dot);
-    });
-
-    showSlide(0);
-    startSlideshow();
-
-  }catch(error){
-    console.error("Photo loading error:",error);
-    loading.innerHTML =
-      "Photos load nahi ho rahe.<br>Please refresh the website.";
-  }
 }
+
+
+/* =========================
+   SHOW ERROR MESSAGE
+========================= */
+
+function showMessage(text){
+
+    const slideshow =
+        document.getElementById(
+            "slideshow"
+        );
+
+    const msg =
+        document.createElement("div");
+
+    msg.className =
+        "loading";
+
+    msg.textContent =
+        text;
+
+    slideshow.appendChild(msg);
+
+}
+
+
+/* =========================
+   CREATE DOTS
+========================= */
+
+function createDots(){
+
+    const dots =
+        document.getElementById(
+            "dots"
+        );
+
+    dots.innerHTML = "";
+
+    photos.forEach(
+        (photo,index)=>{
+
+            const dot =
+                document.createElement(
+                    "span"
+                );
+
+            dot.className =
+                "dot";
+
+            if(index === 0){
+
+                dot.classList.add(
+                    "active"
+                );
+
+            }
+
+            dot.addEventListener(
+                "click",
+                ()=>{
+                    showSlide(index);
+                    restartAutoSlide();
+                }
+            );
+
+            dots.appendChild(dot);
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SHOW SLIDE
+========================= */
 
 function showSlide(index){
-  const slides = document.querySelectorAll(".slide");
-  const dots = document.querySelectorAll(".dot");
 
-  if(!slides.length) return;
+    const slides =
+        document.querySelectorAll(
+            ".slide"
+        );
 
-  current = (index + slides.length) % slides.length;
+    const dots =
+        document.querySelectorAll(
+            ".dot"
+        );
 
-  slides.forEach((slide,i)=>{
-    slide.classList.toggle("active", i === current);
-  });
 
-  dots.forEach((dot,i)=>{
-    dot.classList.toggle("active", i === current);
-  });
+    if(!slides.length){
+        return;
+    }
+
+
+    if(index >= slides.length){
+
+        current = 0;
+
+    }
+    else if(index < 0){
+
+        current =
+            slides.length - 1;
+
+    }
+    else{
+
+        current = index;
+
+    }
+
+
+    slides.forEach(
+        slide =>
+        slide.classList.remove(
+            "active"
+        )
+    );
+
+
+    dots.forEach(
+        dot =>
+        dot.classList.remove(
+            "active"
+        )
+    );
+
+
+    slides[current]
+        .classList.add(
+            "active"
+        );
+
+
+    if(dots[current]){
+
+        dots[current]
+            .classList.add(
+                "active"
+            );
+
+    }
+
 }
+
+
+/* =========================
+   NEXT
+========================= */
 
 function nextSlide(){
-  showSlide(current + 1);
+
+    showSlide(
+        current + 1
+    );
+
 }
 
-function prevSlide(){
-  showSlide(current - 1);
+
+/* =========================
+   PREVIOUS
+========================= */
+
+function previousSlide(){
+
+    showSlide(
+        current - 1
+    );
+
 }
 
-function startSlideshow(){
-  clearInterval(timer);
-  timer = setInterval(nextSlide, 4500);
+
+/* =========================
+   AUTO SLIDE
+========================= */
+
+function startAutoSlide(){
+
+    clearInterval(timer);
+
+    timer =
+        setInterval(
+            nextSlide,
+            5000
+        );
+
 }
 
-document.getElementById("next").addEventListener("click",()=>{
-  nextSlide();
-  startSlideshow();
-});
 
-document.getElementById("prev").addEventListener("click",()=>{
-  prevSlide();
-  startSlideshow();
-});
+function restartAutoSlide(){
 
-document.addEventListener("keydown",(e)=>{
-  if(e.key === "ArrowRight"){
-    nextSlide();
-    startSlideshow();
-  }
-  if(e.key === "ArrowLeft"){
-    prevSlide();
-    startSlideshow();
-  }
-});
+    startAutoSlide();
 
-slideshow.addEventListener("mouseenter",()=>{
-  clearInterval(timer);
-});
+}
 
-slideshow.addEventListener("mouseleave",()=>{
-  startSlideshow();
-});
 
-/* Mobile menu */
-document.getElementById("menuBtn").addEventListener("click",()=>{
-  document.getElementById("nav").classList.toggle("open");
-});
+/* =========================
+   BUTTON EVENTS
+========================= */
 
-document.querySelectorAll("#nav a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    document.getElementById("nav").classList.remove("open");
-  });
-});
+document
+    .getElementById("next")
+    .addEventListener(
+        "click",
+        ()=>{
+            nextSlide();
+            restartAutoSlide();
+        }
+    );
+
+
+document
+    .getElementById("prev")
+    .addEventListener(
+        "click",
+        ()=>{
+            previousSlide();
+            restartAutoSlide();
+        }
+    );
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuBtn =
+    document.getElementById(
+        "menuBtn"
+    );
+
+const mainNav =
+    document.getElementById(
+        "mainNav"
+    );
+
+
+menuBtn.addEventListener(
+    "click",
+    ()=>{
+
+        mainNav.classList.toggle(
+            "show"
+        );
+
+    }
+);
+
+
+/* Close menu after clicking link */
+
+document
+    .querySelectorAll(
+        "#mainNav a"
+    )
+    .forEach(link=>{
+
+        link.addEventListener(
+            "click",
+            ()=>{
+                mainNav.classList.remove(
+                    "show"
+                );
+            }
+        );
+
+    });
+
+
+/* =========================
+   START
+========================= */
 
 loadPhotos();
+
 </script>
 
 </body>
