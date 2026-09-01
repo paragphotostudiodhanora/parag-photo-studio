@@ -21,16 +21,13 @@ html,body{
     color:#fff;
 }
 
-body{
-    overflow-x:hidden;
-}
-
 /* ================= HEADER ================= */
 
 header{
     height:90px;
+    width:100%;
     background:#050505;
-    border-bottom:1px solid #ffd000;
+    border-bottom:2px solid #ffd000;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -40,18 +37,18 @@ header{
 }
 
 .logo h1{
-    font-size:28px;
     color:#ffd000;
-    font-weight:900;
+    font-size:28px;
+    font-weight:800;
     letter-spacing:2px;
 }
 
 .logo p{
-    margin-top:4px;
+    color:#fff;
     font-size:12px;
     font-weight:bold;
     letter-spacing:3px;
-    color:#fff;
+    margin-top:5px;
 }
 
 nav{
@@ -66,71 +63,73 @@ nav a{
     font-weight:bold;
 }
 
-nav a:hover{
-    color:#ffd000;
-}
-
 .menu-btn{
     display:none;
     width:55px;
     height:55px;
     border:3px solid #ffd000;
-    border-radius:12px;
+    border-radius:15px;
     color:#ffd000;
     font-size:30px;
-    background:none;
+    align-items:center;
+    justify-content:center;
 }
 
 /* ================= HERO ================= */
 
 .hero{
     width:100%;
-    height:calc(100vh - 90px);
-    min-height:650px;
+    min-height:calc(100vh - 90px);
+    background:#000;
     position:relative;
     overflow:hidden;
-    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.slides{
-    position:absolute;
-    inset:0;
-}
+/* PHOTO */
 
 .slide{
     position:absolute;
     inset:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#000;
     opacity:0;
-    transition:opacity 0.8s ease;
+    transition:opacity .7s ease;
 }
 
 .slide.active{
     opacity:1;
+    z-index:1;
 }
 
 .slide img{
     width:100%;
     height:100%;
-    object-fit:cover;
-    object-position:center;
-    display:block;
+    object-fit:contain;
+    object-position:center center;
+    background:#000;
 }
 
-.slide::after{
-    content:"";
+/* DARK OVERLAY */
+
+.overlay{
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.48);
+    background:rgba(0,0,0,.42);
+    z-index:2;
 }
 
-/* ================= HERO CONTENT ================= */
+/* CONTENT */
 
 .hero-content{
-    position:absolute;
+    position:relative;
     z-index:5;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
     width:90%;
     max-width:900px;
     text-align:center;
@@ -138,7 +137,7 @@ nav a:hover{
 
 .small-title{
     color:#ffd000;
-    font-size:15px;
+    font-size:14px;
     font-weight:bold;
     letter-spacing:5px;
     margin-bottom:22px;
@@ -156,43 +155,40 @@ nav a:hover{
 }
 
 .hero-content p{
-    max-width:800px;
-    margin:0 auto 28px;
+    max-width:780px;
+    margin:0 auto 30px;
     font-size:18px;
     line-height:1.5;
 }
 
-/* ================= BUTTONS ================= */
+/* BUTTONS */
 
 .buttons{
     display:flex;
     justify-content:center;
-    gap:14px;
+    gap:15px;
     flex-wrap:wrap;
 }
 
 .btn{
-    border:none;
-    padding:14px 28px;
-    min-width:155px;
-    border-radius:30px;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-    text-decoration:none;
     display:inline-flex;
     align-items:center;
     justify-content:center;
+    min-width:175px;
+    padding:15px 25px;
+    border-radius:40px;
+    color:#fff;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:bold;
 }
 
 .call{
-    background:#ff2b2b;
-    color:#fff;
+    background:#ff2929;
 }
 
 .whatsapp{
     background:#12d65b;
-    color:#fff;
 }
 
 .services{
@@ -200,53 +196,53 @@ nav a:hover{
     color:#000;
 }
 
-/* ================= ARROWS ================= */
+/* ARROWS */
 
 .slider-btn{
     position:absolute;
-    z-index:10;
     top:50%;
     transform:translateY(-50%);
+    z-index:10;
     width:50px;
     height:50px;
-    border-radius:50%;
     border:2px solid #ffd000;
-    background:rgba(0,0,0,0.35);
+    border-radius:50%;
+    background:rgba(0,0,0,.35);
     color:#ffd000;
     font-size:30px;
     cursor:pointer;
 }
 
 #prev{
-    left:18px;
+    left:20px;
 }
 
 #next{
-    right:18px;
+    right:20px;
 }
 
-/* ================= DOTS ================= */
+/* DOTS */
 
 .dots{
     position:absolute;
-    z-index:10;
     bottom:22px;
     left:50%;
     transform:translateX(-50%);
+    z-index:10;
     display:flex;
-    gap:7px;
+    gap:8px;
 }
 
 .dot{
-    width:8px;
-    height:8px;
+    width:9px;
+    height:9px;
     border-radius:50%;
     background:#aaa;
     cursor:pointer;
 }
 
 .dot.active{
-    width:22px;
+    width:24px;
     border-radius:10px;
     background:#ffd000;
 }
@@ -256,21 +252,21 @@ nav a:hover{
 @media(max-width:768px){
 
     header{
-        height:125px;
-        padding:20px 35px;
-        align-items:center;
+        height:105px;
+        padding:15px 28px;
     }
 
     .logo h1{
-        font-size:36px;
+        font-size:34px;
         line-height:1.05;
-        letter-spacing:1px;
+        letter-spacing:1.5px;
+        max-width:350px;
     }
 
     .logo p{
         font-size:11px;
         letter-spacing:2.5px;
-        margin-top:8px;
+        margin-top:7px;
     }
 
     nav{
@@ -278,54 +274,31 @@ nav a:hover{
     }
 
     .menu-btn{
-        display:block;
+        display:flex;
         flex-shrink:0;
     }
 
     .hero{
-        height:calc(100vh - 125px);
-        min-height:650px;
-    }
-
-    /*
-       MOBILE PHOTO:
-       Photo को पूरा दिखाने के लिए contain
-    */
-    .slide{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        background:#000;
+        min-height:calc(100vh - 105px);
+        height:calc(100vh - 105px);
     }
 
     .slide img{
         width:100%;
         height:100%;
         object-fit:contain;
-        object-position:center;
-        background:#000;
-    }
-
-    .hero::after{
-        content:"";
-        position:absolute;
-        inset:0;
-        background:rgba(0,0,0,0.18);
-        z-index:2;
-        pointer-events:none;
     }
 
     .hero-content{
-        top:50%;
-        width:92%;
-        max-width:650px;
-        padding:20px;
+        width:88%;
+        max-width:600px;
+        padding:20px 10px 70px;
     }
 
     .small-title{
-        font-size:12px;
+        font-size:11px;
         letter-spacing:3px;
-        margin-bottom:20px;
+        margin-bottom:18px;
     }
 
     .hero h2{
@@ -335,16 +308,16 @@ nav a:hover{
     }
 
     .hero-content p{
-        font-size:17px;
+        font-size:16px;
         line-height:1.45;
         margin-bottom:25px;
     }
 
     .buttons{
-        width:100%;
         flex-direction:column;
         align-items:center;
         gap:12px;
+        width:100%;
     }
 
     .btn{
@@ -355,10 +328,9 @@ nav a:hover{
     }
 
     .slider-btn{
-        width:55px;
-        height:55px;
+        width:52px;
+        height:52px;
         font-size:30px;
-        top:63%;
     }
 
     #prev{
@@ -370,22 +342,31 @@ nav a:hover{
     }
 
     .dots{
-        bottom:18px;
+        bottom:15px;
+        gap:7px;
+    }
+
+    .dot{
+        width:8px;
+        height:8px;
+    }
+
+    .dot.active{
+        width:22px;
     }
 }
 
-/* ================= SMALL MOBILE ================= */
+/* SMALL MOBILE */
 
 @media(max-width:480px){
 
     header{
-        height:110px;
-        padding:16px 22px;
+        height:105px;
+        padding:15px 20px;
     }
 
     .logo h1{
-        font-size:30px;
-        line-height:1.05;
+        font-size:29px;
     }
 
     .logo p{
@@ -396,17 +377,16 @@ nav a:hover{
     .menu-btn{
         width:54px;
         height:54px;
-        font-size:28px;
+        font-size:29px;
     }
 
     .hero{
-        height:calc(100vh - 110px);
-        min-height:620px;
+        min-height:calc(100vh - 105px);
+        height:calc(100vh - 105px);
     }
 
     .hero-content{
-        width:94%;
-        padding:15px;
+        padding:20px 5px 65px;
     }
 
     .small-title{
@@ -434,18 +414,17 @@ nav a:hover{
     }
 
     .slider-btn{
-        width:52px;
-        height:52px;
+        width:50px;
+        height:50px;
         font-size:28px;
-        top:63%;
     }
 
     #prev{
-        left:10px;
+        left:12px;
     }
 
     #next{
-        right:10px;
+        right:12px;
     }
 }
 </style>
@@ -464,12 +443,14 @@ nav a:hover{
 
     <nav>
         <a href="#">Home</a>
-        <a href="#services">Services</a>
+        <a href="#">Services</a>
         <a href="#">Wedding</a>
         <a href="#">Contact</a>
     </nav>
 
-    <button class="menu-btn">☰</button>
+    <div class="menu-btn">
+        ☰
+    </div>
 
 </header>
 
@@ -478,30 +459,30 @@ nav a:hover{
 
 <section class="hero">
 
-    <div class="slides">
-
-        <div class="slide active">
-            <img src="1.jpg" alt="Parag Photo Studio">
-        </div>
-
-        <div class="slide">
-            <img src="3.jpg" alt="Parag Photo Studio">
-        </div>
-
-        <div class="slide">
-            <img src="4.JPG" alt="Parag Photo Studio">
-        </div>
-
-        <div class="slide">
-            <img src="5.jpg" alt="Parag Photo Studio">
-        </div>
-
+    <!-- PHOTO 1 -->
+    <div class="slide active">
+        <img src="1.jpg" alt="Parag Photo Studio">
     </div>
 
+    <!-- PHOTO 2 -->
+    <div class="slide">
+        <img src="3.jpg" alt="Parag Photo Studio">
+    </div>
 
-    <button class="slider-btn" id="prev">‹</button>
-    <button class="slider-btn" id="next">›</button>
+    <!-- PHOTO 3 -->
+    <div class="slide">
+        <img src="4.JPG" alt="Parag Photo Studio">
+    </div>
 
+    <!-- PHOTO 4 -->
+    <div class="slide">
+        <img src="5.jpg" alt="Parag Photo Studio">
+    </div>
+
+    <div class="overlay"></div>
+
+
+    <!-- CONTENT -->
 
     <div class="hero-content">
 
@@ -533,7 +514,7 @@ nav a:hover{
             </a>
 
             <a class="btn services"
-               href="#services">
+               href="#">
                View Services
             </a>
 
@@ -542,12 +523,25 @@ nav a:hover{
     </div>
 
 
+    <!-- ARROWS -->
+
+    <button class="slider-btn" id="prev">
+        ‹
+    </button>
+
+    <button class="slider-btn" id="next">
+        ›
+    </button>
+
+
+    <!-- DOTS -->
+
     <div class="dots">
 
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+        <span class="dot" data-slide="2"></span>
+        <span class="dot" data-slide="3"></span>
 
     </div>
 
@@ -562,47 +556,107 @@ const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 
 let current = 0;
+let timer;
+
+
+/* SHOW SLIDE */
 
 function showSlide(index){
 
     if(index >= slides.length){
-        current = 0;
-    }
-    else if(index < 0){
-        current = slides.length - 1;
-    }
-    else{
-        current = index;
+        index = 0;
     }
 
-    slides.forEach((slide,i)=>{
-        slide.classList.toggle("active", i === current);
+    if(index < 0){
+        index = slides.length - 1;
+    }
+
+    slides.forEach(slide => {
+        slide.classList.remove("active");
     });
 
-    dots.forEach((dot,i)=>{
-        dot.classList.toggle("active", i === current);
+    dots.forEach(dot => {
+        dot.classList.remove("active");
     });
+
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+
+    current = index;
 }
 
-document.getElementById("next").addEventListener("click",()=>{
-    showSlide(current + 1);
-});
 
-document.getElementById("prev").addEventListener("click",()=>{
+/* NEXT */
+
+function nextSlide(){
+    showSlide(current + 1);
+}
+
+
+/* PREVIOUS */
+
+function prevSlide(){
     showSlide(current - 1);
+}
+
+
+/* BUTTONS */
+
+document.getElementById("next").addEventListener("click", function(){
+    nextSlide();
+    restartTimer();
 });
 
-dots.forEach((dot,index)=>{
-    dot.addEventListener("click",()=>{
+document.getElementById("prev").addEventListener("click", function(){
+    prevSlide();
+    restartTimer();
+});
+
+
+/* DOTS */
+
+dots.forEach(dot => {
+
+    dot.addEventListener("click", function(){
+
+        const index = Number(this.dataset.slide);
+
         showSlide(index);
+
+        restartTimer();
+
     });
+
 });
 
-/* AUTO SLIDESHOW */
 
-setInterval(()=>{
-    showSlide(current + 1);
-},5000);
+/* AUTO SLIDE */
+
+function startTimer(){
+
+    timer = setInterval(function(){
+
+        nextSlide();
+
+    },5000);
+
+}
+
+
+/* RESTART */
+
+function restartTimer(){
+
+    clearInterval(timer);
+
+    startTimer();
+
+}
+
+
+/* START */
+
+startTimer();
 
 </script>
 
