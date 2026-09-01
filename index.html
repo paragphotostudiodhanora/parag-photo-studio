@@ -5,20 +5,266 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Parag Photo Studio | Dhanora</title>
-/* ================= MOBILE FINAL FIX ================= */
 
-@media (max-width:768px){
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#000;
+    color:#fff;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    height:90px;
+    background:#050505;
+    border-bottom:1px solid #ffd000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    position:relative;
+    z-index:20;
+}
+
+.logo h1{
+    font-size:28px;
+    color:#ffd000;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo p{
+    margin-top:4px;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:3px;
+    color:#fff;
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#ffd000;
+}
+
+.menu-btn{
+    display:none;
+    width:55px;
+    height:55px;
+    border:3px solid #ffd000;
+    border-radius:12px;
+    color:#ffd000;
+    font-size:30px;
+    background:none;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    width:100%;
+    height:calc(100vh - 90px);
+    min-height:650px;
+    position:relative;
+    overflow:hidden;
+    background:#000;
+}
+
+.slides{
+    position:absolute;
+    inset:0;
+}
+
+.slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 0.8s ease;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
+
+.slide::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.48);
+}
+
+/* ================= HERO CONTENT ================= */
+
+.hero-content{
+    position:absolute;
+    z-index:5;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    max-width:900px;
+    text-align:center;
+}
+
+.small-title{
+    color:#ffd000;
+    font-size:15px;
+    font-weight:bold;
+    letter-spacing:5px;
+    margin-bottom:22px;
+}
+
+.hero h2{
+    font-size:62px;
+    line-height:1;
+    font-weight:900;
+    margin-bottom:25px;
+}
+
+.hero h2 span{
+    color:#ffd000;
+}
+
+.hero-content p{
+    max-width:800px;
+    margin:0 auto 28px;
+    font-size:18px;
+    line-height:1.5;
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    padding:14px 28px;
+    min-width:155px;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.call{
+    background:#ff2b2b;
+    color:#fff;
+}
+
+.whatsapp{
+    background:#12d65b;
+    color:#fff;
+}
+
+.services{
+    background:#ffd000;
+    color:#000;
+}
+
+/* ================= ARROWS ================= */
+
+.slider-btn{
+    position:absolute;
+    z-index:10;
+    top:50%;
+    transform:translateY(-50%);
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:2px solid #ffd000;
+    background:rgba(0,0,0,0.35);
+    color:#ffd000;
+    font-size:30px;
+    cursor:pointer;
+}
+
+#prev{
+    left:18px;
+}
+
+#next{
+    right:18px;
+}
+
+/* ================= DOTS ================= */
+
+.dots{
+    position:absolute;
+    z-index:10;
+    bottom:22px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:7px;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#aaa;
+    cursor:pointer;
+}
+
+.dot.active{
+    width:22px;
+    border-radius:10px;
+    background:#ffd000;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
 
     header{
-        height:145px;
-        padding:20px 28px;
+        height:125px;
+        padding:20px 35px;
+        align-items:center;
     }
 
     .logo h1{
-        font-size:34px;
+        font-size:36px;
         line-height:1.05;
-        letter-spacing:1.5px;
-        white-space:nowrap;
+        letter-spacing:1px;
     }
 
     .logo p{
@@ -27,31 +273,28 @@
         margin-top:8px;
     }
 
-    .menu-btn{
-        display:block;
-        width:58px;
-        height:58px;
-        font-size:32px;
-        flex-shrink:0;
-    }
-
     nav{
         display:none;
     }
 
-
-    /* HERO */
-
-    .hero{
-        height:calc(100vh - 145px);
-        min-height:720px;
-        background:#000;
+    .menu-btn{
+        display:block;
+        flex-shrink:0;
     }
 
+    .hero{
+        height:calc(100vh - 125px);
+        min-height:650px;
+    }
 
-    /* PHOTO - FULL PHOTO */
-
+    /*
+       MOBILE PHOTO:
+       Photo को पूरा दिखाने के लिए contain
+    */
     .slide{
+        display:flex;
+        align-items:center;
+        justify-content:center;
         background:#000;
     }
 
@@ -59,41 +302,45 @@
         width:100%;
         height:100%;
         object-fit:contain;
-        object-position:center center;
+        object-position:center;
         background:#000;
     }
 
-
-    /* HERO TEXT */
+    .hero::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:rgba(0,0,0,0.18);
+        z-index:2;
+        pointer-events:none;
+    }
 
     .hero-content{
-        padding:35px 22px 90px;
-        justify-content:center;
+        top:50%;
+        width:92%;
+        max-width:650px;
+        padding:20px;
     }
 
     .small-title{
-        font-size:11px;
+        font-size:12px;
         letter-spacing:3px;
-        margin-bottom:18px;
+        margin-bottom:20px;
     }
 
     .hero h2{
-        font-size:38px;
+        font-size:42px;
         line-height:1.05;
-        margin:0;
+        margin-bottom:22px;
     }
 
     .hero-content p{
-        max-width:620px;
-        font-size:16px;
+        font-size:17px;
         line-height:1.45;
-        margin:20px auto;
+        margin-bottom:25px;
     }
 
-
-    /* BUTTONS */
-
-    .hero-buttons{
+    .buttons{
         width:100%;
         flex-direction:column;
         align-items:center;
@@ -101,19 +348,17 @@
     }
 
     .btn{
-        width:78%;
+        width:82%;
         min-width:0;
         padding:15px 18px;
         font-size:18px;
     }
 
-
-    /* ARROWS */
-
     .slider-btn{
-        width:56px;
-        height:56px;
-        font-size:32px;
+        width:55px;
+        height:55px;
+        font-size:30px;
+        top:63%;
     }
 
     #prev{
@@ -124,38 +369,23 @@
         right:15px;
     }
 
-
-    /* DOTS */
-
     .dots{
-        bottom:15px;
-        gap:5px;
-    }
-
-    .dot{
-        width:6px;
-        height:6px;
-    }
-
-    .dot.active{
-        width:18px;
+        bottom:18px;
     }
 }
-
 
 /* ================= SMALL MOBILE ================= */
 
 @media(max-width:480px){
 
     header{
-        height:145px;
-        padding:20px 22px;
+        height:110px;
+        padding:16px 22px;
     }
 
     .logo h1{
-        font-size:32px;
+        font-size:30px;
         line-height:1.05;
-        white-space:nowrap;
     }
 
     .logo p{
@@ -166,18 +396,17 @@
     .menu-btn{
         width:54px;
         height:54px;
-        font-size:29px;
+        font-size:28px;
     }
-
 
     .hero{
-        height:calc(100vh - 145px);
-        min-height:700px;
+        height:calc(100vh - 110px);
+        min-height:620px;
     }
 
-
     .hero-content{
-        padding:30px 18px 80px;
+        width:94%;
+        padding:15px;
     }
 
     .small-title{
@@ -189,12 +418,13 @@
     .hero h2{
         font-size:35px;
         line-height:1.05;
+        margin-bottom:18px;
     }
 
     .hero-content p{
         font-size:15px;
         line-height:1.45;
-        margin:18px auto;
+        margin-bottom:20px;
     }
 
     .btn{
@@ -206,1261 +436,175 @@
     .slider-btn{
         width:52px;
         height:52px;
-        font-size:30px;
-    }
-
-}
-<style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#000;
-    color:#fff;
-    overflow-x:hidden;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-
-/* ================= HEADER ================= */
-
-header{
-    height:76px;
-    background:#050505;
-    border-bottom:1px solid #ffd400;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 5%;
-
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-.logo h1{
-    color:#ffd400;
-    font-size:28px;
-    letter-spacing:2px;
-    font-weight:900;
-}
-
-.logo p{
-    color:#fff;
-    font-size:12px;
-    font-weight:bold;
-    letter-spacing:3px;
-    margin-top:4px;
-}
-
-nav{
-    display:flex;
-    gap:32px;
-}
-
-nav a{
-    font-size:15px;
-    font-weight:bold;
-    transition:.25s;
-}
-
-nav a:hover{
-    color:#ffd400;
-}
-
-.menu-btn{
-    display:none;
-    width:54px;
-    height:48px;
-
-    border:2px solid #ffd400;
-    border-radius:10px;
-
-    background:#050505;
-    color:#ffd400;
-
-    font-size:30px;
-    cursor:pointer;
-}
-
-
-/* ================= HERO ================= */
-
-.hero{
-    position:relative;
-    height:calc(100vh - 76px);
-    min-height:620px;
-
-    background:#000;
-    overflow:hidden;
-}
-
-
-/* ================= SLIDESHOW ================= */
-
-#slideshow{
-    position:absolute;
-    inset:0;
-
-    background:#000;
-    overflow:hidden;
-}
-
-.slide{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:opacity .8s ease;
-
-    background:#000;
-}
-
-.slide.active{
-    opacity:1;
-    visibility:visible;
-}
-
-.slide img{
-    display:block;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-    object-position:center center;
-
-    background:#000;
-}
-
-
-/* DARK OVERLAY */
-
-#slideshow::after{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    z-index:2;
-    pointer-events:none;
-
-    background:
-    linear-gradient(
-        to bottom,
-        rgba(0,0,0,.15),
-        rgba(0,0,0,.35) 50%,
-        rgba(0,0,0,.65)
-    );
-}
-
-
-/* ================= HERO CONTENT ================= */
-
-.hero-content{
-    position:absolute;
-
-    inset:0;
-
-    z-index:5;
-
-    display:flex;
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:40px 7%;
-}
-
-.small-title{
-    color:#ffd400;
-
-    font-size:15px;
-    font-weight:bold;
-
-    letter-spacing:5px;
-
-    margin-bottom:20px;
-}
-
-.hero h2{
-    font-size:64px;
-    line-height:1.02;
-
-    font-weight:900;
-
-    text-shadow:
-        0 5px 25px #000;
-}
-
-.hero h2 span{
-    color:#ffd400;
-}
-
-.hero-content p{
-    max-width:850px;
-
-    font-size:18px;
-    line-height:1.6;
-
-    margin:25px auto;
-
-    text-shadow:
-        0 3px 12px #000;
-}
-
-
-/* ================= BUTTONS ================= */
-
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-
-    gap:14px;
-
-    flex-wrap:wrap;
-}
-
-.btn{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    min-width:155px;
-
-    padding:14px 24px;
-
-    border-radius:30px;
-
-    font-size:15px;
-    font-weight:bold;
-
-    color:#fff;
-
-    cursor:pointer;
-
-    border:none;
-}
-
-.btn-call{
-    background:#f22f2f;
-}
-
-.btn-whatsapp{
-    background:#16d65a;
-}
-
-.btn-gold{
-    background:#ffd000;
-    color:#000;
-}
-
-.btn:hover{
-    transform:scale(1.04);
-}
-
-
-/* ================= SLIDER BUTTONS ================= */
-
-.slider-btn{
-    position:absolute;
-
-    z-index:7;
-
-    top:50%;
-    transform:translateY(-50%);
-
-    width:50px;
-    height:50px;
-
-    border-radius:50%;
-
-    border:1px solid #ffd400;
-
-    background:rgba(0,0,0,.35);
-
-    color:#ffd400;
-
-    font-size:32px;
-
-    cursor:pointer;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-#prev{
-    left:18px;
-}
-
-#next{
-    right:18px;
-}
-
-.slider-btn:hover{
-    background:#ffd400;
-    color:#000;
-}
-
-
-/* ================= DOTS ================= */
-
-.dots{
-    position:absolute;
-
-    z-index:7;
-
-    bottom:20px;
-
-    left:50%;
-    transform:translateX(-50%);
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    gap:7px;
-
-    max-width:90%;
-
-    flex-wrap:wrap;
-}
-
-.dot{
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:#888;
-
-    cursor:pointer;
-}
-
-.dot.active{
-    background:#ffd400;
-
-    width:22px;
-
-    border-radius:8px;
-}
-
-
-/* ================= SERVICES ================= */
-
-#services{
-    padding:80px 5%;
-    background:#0a0a0a;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:42px;
-}
-
-.section-title .small{
-    color:#ffd400;
-
-    font-weight:bold;
-
-    letter-spacing:5px;
-
-    font-size:13px;
-}
-
-.section-title h2{
-    font-size:40px;
-    margin:12px 0;
-}
-
-.section-title p{
-    color:#bbb;
-}
-
-.service-grid{
-    max-width:1200px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:20px;
-}
-
-.service-box{
-    background:#111;
-
-    border:1px solid #222;
-
-    padding:35px 25px;
-
-    text-align:center;
-
-    border-radius:12px;
-
-    transition:.3s;
-}
-
-.service-box:hover{
-    border-color:#ffd400;
-
-    transform:translateY(-5px);
-}
-
-.service-box h3{
-    color:#ffd400;
-
-    margin-bottom:12px;
-
-    font-size:21px;
-}
-
-.service-box p{
-    color:#bbb;
-
-    line-height:1.6;
-}
-
-
-/* ================= CONTACT ================= */
-
-#contact{
-    padding:70px 5%;
-    background:#050505;
-
-    text-align:center;
-}
-
-#contact h2{
-    color:#ffd400;
-
-    font-size:36px;
-
-    margin-bottom:15px;
-}
-
-#contact p{
-    color:#ccc;
-
-    margin:8px 0;
-}
-
-
-/* ================= MOBILE ================= */
-
-@media(max-width:768px){
-
-    header{
-        height:160px;
-
-        padding:25px 36px;
-
-        align-items:center;
-    }
-
-    .logo h1{
-        font-size:42px;
-        line-height:1.05;
-    }
-
-    .logo p{
-        font-size:14px;
-        margin-top:10px;
-    }
-
-    nav{
-        display:none;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-
-    /* MOBILE HERO */
-
-    .hero{
-        height:calc(100vh - 160px);
-
-        min-height:920px;
-    }
-
-
-    .slide img{
-        width:100%;
-        height:100%;
-
-        object-fit:cover;
-
-        object-position:center center;
-    }
-
-
-    .hero-content{
-        justify-content:center;
-
-        padding:50px 30px 100px;
-    }
-
-    .small-title{
-        font-size:14px;
-
-        letter-spacing:4px;
-
-        margin-bottom:28px;
-    }
-
-    .hero h2{
-        font-size:50px;
-
-        line-height:1.05;
-    }
-
-    .hero-content p{
-        font-size:19px;
-
-        line-height:1.55;
-
-        margin:30px 0;
-    }
-
-
-    .hero-buttons{
-        width:100%;
-
-        display:flex;
-
-        flex-direction:column;
-
-        gap:18px;
-
-        align-items:center;
-    }
-
-    .btn{
-        width:82%;
-
-        min-width:0;
-
-        padding:20px;
-
-        font-size:22px;
-    }
-
-
-    .slider-btn{
-        width:88px;
-        height:88px;
-
-        font-size:45px;
+        font-size:28px;
+        top:63%;
     }
 
     #prev{
-        left:20px;
+        left:10px;
     }
 
     #next{
-        right:20px;
+        right:10px;
     }
-
-
-    .dots{
-        bottom:25px;
-    }
-
-
-    .service-grid{
-        grid-template-columns:1fr;
-    }
-
 }
-
-
-/* ================= SMALL MOBILE ================= */
-
-@media(max-width:480px){
-
-    header{
-        height:230px;
-
-        padding:35px 36px;
-    }
-
-    .logo h1{
-        font-size:46px;
-    }
-
-    .logo p{
-        font-size:15px;
-    }
-
-    .menu-btn{
-        width:62px;
-        height:62px;
-
-        font-size:34px;
-    }
-
-
-    .hero{
-        height:1100px;
-
-        min-height:1100px;
-    }
-
-
-    .hero-content{
-        padding:
-            80px 25px 130px;
-    }
-
-    .small-title{
-        font-size:13px;
-
-        margin-bottom:35px;
-    }
-
-    .hero h2{
-        font-size:52px;
-    }
-
-    .hero-content p{
-        font-size:20px;
-    }
-
-    .btn{
-        width:82%;
-
-        padding:21px;
-
-        font-size:22px;
-    }
-
-}
-
-
-/* ================= HIDE BROKEN IMAGE ================= */
-
-.slide img.broken{
-    display:none;
-}
-
 </style>
 </head>
 
-
 <body>
-
 
 <!-- ================= HEADER ================= -->
 
 <header>
 
     <div class="logo">
-
-        <h1>PARAG PHOTO<br class="mobile-break"> STUDIO</h1>
-
+        <h1>PARAG PHOTO STUDIO</h1>
         <p>DHANORA • GADCHIROLI</p>
-
     </div>
 
-
     <nav>
-
-        <a href="#home">Home</a>
-
+        <a href="#">Home</a>
         <a href="#services">Services</a>
-
-        <a href="#wedding">Wedding</a>
-
-        <a href="#contact">Contact</a>
-
+        <a href="#">Wedding</a>
+        <a href="#">Contact</a>
     </nav>
 
-
-    <button class="menu-btn"
-            onclick="toggleMenu()">
-
-        ☰
-
-    </button>
+    <button class="menu-btn">☰</button>
 
 </header>
 
 
-
 <!-- ================= HERO ================= -->
 
-<section class="hero" id="home">
+<section class="hero">
+
+    <div class="slides">
+
+        <div class="slide active">
+            <img src="1.jpg" alt="Parag Photo Studio">
+        </div>
+
+        <div class="slide">
+            <img src="3.jpg" alt="Parag Photo Studio">
+        </div>
+
+        <div class="slide">
+            <img src="4.JPG" alt="Parag Photo Studio">
+        </div>
+
+        <div class="slide">
+            <img src="5.jpg" alt="Parag Photo Studio">
+        </div>
+
+    </div>
 
 
-    <!-- SLIDES -->
+    <button class="slider-btn" id="prev">‹</button>
+    <button class="slider-btn" id="next">›</button>
 
-    <div id="slideshow"></div>
-
-
-    <!-- PREVIOUS -->
-
-    <button
-        class="slider-btn"
-        id="prev"
-        onclick="previousSlide()">
-
-        ‹
-
-    </button>
-
-
-    <!-- NEXT -->
-
-    <button
-        class="slider-btn"
-        id="next"
-        onclick="nextSlide()">
-
-        ›
-
-    </button>
-
-
-    <!-- CONTENT -->
 
     <div class="hero-content">
 
         <div class="small-title">
-
             ROYAL WEDDING • PORTRAIT • VIDEO
-
         </div>
 
-
         <h2>
-
             PARAG <span>PHOTO</span><br>
-
             STUDIO
-
         </h2>
 
-
         <p>
-
             Capturing your beautiful moments with premium photography,
             cinematic wedding films and creative pre-wedding photography.
-
         </p>
 
+        <div class="buttons">
 
-        <div class="hero-buttons">
-
-
-            <a
-                class="btn btn-call"
-                href="tel:9405507553">
-
-                📞 &nbsp;Call Now
-
+            <a class="btn call"
+               href="tel:9405507553">
+               📞 Call Now
             </a>
 
-
-            <a
-                class="btn btn-whatsapp"
-                href="https://wa.me/919359877572"
-                target="_blank">
-
-                💬 &nbsp;WhatsApp
-
+            <a class="btn whatsapp"
+               href="https://wa.me/919359877572"
+               target="_blank">
+               💬 WhatsApp
             </a>
 
-
-            <a
-                class="btn btn-gold"
-                href="#services">
-
-                View Services
-
+            <a class="btn services"
+               href="#services">
+               View Services
             </a>
 
-
         </div>
 
     </div>
 
 
-    <!-- DOTS -->
-
-    <div
-        class="dots"
-        id="dots">
-    </div>
-
-
-</section>
-
-
-
-<!-- ================= SERVICES ================= -->
-
-<section id="services">
-
-
-    <div class="section-title">
-
-        <div class="small">
-
-            WHAT WE OFFER
-
-        </div>
-
-
-        <h2>
-
-            Our Services
-
-        </h2>
-
-
-        <p>
-
-            Professional photography and digital services
-
-        </p>
-
-    </div>
-
-
-    <div class="service-grid">
-
-
-        <div class="service-box">
-
-            <h3>💍 Wedding Photography</h3>
-
-            <p>
-
-                Royal wedding photography,
-                cinematic wedding films
-                and beautiful memories.
-
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>📸 Portrait Photography</h3>
-
-            <p>
-
-                Professional portrait,
-                passport and studio photography.
-
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>🎬 Pre-Wedding</h3>
-
-            <p>
-
-                Creative pre-wedding photography
-                and cinematic videos.
-
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>🪪 PAN Card</h3>
-
-            <p>
-
-                PAN card photo and
-                online application services.
-
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>🚘 Driving Licence</h3>
-
-            <p>
-
-                Driving licence related
-                online services.
-
-            </p>
-
-        </div>
-
-
-        <div class="service-box">
-
-            <h3>🖼️ Photo Frame & Lamination</h3>
-
-            <p>
-
-                Photo enlargement,
-                premium frames and lamination.
-
-            </p>
-
-        </div>
-
+    <div class="dots">
+
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
 
     </div>
 
 </section>
 
 
-
-<!-- ================= WEDDING ================= -->
-
-<section id="wedding" style="
-padding:80px 5%;
-background:#0a0a0a;
-text-align:center;
-">
-
-    <div class="section-title">
-
-        <div class="small">
-
-            PARAG PHOTO STUDIO
-
-        </div>
-
-        <h2>
-
-            Royal Wedding Photography
-
-        </h2>
-
-        <p>
-
-            Your special moments,
-            beautifully captured forever.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= CONTACT ================= -->
-
-<section id="contact">
-
-    <h2>Contact Us</h2>
-
-    <p>📍 Dhanora, Gadchiroli</p>
-
-    <p>📞 9405507553</p>
-
-    <p>💬 WhatsApp: 9359877572</p>
-
-</section>
-
-
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-/* ==================================================
-   SLIDESHOW
-   ================================================== */
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
 
-
-/*
-   IMPORTANT:
-
-   Photos are:
-   1.jpg
-   2.jpg
-   3.jpg
-   ...
-   30.jpg
-
-   Code automatically tries BOTH:
-
-   1.jpg
-   1.JPG
-
-   So uppercase/lowercase extension
-   will not create a problem.
-*/
-
-
-const totalPhotos = 30;
-
-let currentSlide = 0;
-
-let slides = [];
-
-let dots = [];
-
-
-
-const slideshow =
-    document.getElementById("slideshow");
-
-const dotsContainer =
-    document.getElementById("dots");
-
-
-
-/* CREATE ALL 30 SLIDES */
-
-for(let i = 1; i <= totalPhotos; i++){
-
-    const slide =
-        document.createElement("div");
-
-    slide.className = "slide";
-
-
-    const img =
-        document.createElement("img");
-
-
-    img.alt =
-        "Parag Photo Studio Photography";
-
-
-    /*
-       First try .jpg
-    */
-
-    img.src = i + ".jpg";
-
-
-    /*
-       If .jpg doesn't exist,
-       try .JPG
-    */
-
-    img.onerror = function(){
-
-        if(!this.dataset.upper){
-
-            this.dataset.upper = "yes";
-
-            this.src = i + ".JPG";
-
-        }else{
-
-            this.classList.add("broken");
-
-        }
-
-    };
-
-
-    slide.appendChild(img);
-
-    slideshow.appendChild(slide);
-
-    slides.push(slide);
-
-
-
-    /* CREATE DOT */
-
-    const dot =
-        document.createElement("span");
-
-    dot.className = "dot";
-
-
-    dot.onclick = function(){
-
-        showSlide(i - 1);
-
-    };
-
-
-    dotsContainer.appendChild(dot);
-
-    dots.push(dot);
-
-}
-
-
-/* SHOW FIRST SLIDE */
+let current = 0;
 
 function showSlide(index){
 
-    if(index < 0){
-
-        index = slides.length - 1;
-
-    }
-
     if(index >= slides.length){
-
-        index = 0;
-
+        current = 0;
+    }
+    else if(index < 0){
+        current = slides.length - 1;
+    }
+    else{
+        current = index;
     }
 
-
-    slides.forEach(function(slide){
-
-        slide.classList.remove("active");
-
+    slides.forEach((slide,i)=>{
+        slide.classList.toggle("active", i === current);
     });
 
-
-    dots.forEach(function(dot){
-
-        dot.classList.remove("active");
-
+    dots.forEach((dot,i)=>{
+        dot.classList.toggle("active", i === current);
     });
-
-
-    slides[index].classList.add("active");
-
-    dots[index].classList.add("active");
-
-
-    currentSlide = index;
-
 }
 
+document.getElementById("next").addEventListener("click",()=>{
+    showSlide(current + 1);
+});
 
+document.getElementById("prev").addEventListener("click",()=>{
+    showSlide(current - 1);
+});
 
-/* NEXT */
-
-function nextSlide(){
-
-    showSlide(currentSlide + 1);
-
-}
-
-
-
-/* PREVIOUS */
-
-function previousSlide(){
-
-    showSlide(currentSlide - 1);
-
-}
-
-
+dots.forEach((dot,index)=>{
+    dot.addEventListener("click",()=>{
+        showSlide(index);
+    });
+});
 
 /* AUTO SLIDESHOW */
 
-setInterval(function(){
-
-    nextSlide();
-
+setInterval(()=>{
+    showSlide(current + 1);
 },5000);
 
-
-
-/* START */
-
-showSlide(0);
-
-
-
-/* ==================================================
-   MOBILE MENU
-   ================================================== */
-
-function toggleMenu(){
-
-    const nav =
-        document.querySelector("nav");
-
-
-    if(nav.style.display === "flex"){
-
-        nav.style.display = "none";
-
-    }else{
-
-        nav.style.display = "flex";
-
-        nav.style.position = "absolute";
-
-        nav.style.top = "160px";
-
-        nav.style.left = "0";
-
-        nav.style.right = "0";
-
-        nav.style.background = "#050505";
-
-        nav.style.padding = "25px";
-
-        nav.style.flexDirection = "column";
-
-        nav.style.alignItems = "center";
-
-        nav.style.gap = "20px";
-
-    }
-
-}
-
-
-/* ==================================================
-   MOBILE MENU RESET
-   ================================================== */
-
-window.addEventListener("resize",function(){
-
-    if(window.innerWidth > 768){
-
-        document.querySelector("nav").removeAttribute("style");
-
-    }
-
-});
-
 </script>
-
 
 </body>
 </html>
