@@ -5,7 +5,211 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Parag Photo Studio | Dhanora</title>
+/* ================= MOBILE FINAL FIX ================= */
 
+@media (max-width:768px){
+
+    header{
+        height:145px;
+        padding:20px 28px;
+    }
+
+    .logo h1{
+        font-size:34px;
+        line-height:1.05;
+        letter-spacing:1.5px;
+        white-space:nowrap;
+    }
+
+    .logo p{
+        font-size:11px;
+        letter-spacing:2.5px;
+        margin-top:8px;
+    }
+
+    .menu-btn{
+        display:block;
+        width:58px;
+        height:58px;
+        font-size:32px;
+        flex-shrink:0;
+    }
+
+    nav{
+        display:none;
+    }
+
+
+    /* HERO */
+
+    .hero{
+        height:calc(100vh - 145px);
+        min-height:720px;
+        background:#000;
+    }
+
+
+    /* PHOTO - FULL PHOTO */
+
+    .slide{
+        background:#000;
+    }
+
+    .slide img{
+        width:100%;
+        height:100%;
+        object-fit:contain;
+        object-position:center center;
+        background:#000;
+    }
+
+
+    /* HERO TEXT */
+
+    .hero-content{
+        padding:35px 22px 90px;
+        justify-content:center;
+    }
+
+    .small-title{
+        font-size:11px;
+        letter-spacing:3px;
+        margin-bottom:18px;
+    }
+
+    .hero h2{
+        font-size:38px;
+        line-height:1.05;
+        margin:0;
+    }
+
+    .hero-content p{
+        max-width:620px;
+        font-size:16px;
+        line-height:1.45;
+        margin:20px auto;
+    }
+
+
+    /* BUTTONS */
+
+    .hero-buttons{
+        width:100%;
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
+    }
+
+    .btn{
+        width:78%;
+        min-width:0;
+        padding:15px 18px;
+        font-size:18px;
+    }
+
+
+    /* ARROWS */
+
+    .slider-btn{
+        width:56px;
+        height:56px;
+        font-size:32px;
+    }
+
+    #prev{
+        left:15px;
+    }
+
+    #next{
+        right:15px;
+    }
+
+
+    /* DOTS */
+
+    .dots{
+        bottom:15px;
+        gap:5px;
+    }
+
+    .dot{
+        width:6px;
+        height:6px;
+    }
+
+    .dot.active{
+        width:18px;
+    }
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:480px){
+
+    header{
+        height:145px;
+        padding:20px 22px;
+    }
+
+    .logo h1{
+        font-size:32px;
+        line-height:1.05;
+        white-space:nowrap;
+    }
+
+    .logo p{
+        font-size:10px;
+        letter-spacing:2px;
+    }
+
+    .menu-btn{
+        width:54px;
+        height:54px;
+        font-size:29px;
+    }
+
+
+    .hero{
+        height:calc(100vh - 145px);
+        min-height:700px;
+    }
+
+
+    .hero-content{
+        padding:30px 18px 80px;
+    }
+
+    .small-title{
+        font-size:10px;
+        letter-spacing:2.5px;
+        margin-bottom:16px;
+    }
+
+    .hero h2{
+        font-size:35px;
+        line-height:1.05;
+    }
+
+    .hero-content p{
+        font-size:15px;
+        line-height:1.45;
+        margin:18px auto;
+    }
+
+    .btn{
+        width:80%;
+        padding:14px;
+        font-size:17px;
+    }
+
+    .slider-btn{
+        width:52px;
+        height:52px;
+        font-size:30px;
+    }
+
+}
 <style>
 
 *{
