@@ -13,61 +13,143 @@ content="Parag Photo Studio Dhanora - Wedding Photography, Pre-Wedding, 4K Video
 
 <title>Parag Photo Studio | Dhanora</title>
 
-/* ===== MOBILE PHOTO FIX ===== */
+/* ===== FINAL MOBILE - FULL PHOTO WITHOUT CROP ===== */
 @media (max-width: 600px){
 
+  /* Slider */
   #slideshow{
-    width:100%;
-    height:70vh;
-    min-height:420px;
+    height: 600px !important;
+    min-height: 600px !important;
+    background:#000 !important;
+    position:relative;
     overflow:hidden;
   }
 
   #slideshow .slide{
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    width:100% !important;
+    height:600px !important;
+    background:#000 !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    position:absolute;
+    inset:0;
+    overflow:hidden;
   }
 
+  /* FULL PHOTO - NO CROP */
   #slideshow .slide img{
-    width:100%;
-    height:100%;
+    width:100% !important;
+    height:100% !important;
+
     object-fit:contain !important;
-    object-position:center center;
-    display:block;
+    object-position:center center !important;
+
+    background:#000 !important;
+    display:block !important;
   }
 
-  /* Mobile text */
+  /* Dark overlay */
+  #slideshow .slide::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+      to bottom,
+      rgba(0,0,0,.08),
+      rgba(0,0,0,.30),
+      rgba(0,0,0,.65)
+    );
+
+    pointer-events:none;
+    z-index:2;
+  }
+
+  /* Hero content */
   #slideshow .top{
-    padding:0 15px;
+    position:absolute !important;
+    z-index:5 !important;
+
+    top:85px !important;
+    left:15px !important;
+    right:15px !important;
+
+    text-align:center !important;
   }
 
   #slideshow .top h1{
-    font-size:32px;
-    line-height:1.05;
+    font-size:38px !important;
+    line-height:1.05 !important;
+    margin:10px 0 15px !important;
   }
 
   #slideshow .top p{
-    font-size:14px;
-    line-height:1.5;
-    max-width:95%;
-    margin:auto;
+    font-size:14px !important;
+    line-height:1.5 !important;
+
+    max-width:95% !important;
+    margin:0 auto !important;
   }
 
-  /* Mobile buttons */
+  /* Navigation arrows */
+  #prev,
+  #next{
+    position:absolute !important;
+    z-index:10 !important;
+
+    width:48px !important;
+    height:48px !important;
+
+    border-radius:50% !important;
+    font-size:24px !important;
+  }
+
+  #prev{
+    left:10px !important;
+  }
+
+  #next{
+    right:10px !important;
+  }
+
+  /* Contact buttons */
   .contact-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:8px;
+    position:absolute !important;
+    z-index:10 !important;
+
+    left:10px !important;
+    right:10px !important;
+    bottom:55px !important;
+
+    display:flex !important;
+    justify-content:center !important;
+    align-items:center !important;
+    flex-wrap:wrap !important;
+
+    gap:10px !important;
   }
 
   .contact-buttons a{
-    font-size:13px !important;
-    padding:10px 16px !important;
+    padding:12px 18px !important;
+    font-size:14px !important;
+    border-radius:30px !important;
   }
+
+  /* Dots */
+  #dots{
+    position:absolute !important;
+    z-index:10 !important;
+    bottom:20px !important;
+
+    left:50% !important;
+    transform:translateX(-50%) !important;
+
+    white-space:nowrap !important;
+  }
+
 }
 <style>
 
