@@ -18,45 +18,45 @@ html{
 }
 
 body{
-    background:#000;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
     color:#fff;
-    font-family:Arial, Helvetica, sans-serif;
     overflow-x:hidden;
-    overflow-y:auto;
 }
 
 /* ================= HEADER ================= */
 
 header{
-    height:90px;
+    height:86px;
     background:#050505;
-    border-bottom:2px solid #ffd400;
+    border-bottom:2px solid #ffd000;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:10px 5%;
-    position:relative;
-    z-index:100;
+    padding:0 5%;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo h1{
-    color:#ffd400;
-    font-size:30px;
+    font-size:28px;
+    color:#ffd000;
     letter-spacing:2px;
-    font-weight:900;
+    line-height:1;
 }
 
 .logo p{
-    color:#fff;
+    margin-top:8px;
     font-size:12px;
     font-weight:bold;
     letter-spacing:3px;
-    margin-top:5px;
+    color:#fff;
 }
 
 nav{
     display:flex;
-    gap:35px;
+    gap:32px;
 }
 
 nav a{
@@ -67,19 +67,18 @@ nav a{
 }
 
 nav a:hover{
-    color:#ffd400;
+    color:#ffd000;
 }
 
 .menu-btn{
     display:none;
-    color:#ffd400;
-    border:2px solid #ffd400;
+    width:50px;
+    height:50px;
+    border:2px solid #ffd000;
     border-radius:12px;
-    width:55px;
-    height:55px;
-    align-items:center;
-    justify-content:center;
-    font-size:30px;
+    background:transparent;
+    color:#ffd000;
+    font-size:28px;
 }
 
 /* ================= HERO ================= */
@@ -87,31 +86,22 @@ nav a:hover{
 .hero{
     position:relative;
     width:100%;
-    min-height:calc(100vh - 90px);
+    height:calc(100vh - 86px);
+    min-height:650px;
     background:#000;
     overflow:hidden;
-}
-
-.slider{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
 }
 
 .slide{
     position:absolute;
     inset:0;
-    width:100%;
-    height:100%;
-    display:none;
+    opacity:0;
+    transition:opacity 1s ease;
     background:#000;
 }
 
 .slide.active{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    opacity:1;
 }
 
 .slide img{
@@ -119,34 +109,33 @@ nav a:hover{
     height:100%;
     object-fit:contain;
     object-position:center;
+    display:block;
     background:#000;
 }
 
-/* dark overlay */
-
-.overlay{
+.slide::after{
+    content:"";
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.42);
-    pointer-events:none;
+    background:rgba(0,0,0,.48);
 }
-
-/* ================= HERO CONTENT ================= */
 
 .hero-content{
     position:absolute;
+    inset:0;
     z-index:5;
-    width:100%;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:30px 20px;
+    padding:30px;
+    pointer-events:none;
 }
 
 .small-title{
-    color:#ffd400;
-    font-size:14px;
+    color:#ffd000;
+    font-size:15px;
     font-weight:bold;
     letter-spacing:5px;
     margin-bottom:22px;
@@ -156,50 +145,49 @@ nav a:hover{
     font-size:64px;
     line-height:1;
     font-weight:900;
-    margin-bottom:28px;
+    margin-bottom:25px;
 }
 
 .hero h2 span{
-    color:#ffd400;
+    color:#ffd000;
 }
 
 .hero-content p{
     max-width:850px;
-    margin:0 auto 30px;
-    font-size:18px;
+    font-size:19px;
     line-height:1.5;
+    margin-bottom:30px;
 }
 
-.buttons{
+.hero-buttons{
     display:flex;
-    justify-content:center;
     gap:15px;
-    flex-wrap:wrap;
+    pointer-events:auto;
 }
 
 .btn{
-    border:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:170px;
+    padding:15px 25px;
+    border-radius:40px;
     text-decoration:none;
+    color:#fff;
     font-weight:bold;
     font-size:16px;
-    padding:15px 30px;
-    border-radius:35px;
-    min-width:155px;
-    display:inline-block;
 }
 
 .call{
-    background:#ff2929;
-    color:#fff;
+    background:#ff2d2d;
 }
 
 .whatsapp{
-    background:#16d65a;
-    color:#fff;
+    background:#16d85b;
 }
 
 .services-btn{
-    background:#ffd400;
+    background:#ffd000;
     color:#000;
 }
 
@@ -212,282 +200,204 @@ nav a:hover{
     z-index:10;
     width:52px;
     height:52px;
-    border:2px solid #ffd400;
-    background:rgba(0,0,0,0.45);
-    color:#ffd400;
     border-radius:50%;
+    border:2px solid #ffd000;
+    background:rgba(0,0,0,.45);
+    color:#ffd000;
     font-size:30px;
     cursor:pointer;
 }
 
+.slider-btn:hover{
+    background:#ffd000;
+    color:#000;
+}
+
 #prev{
-    left:18px;
+    left:20px;
 }
 
 #next{
-    right:18px;
-}
-
-.slider-btn:hover{
-    background:#ffd400;
-    color:#000;
+    right:20px;
 }
 
 /* ================= DOTS ================= */
 
 .dots{
     position:absolute;
-    bottom:20px;
+    bottom:22px;
     left:50%;
     transform:translateX(-50%);
     z-index:20;
     display:flex;
-    gap:8px;
+    gap:9px;
 }
 
 .dot{
-    width:8px;
-    height:8px;
-    background:#aaa;
+    width:10px;
+    height:10px;
+    background:#888;
     border-radius:50%;
 }
 
 .dot.active{
-    width:25px;
+    width:28px;
     border-radius:10px;
-    background:#ffd400;
+    background:#ffd000;
 }
 
-/* ================= SERVICES ================= */
+/* ================= COMMON SECTION ================= */
 
 section{
-    position:relative;
     width:100%;
-    padding:90px 5%;
-    background:#050505;
+    padding:90px 6%;
     border-top:1px solid #222;
 }
 
 .section-title{
     text-align:center;
-    color:#ffd400;
-    font-size:40px;
-    margin-bottom:25px;
+    color:#ffd000;
+    font-size:42px;
+    margin-bottom:18px;
 }
 
-.section-text{
+.section-subtitle{
     text-align:center;
     max-width:900px;
-    margin:auto;
+    margin:0 auto 50px;
+    color:#ddd;
     font-size:17px;
-    line-height:1.8;
+    line-height:1.7;
 }
 
-.service-grid{
-    max-width:1100px;
-    margin:50px auto 0;
+/* ================= SERVICES ================= */
+
+.services-grid{
+    max-width:1200px;
+    margin:auto;
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
 }
 
 .service-card{
     background:#111;
-    border:1px solid #333;
-    border-radius:15px;
+    border:1px solid #292929;
+    border-radius:18px;
     padding:30px 20px;
     text-align:center;
+    transition:.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-7px);
+    border-color:#ffd000;
+}
+
+.service-icon{
+    font-size:42px;
+    margin-bottom:15px;
 }
 
 .service-card h3{
-    color:#ffd400;
-    margin-bottom:12px;
+    color:#ffd000;
+    font-size:19px;
+    margin-bottom:10px;
 }
 
 .service-card p{
-    color:#ddd;
-    line-height:1.6;
+    color:#bbb;
+    font-size:14px;
+    line-height:1.5;
 }
 
 /* ================= WEDDING ================= */
 
-#wedding{
-    background:#000;
-}
-
-.wedding-box{
-    max-width:1100px;
-    margin:40px auto 0;
+.wedding-section{
     text-align:center;
 }
 
-.wedding-box h3{
-    color:#ffd400;
-    font-size:32px;
-    margin-bottom:15px;
+.wedding-box{
+    max-width:1000px;
+    margin:auto;
+    padding:55px 25px;
+    border:1px solid #333;
+    border-radius:20px;
+    background:#0d0d0d;
+}
+
+.wedding-box h2{
+    color:#ffd000;
+    font-size:38px;
+    margin-bottom:18px;
+}
+
+.wedding-box p{
+    color:#ddd;
+    font-size:17px;
+    line-height:1.7;
 }
 
 /* ================= CONTACT ================= */
 
-#contact{
+.contact-section{
     text-align:center;
 }
 
-.contact-number{
-    font-size:28px;
-    color:#ffd400;
-    font-weight:bold;
-    margin:20px 0;
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.contact-buttons .btn{
+    min-width:220px;
 }
 
 /* ================= FOOTER ================= */
 
 footer{
     background:#000;
-    border-top:1px solid #333;
+    border-top:1px solid #222;
+    padding:30px 20px;
     text-align:center;
-    padding:25px 10px;
-    color:#aaa;
 }
 
-/* ================================================= */
-/* ================= MOBILE ======================== */
-/* ================================================= */
+footer h3{
+    color:#ffd000;
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#aaa;
+    font-size:14px;
+}
+
+/* ================= TABLET ================= */
+
+@media(max-width:1000px){
+
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h2{
+        font-size:52px;
+    }
+}
+
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
     header{
-        height:120px;
-        padding:15px 25px;
+        height:82px;
+        padding:0 20px;
     }
 
     .logo h1{
-        font-size:30px;
-        line-height:1.05;
-        max-width:260px;
-    }
-
-    .logo p{
-        font-size:11px;
-        margin-top:8px;
-    }
-
-    nav{
-        display:none;
-    }
-
-    .menu-btn{
-        display:flex;
-        flex-shrink:0;
-    }
-
-    .hero{
-        min-height:calc(100vh - 120px);
-        height:auto;
-    }
-
-    .slide img{
-        object-fit:contain;
-        width:100%;
-        height:100%;
-    }
-
-    .overlay{
-        background:rgba(0,0,0,0.45);
-    }
-
-    .hero-content{
-        padding:20px 18px 75px;
-        top:50%;
-    }
-
-    .small-title{
-        font-size:11px;
-        letter-spacing:3px;
-        margin-bottom:15px;
-    }
-
-    .hero h2{
-        font-size:40px;
-        line-height:1.05;
-        margin-bottom:20px;
-    }
-
-    .hero-content p{
-        font-size:16px;
-        line-height:1.45;
-        margin-bottom:22px;
-    }
-
-    .buttons{
-        flex-direction:column;
-        align-items:center;
-        gap:12px;
-    }
-
-    .btn{
-        width:80%;
-        min-width:0;
-        font-size:18px;
-        padding:15px 18px;
-    }
-
-    .slider-btn{
-        width:52px;
-        height:52px;
-        font-size:30px;
-        top:72%;
-    }
-
-    #prev{
-        left:18px;
-    }
-
-    #next{
-        right:18px;
-    }
-
-    .dots{
-        bottom:15px;
-    }
-
-    section{
-        padding:70px 20px;
-    }
-
-    .section-title{
-        font-size:32px;
-    }
-
-    .section-text{
-        font-size:15px;
-    }
-
-    .service-grid{
-        grid-template-columns:1fr;
-        gap:15px;
-    }
-
-    .wedding-box h3{
-        font-size:27px;
-    }
-
-    .contact-number{
         font-size:23px;
-    }
-}
-
-/* SMALL MOBILE */
-
-@media(max-width:480px){
-
-    header{
-        height:105px;
-        padding:12px 18px;
-    }
-
-    .logo h1{
-        font-size:25px;
     }
 
     .logo p{
@@ -495,23 +405,155 @@ footer{
         letter-spacing:2px;
     }
 
+    nav{
+        display:none;
+        position:absolute;
+        top:82px;
+        left:0;
+        width:100%;
+        background:#080808;
+        border-bottom:1px solid #ffd000;
+        flex-direction:column;
+        align-items:center;
+        gap:0;
+    }
+
+    nav.show{
+        display:flex;
+    }
+
+    nav a{
+        width:100%;
+        text-align:center;
+        padding:18px;
+        border-bottom:1px solid #222;
+    }
+
     .menu-btn{
-        width:50px;
-        height:50px;
-        font-size:27px;
+        display:block;
     }
 
     .hero{
-        min-height:calc(100vh - 105px);
+        height:calc(100svh - 82px);
+        min-height:650px;
+    }
+
+    .slide img{
+        object-fit:contain;
     }
 
     .hero-content{
-        padding:15px 12px 70px;
+        padding:20px 18px 70px;
     }
 
     .small-title{
-        font-size:10px;
-        letter-spacing:2.5px;
+        font-size:11px;
+        letter-spacing:3px;
+        margin-bottom:16px;
+    }
+
+    .hero h2{
+        font-size:38px;
+        line-height:1.05;
+        margin-bottom:20px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+        line-height:1.5;
+        margin-bottom:22px;
+        max-width:600px;
+    }
+
+    .hero-buttons{
+        width:100%;
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
+    }
+
+    .btn{
+        width:82%;
+        min-width:0;
+        padding:15px 18px;
+        font-size:17px;
+    }
+
+    .slider-btn{
+        width:52px;
+        height:52px;
+        font-size:28px;
+    }
+
+    #prev{
+        left:12px;
+    }
+
+    #next{
+        right:12px;
+    }
+
+    .dots{
+        bottom:16px;
+    }
+
+    section{
+        padding:65px 20px;
+    }
+
+    .section-title{
+        font-size:32px;
+    }
+
+    .section-subtitle{
+        font-size:15px;
+        margin-bottom:35px;
+    }
+
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:14px;
+    }
+
+    .service-card{
+        padding:22px 12px;
+    }
+
+    .service-icon{
+        font-size:32px;
+    }
+
+    .service-card h3{
+        font-size:15px;
+    }
+
+    .service-card p{
+        font-size:12px;
+    }
+
+    .wedding-box{
+        padding:35px 18px;
+    }
+
+    .wedding-box h2{
+        font-size:29px;
+    }
+
+    .wedding-box p{
+        font-size:15px;
+    }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:480px){
+
+    .logo h1{
+        font-size:21px;
+    }
+
+    .hero{
+        min-height:630px;
     }
 
     .hero h2{
@@ -523,15 +565,21 @@ footer{
     }
 
     .btn{
-        width:82%;
-        font-size:17px;
+        width:86%;
+        font-size:16px;
     }
 
-    .slider-btn{
-        width:50px;
-        height:50px;
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .service-card{
+        min-height:145px;
+    }
+
+    .service-icon{
         font-size:28px;
-        top:75%;
+        margin-bottom:10px;
     }
 }
 </style>
@@ -543,353 +591,456 @@ footer{
 
 <header>
 
-<div class="logo">
-    <h1>PARAG PHOTO STUDIO</h1>
-    <p>DHANORA • GADCHIROLI</p>
-</div>
+    <div class="logo">
+        <h1>PARAG PHOTO STUDIO</h1>
+        <p>DHANORA • GADCHIROLI</p>
+    </div>
 
-<nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#wedding">Wedding</a>
-    <a href="#contact">Contact</a>
-</nav>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-<div class="menu-btn">☰</div>
+    <nav id="nav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#wedding">Wedding</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
 </header>
 
 
 <!-- ================= HERO ================= -->
 
-<div class="hero" id="home">
+<section class="hero" id="home">
 
-<div class="slider" id="slider"></div>
+    <div id="slides"></div>
 
-<div class="overlay"></div>
+    <div class="hero-content">
 
-<div class="hero-content">
+        <div class="small-title">
+            ROYAL WEDDING • PORTRAIT • VIDEO
+        </div>
 
-<div class="small-title">
-ROYAL WEDDING • PORTRAIT • VIDEO
-</div>
+        <h2>
+            PARAG <span>PHOTO</span><br>
+            STUDIO
+        </h2>
 
-<h2>
-PARAG <span>PHOTO</span><br>
-STUDIO
-</h2>
+        <p>
+            Capturing your beautiful moments with premium photography,
+            cinematic wedding films and creative pre-wedding photography.
+        </p>
 
-<p>
-Capturing your beautiful moments with premium photography,
-cinematic wedding films and creative pre-wedding photography.
-</p>
+        <div class="hero-buttons">
 
-<div class="buttons">
+            <a class="btn call"
+               href="tel:9405507553">
+                📞 Call Now
+            </a>
 
-<a class="btn call" href="tel:9405507553">
-📞 Call Now
-</a>
+            <a class="btn whatsapp"
+               href="https://wa.me/919359877572"
+               target="_blank">
+                💬 WhatsApp
+            </a>
 
-<a class="btn whatsapp"
-href="https://wa.me/919359877572"
-target="_blank">
-💬 WhatsApp
-</a>
+            <a class="btn services-btn"
+               href="#services">
+                View Services
+            </a>
 
-<a class="btn services-btn" href="#services">
-View Services
-</a>
+        </div>
 
-</div>
+    </div>
 
-</div>
+    <button class="slider-btn" id="prev">‹</button>
+    <button class="slider-btn" id="next">›</button>
 
+    <div class="dots" id="dots"></div>
 
-<button class="slider-btn" id="prev">‹</button>
-<button class="slider-btn" id="next">›</button>
-
-<div class="dots" id="dots"></div>
-
-</div>
+</section>
 
 
 <!-- ================= SERVICES ================= -->
 
 <section id="services">
 
-<h2 class="section-title">
-Our Services
-</h2>
+    <h2 class="section-title">
+        Our Services
+    </h2>
 
-<p class="section-text">
-Wedding Photography • Pre-Wedding Photography • Portrait Photography
-• HD / 4K Videography • Album Design • Passport Photo • PAN Card
-• Driving Licence • Photo Frame • Lamination • Xerox • Online Services
-</p>
+    <p class="section-subtitle">
+        Professional photography, videography and digital services
+        available at Parag Photo Studio, Dhanora.
+    </p>
 
-<div class="service-grid">
+    <div class="services-grid">
 
-<div class="service-card">
-<h3>Wedding Photography</h3>
-<p>Premium wedding photography and cinematic wedding films.</p>
-</div>
+        <div class="service-card">
+            <div class="service-icon">📸</div>
+            <h3>Wedding Photography</h3>
+            <p>Royal wedding photography for your special moments.</p>
+        </div>
 
-<div class="service-card">
-<h3>Pre-Wedding</h3>
-<p>Creative and beautiful pre-wedding photography.</p>
-</div>
+        <div class="service-card">
+            <div class="service-icon">💍</div>
+            <h3>Pre-Wedding</h3>
+            <p>Creative and cinematic pre-wedding photography.</p>
+        </div>
 
-<div class="service-card">
-<h3>Portrait Photography</h3>
-<p>Professional portrait and studio photography.</p>
-</div>
+        <div class="service-card">
+            <div class="service-icon">👤</div>
+            <h3>Portrait Photography</h3>
+            <p>Professional portrait and studio photography.</p>
+        </div>
 
-<div class="service-card">
-<h3>Album Design</h3>
-<p>Premium wedding album design and printing.</p>
-</div>
+        <div class="service-card">
+            <div class="service-icon">🎥</div>
+            <h3>HD / 4K Videography</h3>
+            <p>Cinematic HD and 4K wedding videography.</p>
+        </div>
 
-<div class="service-card">
-<h3>Passport / PAN</h3>
-<p>Passport photo and PAN card services.</p>
-</div>
+        <div class="service-card">
+            <div class="service-icon">💿</div>
+            <h3>Album Design</h3>
+            <p>Premium wedding album designing and printing.</p>
+        </div>
 
-<div class="service-card">
-<h3>Online Services</h3>
-<p>Various online documentation and digital services.</p>
-</div>
+        <div class="service-card">
+            <div class="service-icon">🪪</div>
+            <h3>Passport Photo</h3>
+            <p>Professional passport and ID photographs.</p>
+        </div>
 
-</div>
+        <div class="service-card">
+            <div class="service-icon">💳</div>
+            <h3>PAN Card</h3>
+            <p>PAN card application related online services.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🚗</div>
+            <h3>Driving Licence</h3>
+            <p>Driving licence related online assistance.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🖼️</div>
+            <h3>Photo Frame</h3>
+            <p>Photo frames and enlargement services.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📄</div>
+            <h3>Lamination</h3>
+            <p>Quality document and photo lamination.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🖨️</div>
+            <h3>Xerox</h3>
+            <p>Fast and reliable Xerox and document services.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>Online Services</h3>
+            <p>Various online application and digital services.</p>
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- ================= WEDDING ================= -->
 
-<section id="wedding">
+<section id="wedding" class="wedding-section">
 
-<div class="wedding-box">
+    <div class="wedding-box">
 
-<h3>Royal Wedding Photography</h3>
+        <h2>
+            Royal Wedding Photography
+        </h2>
 
-<p class="section-text">
-Premium wedding photography and cinematic wedding films
-to preserve your beautiful memories forever.
-</p>
+        <p>
+            Premium wedding photography and cinematic wedding films
+            to preserve your beautiful memories forever.
+        </p>
 
-</div>
+    </div>
 
 </section>
 
 
 <!-- ================= CONTACT ================= -->
 
-<section id="contact">
+<section id="contact" class="contact-section">
 
-<h2 class="section-title">
-Contact Parag Photo Studio
-</h2>
+    <h2 class="section-title">
+        Contact Parag Photo Studio
+    </h2>
 
-<p class="section-text">
-Near SBI Bank, Dhanora, District Gadchiroli, Maharashtra
-</p>
+    <p class="section-subtitle">
+        For wedding photography, passport photos, PAN card,
+        driving licence and other services, contact us today.
+    </p>
 
-<div class="contact-number">
-📞 9405507553
-</div>
+    <div class="contact-buttons">
 
-<a class="btn whatsapp"
-href="https://wa.me/919359877572"
-target="_blank">
-💬 WhatsApp Now
-</a>
+        <a class="btn call"
+           href="tel:9405507553">
+            📞 Call 9405507553
+        </a>
+
+        <a class="btn whatsapp"
+           href="https://wa.me/919359877572"
+           target="_blank">
+            💬 WhatsApp 9359877572
+        </a>
+
+    </div>
 
 </section>
 
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
-© 2026 Parag Photo Studio | Dhanora
+
+    <h3>PARAG PHOTO STUDIO</h3>
+
+    <p>
+        Dhanora • Gadchiroli, Maharashtra
+    </p>
+
+    <p style="margin-top:8px;">
+        © 2026 Parag Photo Studio. All Rights Reserved.
+    </p>
+
 </footer>
 
 
 <script>
 
 /* =====================================================
-   PHOTO LIST
-   GitHub filenames are CASE-SENSITIVE
-===================================================== */
+   PHOTO SLIDESHOW
+   Automatically checks .jpg / .JPG / .jpeg / .JPEG
+   ===================================================== */
 
-const photos = [
+const slidesContainer = document.getElementById("slides");
+const dotsContainer = document.getElementById("dots");
 
-"1.jpg",
+let slides = [];
+let currentSlide = 0;
 
-"3.jpg",
-"4.JPG",
-"5.jpg",
-"6.JPG",
-"7.JPG",
-"8.JPG",
-"9.JPG",
+/* Your numbered photos */
+const photoNumbers = [];
 
-"10.JPG",
-"11.JPG",
-"12.JPG",
-"13.JPG",
-"14.JPG",
-"15.JPG",
-"16.JPG",
-"17.JPG",
-"18.JPG",
-"19.JPG",
-"20.JPG",
-"21.JPG",
-"22.JPG",
-"23.JPG",
-"24.JPG",
-"25.JPG",
-"26.JPG",
-"27.JPG",
-"28.JPG",
-"29.JPG",
-
-"30.jpg"
-
-];
+for(let i = 1; i <= 30; i++){
+    photoNumbers.push(i);
+}
 
 
-/* =====================================================
-   CREATE SLIDES AUTOMATICALLY
-===================================================== */
+/* Try different filename extensions */
+function findPhoto(number){
 
-const slider = document.getElementById("slider");
-const dotsBox = document.getElementById("dots");
+    const extensions = [
+        ".jpg",
+        ".JPG",
+        ".jpeg",
+        ".JPEG"
+    ];
 
-let current = 0;
+    return new Promise(resolve => {
+
+        let index = 0;
+
+        function tryNext(){
+
+            if(index >= extensions.length){
+                resolve(null);
+                return;
+            }
+
+            const filename = number + extensions[index];
+
+            const img = new Image();
+
+            img.onload = function(){
+                resolve(filename);
+            };
+
+            img.onerror = function(){
+                index++;
+                tryNext();
+            };
+
+            img.src = filename;
+        }
+
+        tryNext();
+    });
+}
 
 
-/* Create every photo */
+/* Load all existing photos */
+async function loadPhotos(){
 
-photos.forEach((photo, index) => {
+    for(const number of photoNumbers){
 
-    const slide = document.createElement("div");
+        const filename = await findPhoto(number);
 
-    slide.className = "slide";
+        if(filename){
 
-    if(index === 0){
-        slide.classList.add("active");
+            const slide = document.createElement("div");
+            slide.className = "slide";
+
+            const img = document.createElement("img");
+
+            img.src = filename;
+            img.alt = "Parag Photo Studio Photography";
+
+            slide.appendChild(img);
+
+            slidesContainer.appendChild(slide);
+
+            const dot = document.createElement("div");
+            dot.className = "dot";
+
+            dotsContainer.appendChild(dot);
+        }
     }
 
-    const img = document.createElement("img");
+    slides = document.querySelectorAll(".slide");
 
-    img.src = photo;
+    if(slides.length > 0){
 
-    img.alt = "Parag Photo Studio Photography";
+        slides[0].classList.add("active");
 
-    slide.appendChild(img);
+        updateDots();
 
-    slider.appendChild(slide);
+        startSlideshow();
 
+    }else{
 
-    /* dot */
+        console.log("No numbered photos found.");
 
-    const dot = document.createElement("div");
-
-    dot.className = "dot";
-
-    if(index === 0){
-        dot.classList.add("active");
     }
+}
 
-    dot.addEventListener("click", () => {
-        showSlide(index);
+
+/* Show slide */
+function showSlide(index){
+
+    if(slides.length === 0) return;
+
+    slides.forEach(slide => {
+        slide.classList.remove("active");
     });
 
-    dotsBox.appendChild(dot);
+    currentSlide = (index + slides.length) % slides.length;
+
+    slides[currentSlide].classList.add("active");
+
+    updateDots();
+}
+
+
+/* Next */
+function nextSlide(){
+
+    showSlide(currentSlide + 1);
+
+}
+
+
+/* Previous */
+function previousSlide(){
+
+    showSlide(currentSlide - 1);
+
+}
+
+
+/* Dots */
+function updateDots(){
+
+    const dots = document.querySelectorAll(".dot");
+
+    dots.forEach((dot,index) => {
+
+        dot.classList.toggle(
+            "active",
+            index === currentSlide
+        );
+
+    });
+
+}
+
+
+/* Auto slideshow */
+let slideTimer;
+
+function startSlideshow(){
+
+    clearInterval(slideTimer);
+
+    slideTimer = setInterval(() => {
+
+        nextSlide();
+
+    },5000);
+
+}
+
+
+/* Buttons */
+
+document.getElementById("next").addEventListener(
+    "click",
+    () => {
+        nextSlide();
+        startSlideshow();
+    }
+);
+
+document.getElementById("prev").addEventListener(
+    "click",
+    () => {
+        previousSlide();
+        startSlideshow();
+    }
+);
+
+
+/* Mobile menu */
+
+function toggleMenu(){
+
+    document.getElementById("nav")
+        .classList.toggle("show");
+
+}
+
+
+/* Close menu after clicking link */
+
+document.querySelectorAll("nav a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        document.getElementById("nav")
+            .classList.remove("show");
+
+    });
 
 });
 
 
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
+/* Start */
 
-
-/* =====================================================
-   SHOW SLIDE
-===================================================== */
-
-function showSlide(index){
-
-    if(index >= slides.length){
-        current = 0;
-    }
-
-    else if(index < 0){
-        current = slides.length - 1;
-    }
-
-    else{
-        current = index;
-    }
-
-
-    slides.forEach((slide,i)=>{
-        slide.classList.toggle(
-            "active",
-            i === current
-        );
-    });
-
-
-    dots.forEach((dot,i)=>{
-        dot.classList.toggle(
-            "active",
-            i === current
-        );
-    });
-
-}
-
-
-/* =====================================================
-   NEXT / PREVIOUS
-===================================================== */
-
-document.getElementById("next").addEventListener(
-    "click",
-    ()=>{
-        showSlide(current + 1);
-        resetTimer();
-    }
-);
-
-
-document.getElementById("prev").addEventListener(
-    "click",
-    ()=>{
-        showSlide(current - 1);
-        resetTimer();
-    }
-);
-
-
-/* =====================================================
-   AUTO SLIDESHOW
-===================================================== */
-
-let timer = setInterval(()=>{
-    showSlide(current + 1);
-},5000);
-
-
-function resetTimer(){
-
-    clearInterval(timer);
-
-    timer = setInterval(()=>{
-        showSlide(current + 1);
-    },5000);
-
-}
+loadPhotos();
 
 </script>
 
