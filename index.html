@@ -13,7 +13,62 @@ content="Parag Photo Studio Dhanora - Wedding Photography, Pre-Wedding, 4K Video
 
 <title>Parag Photo Studio | Dhanora</title>
 
+/* ===== MOBILE PHOTO FIX ===== */
+@media (max-width: 600px){
 
+  #slideshow{
+    width:100%;
+    height:70vh;
+    min-height:420px;
+    overflow:hidden;
+  }
+
+  #slideshow .slide{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  #slideshow .slide img{
+    width:100%;
+    height:100%;
+    object-fit:contain !important;
+    object-position:center center;
+    display:block;
+  }
+
+  /* Mobile text */
+  #slideshow .top{
+    padding:0 15px;
+  }
+
+  #slideshow .top h1{
+    font-size:32px;
+    line-height:1.05;
+  }
+
+  #slideshow .top p{
+    font-size:14px;
+    line-height:1.5;
+    max-width:95%;
+    margin:auto;
+  }
+
+  /* Mobile buttons */
+  .contact-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+  }
+
+  .contact-buttons a{
+    font-size:13px !important;
+    padding:10px 16px !important;
+  }
+}
 <style>
 
 /* =========================
